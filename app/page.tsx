@@ -635,7 +635,7 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {/* Products */}
+            {/* Navigation */}
             <motion.div {...fadeIn}>
               <h4
                 style={{
@@ -644,17 +644,17 @@ export default function Home() {
                   marginBottom: '20px'
                 }}
               >
-                Products
+                Navigate
               </h4>
               <ul style={{ listStyle: 'none', padding: 0, lineHeight: 2 }}>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>Composite Boards</a></li>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>Posts & Hardware</a></li>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>Gates</a></li>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>Accessories</a></li>
+                <li><a href="/" style={{ color: '#aaa', textDecoration: 'none' }}>Home</a></li>
+                <li><a href="/#installations" style={{ color: '#aaa', textDecoration: 'none' }}>Gallery</a></li>
+                <li><a href="/#five-arc" style={{ color: '#aaa', textDecoration: 'none' }}>Colors & Textures</a></li>
+                <li><a href="/why-compoxen" style={{ color: '#aaa', textDecoration: 'none' }}>Why Composite</a></li>
               </ul>
             </motion.div>
 
-            {/* Resources */}
+            {/* Dealers */}
             <motion.div {...fadeIn}>
               <h4
                 style={{
@@ -663,17 +663,15 @@ export default function Home() {
                   marginBottom: '20px'
                 }}
               >
-                Resources
+                Dealers
               </h4>
               <ul style={{ listStyle: 'none', padding: 0, lineHeight: 2 }}>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>Installation Guides</a></li>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>Spec Sheets</a></li>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>Warranty Info</a></li>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>Dealer Kit</a></li>
+                <li><a href="/get-dealer-kit" style={{ color: '#aaa', textDecoration: 'none' }}>Become a Dealer</a></li>
+                <li><a href="/request-quote" style={{ color: '#aaa', textDecoration: 'none' }}>Get Quote</a></li>
               </ul>
             </motion.div>
 
-            {/* Company / Contact */}
+            {/* Contact */}
             <motion.div {...fadeIn}>
               <h4
                 style={{
@@ -685,10 +683,9 @@ export default function Home() {
                 Company
               </h4>
               <ul style={{ listStyle: 'none', padding: 0, lineHeight: 2 }}>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>About Us</a></li>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>Our Materials</a></li>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>Sustainability</a></li>
-                <li><a style={{ color: '#aaa', textDecoration: 'none' }}>Careers</a></li>
+                <li><a href="/why-compoxen" style={{ color: '#aaa', textDecoration: 'none' }}>Our Materials</a></li>
+                <li><a href="/get-dealer-kit" style={{ color: '#aaa', textDecoration: 'none' }}>Dealer Kit</a></li>
+                <li><a href="/request-quote" style={{ color: '#aaa', textDecoration: 'none' }}>Request Quote</a></li>
               </ul>
 
               <div style={{ marginTop: '24px' }}>
@@ -721,30 +718,9 @@ export default function Home() {
               margin: '40px 0'
             }}
           />
-
-          {/* Bottom Row */}
-          <motion.div
-            {...fadeIn}
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              gap: '20px'
-            }}
-          >
-            <p style={{ color: '#666', fontSize: '14px' }}>
-              © {new Date().getFullYear()} Compoxen. All rights reserved.
-            </p>
-
-            <div style={{ display: 'flex', gap: '24px' }}>
-              <a style={{ color: '#666', fontSize: '14px', textDecoration: 'none' }}>Privacy Policy</a>
-              <a style={{ color: '#666', fontSize: '14px', textDecoration: 'none' }}>Terms of Service</a>
-              <a style={{ color: '#666', fontSize: '14px', textDecoration: 'none' }}>Dealer Login</a>
-            </div>
-          </motion.div>
         </div>
       </footer>
+
     </>
   )
 }
