@@ -1,5 +1,5 @@
 'use client'
-
+import { Download, Percent, BarChart3 } from 'lucide-react';
 import { motion } from 'framer-motion'
 import {
   ArrowRight,
@@ -107,60 +107,74 @@ export default function Home() {
             </motion.p>
 
             <motion.div
-              {...fadeIn}
-              transition={{ delay: 0.4 }}
-              style={{ display: 'flex', gap: '24px', justifyContent: 'center' }}
-            >
-              <motion.button
-                style={{
-                  background: '#D97706',
-                  color: 'white',
-                  padding: '24px 56px',
-                  border: 'none',
-                  fontSize: '20px',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  borderRadius: '8px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  boxShadow: '0 10px 40px rgba(217,119,6,0.4)',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
-                whileHover={{ scale: 1.05, boxShadow: '0 20px 60px rgba(217,119,6,0.6)' }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span style={{ position: 'relative', zIndex: 2 }}>Get Your Dealer Kit</span>
-                <ArrowRight size={20} style={{ position: 'relative', zIndex: 2 }} />
-                <motion.div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)'
-                  }}
-                  animate={{ x: ['-200%', '200%'] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                />
-              </motion.button>
+  {...fadeIn}
+  transition={{ delay: 0.4 }}
+  style={{ display: 'flex', gap: '24px', justifyContent: 'center' }}
+>
 
-              <motion.button
-                style={{
-                  background: 'transparent',
-                  color: 'white',
-                  padding: '24px 56px',
-                  border: '2px solid rgba(255,255,255,0.8)',
-                  fontSize: '20px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  borderRadius: '8px',
-                  backdropFilter: 'blur(10px)'
-                }}
-                whileHover={{ backgroundColor: 'rgba(255,255,255,0.1)', borderColor: 'white' }}
-              >
-                View Gallery
-              </motion.button>
-            </motion.div>
+  {/* BUTTON 1 — Dealer Kit */}
+  <motion.button
+    onClick={() => (window.location.href = '/dealer-kit')}
+    style={{
+      background: '#D97706',
+      color: 'white',
+      padding: '24px 56px',
+      border: 'none',
+      fontSize: '20px',
+      fontWeight: 700,
+      cursor: 'pointer',
+      borderRadius: '8px',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '12px',
+      boxShadow: '0 10px 40px rgba(217,119,6,0.4)',
+      position: 'relative',
+      overflow: 'hidden'
+    }}
+    whileHover={{ scale: 1.05, boxShadow: '0 20px 60px rgba(217,119,6,0.6)' }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <span style={{ position: 'relative', zIndex: 2 }}>Get Your Dealer Kit</span>
+    <ArrowRight size={20} style={{ position: 'relative', zIndex: 2 }} />
+    <motion.div
+      style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)'
+      }}
+      animate={{ x: ['-200%', '200%'] }}
+      transition={{ duration: 1.5, repeat: Infinity }}
+    />
+  </motion.button>
+
+  {/* BUTTON 2 — Scroll to Installations */}
+  <motion.button
+    onClick={() => {
+      const el = document.getElementById('installations')
+      if (el) {
+        const yOffset = -80 // adjust for fixed nav
+        const y = el.getBoundingClientRect().top + window.scrollY + yOffset
+        window.scrollTo({ top: y, behavior: 'smooth' })
+      }
+    }}
+    style={{
+      background: 'transparent',
+      color: 'white',
+      padding: '24px 56px',
+      border: '2px solid rgba(255,255,255,0.8)',
+      fontSize: '20px',
+      fontWeight: 600,
+      cursor: 'pointer',
+      borderRadius: '8px',
+      backdropFilter: 'blur(10px)'
+    }}
+    whileHover={{ backgroundColor: 'rgba(255,255,255,0.1)', borderColor: 'white' }}
+  >
+    View Gallery
+  </motion.button>
+
+</motion.div>
+
           </div>
         </div>
       </section>
@@ -208,72 +222,74 @@ export default function Home() {
       </section>
 
       {/* COLOR CLOSE-UPS */}
-      <section style={{ padding: '120px 0', background: '#F4F4F4' }}>
-        <div className="container mx-auto px-8" style={{ maxWidth: '1200px' }}>
-          <motion.h2
-            {...fadeIn}
+<section id="five-arc" style={{ padding: '120px 0', background: '#F4F4F4' }}>
+  <div className="container mx-auto px-8" style={{ maxWidth: '1200px' }}>
+    <motion.h2
+      {...fadeIn}
+      style={{
+        fontSize: '48px',
+        fontWeight: 300,
+        textAlign: 'center',
+        marginBottom: '24px',
+        color: '#1A1A1A'
+      }}
+    >
+      Five Modern, Architect‑Led Colors
+    </motion.h2>
+
+
+    <motion.p
+      {...fadeIn}
+      transition={{ delay: 0.1 }}
+      style={{
+        textAlign: 'center',
+        fontSize: '18px',
+        color: '#555',
+        maxWidth: '640px',
+        margin: '0 auto 60px'
+      }}
+    >
+      A palette shaped by landscape and architecture — subtle woodgrain, deep matte surfaces, and tones that hold their own against glass, steel, stone, and sky. Built for composite fencing that feels at home in the mountains, on the coast, and everywhere in between.
+    </motion.p>
+
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '20px' }}>
+      {[
+        { name: 'Harbor Slate', file: '/images/colors-harbor-slate.png', note: 'Modern grey with coastal clarity.' },
+        { name: 'Mesa Taupe', file: '/images/colors-mesa-taupe.png', note: 'Warm, grounded, stone‑friendly tone.' },
+        { name: 'Shadow Forge', file: '/images/colors-shadow-forge.png', note: 'Charcoal‑black with industrial depth.' },
+        { name: 'Redwood Ember', file: '/images/colors-redwood-ember.png', note: 'Rich red‑brown with natural warmth.' },
+        { name: 'Cocoa Ridge', file: '/images/colors-cocoa-ridge.png', note: 'Deep chocolate tone with architectural presence.' }
+      ].map((color, i) => (
+        <motion.div
+          key={color.name}
+          {...fadeIn}
+          transition={{ delay: 0.1 * i }}
+          whileHover={{ y: -6 }}
+          style={{ textAlign: 'center' }}
+        >
+          <div
             style={{
-              fontSize: '48px',
-              fontWeight: 300,
-              textAlign: 'center',
-              marginBottom: '24px',
-              color: '#1A1A1A'
+              width: '100%',
+              aspectRatio: '3 / 4',
+              borderRadius: '10px',
+              overflow: 'hidden',
+              boxShadow: '0 14px 35px rgba(0,0,0,0.12)',
+              marginBottom: '14px'
             }}
           >
-            Five Modern, Architect‑Led Colors
-          </motion.h2>
-
-          <motion.p
-            {...fadeIn}
-            transition={{ delay: 0.1 }}
-            style={{
-              textAlign: 'center',
-              fontSize: '18px',
-              color: '#555',
-              maxWidth: '640px',
-              margin: '0 auto 60px'
-            }}
-          >
-            Deep matte finishes, subtle variation, and tones curated to sit quietly next to stone, stucco, steel, and glass.
-          </motion.p>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '20px' }}>
-            {[
-              { name: 'Ashwood Grey', file: '/images/colors-ashwood-grey.jpg', note: 'Cool neutral for modern builds.' },
-              { name: 'Canyon Taupe', file: '/images/colors-canyon-taupe.jpg', note: 'Warm mid‑tone that pairs with stone.' },
-              { name: 'Charcoal Black', file: '/images/colors-charcoal-black.jpg', note: 'Bold contrast, clean lines.' },
-              { name: 'Sierra Brown', file: '/images/colors-sierra-brown.jpg', note: 'Rich depth without wood maintenance.' },
-              { name: 'Coastal Sand', file: '/images/colors-coastal-sand.jpg', note: 'Soft, bright, coastal‑friendly.' }
-            ].map((color, i) => (
-              <motion.div
-                key={color.name}
-                {...fadeIn}
-                transition={{ delay: 0.1 * i }}
-                whileHover={{ y: -6 }}
-                style={{ textAlign: 'center' }}
-              >
-                <div
-                  style={{
-                    width: '100%',
-                    aspectRatio: '3 / 4',
-                    borderRadius: '10px',
-                    overflow: 'hidden',
-                    boxShadow: '0 14px 35px rgba(0,0,0,0.12)',
-                    marginBottom: '14px'
-                  }}
-                >
-                  <img src={color.file} alt={color.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-                <div style={{ fontSize: '16px', fontWeight: 600, marginBottom: '4px', color: '#222' }}>{color.name}</div>
-                <div style={{ fontSize: '13px', color: '#666' }}>{color.note}</div>
-              </motion.div>
-            ))}
+            <img src={color.file} alt={color.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
-        </div>
-      </section>
+          <div style={{ fontSize: '16px', fontWeight: 600, marginBottom: '4px', color: '#222' }}>{color.name}</div>
+          <div style={{ fontSize: '13px', color: '#666' }}>{color.note}</div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* GALLERY */}
-      <section style={{ padding: '120px 0', background: '#1A1A1A' }}>
+      <section id="installations" style={{ padding: '120px 0', background: '#1A1A1A' }}>
         <div className="container mx-auto px-8">
           <motion.h2
             {...fadeIn}
@@ -315,85 +331,132 @@ export default function Home() {
         </div>
       </section>
 
-      {/* RESOURCE HUB — 4 Columns */}
+      {/* RESOURCE HUB — ENTERPRISE V4 */}
 <section style={{ padding: '120px 0', background: 'white' }}>
   <div className="container mx-auto px-8">
-    <motion.h2
-      {...fadeIn}
+
+    <h2
       style={{
         fontSize: '48px',
         fontWeight: 300,
         textAlign: 'center',
-        marginBottom: '80px'
+        marginBottom: '80px',
+        color: '#111',
+        letterSpacing: '-0.5px'
       }}
     >
       Everything You Need to <span style={{ fontWeight: 700 }}>Succeed</span>
-    </motion.h2>
+    </h2>
 
     <div
       style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: '40px'
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: '48px'
       }}
     >
       {[
         {
-          img: '/images/catalog-preview.jpg',
-          title: '2025 Contractor Guide',
-          desc: 'Specs, pricing tiers, and installation guides delivered to your door.',
-          cta: 'ORDER FREE GUIDE'
+          icon: <Download size={38} color="#8B4513" />,
+          title: '2026 Contractor Guide',
+          desc: 'Specs, pricing tiers, installation diagrams, and material breakdowns — engineered for contractors who demand clarity and speed.',
+          cta: 'ORDER FREE GUIDE',
+          href: '/get-dealer-kit',
+          snippetTitle: 'Contractor Guide',
+          snippetMeta: '2026 Edition • PDF + Print'
         },
         {
-          img: '/images/install-video.jpg',
-          title: 'Master Installation',
-          desc: 'Video tutorials, best practices, and pro tips from certified installers.',
-          cta: 'WATCH TUTORIALS'
+          icon: <Percent size={38} color="#8B4513" />,
+          title: 'Material Science',
+          desc: 'Explore the engineering behind Compoxen — composite density, UV‑stable shell, acoustic dampening, and 25+ year performance.',
+          cta: 'LEARN MORE',
+          href: '/why-compoxen',
+          snippetTitle: 'Material Performance',
+          snippetMeta: 'Fade‑Resistant • Zero Maintenance'
         },
         {
-          img: '/images/why-compoxen.jpg',
-          title: 'Why Compoxen',
-          desc: 'Unmatched durability, modern aesthetics, and zero maintenance.',
-          cta: 'LEARN MORE'
-        },
-        {
-          img: '/images/dealer-dashboard.jpg', // Add this image to /public/images
+          icon: <BarChart3 size={38} color="#8B4513" />,
           title: 'Dealer Dashboard',
-          desc: 'Track orders, manage samples, unlock pricing tiers, and grow your business.',
+          desc: 'Track orders, manage samples, unlock pricing tiers, and accelerate your business with real‑time insights.',
           cta: 'VIEW DASHBOARD',
-          href: '/dealer/dashboard'
+          href: '/dealer',
+          snippetTitle: 'Dealer Dashboard',
+          snippetMeta: 'Orders • Samples • Pricing Tiers'
         }
       ].map((item, i) => (
         <motion.div
           key={item.title}
-          {...fadeIn}
-          transition={{ delay: 0.1 * i }}
-          whileHover={{ y: -10 }}
-          style={{ textAlign: 'center' }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, delay: i * 0.08 }}
+          whileHover={{
+            y: -6,
+            scale: 1.015,
+            boxShadow: '0 12px 28px rgba(0,0,0,0.12)'
+          }}
+          style={{
+            width: '100%',
+            maxWidth: '360px',
+            background: 'white',
+            borderRadius: '16px',
+            border: '1px solid #e5e5e5',
+            padding: '32px',
+            textAlign: 'center',
+            transition: 'all 0.18s ease-out',
+            position: 'relative'
+          }}
         >
-          <img
-            src={item.img}
-            alt={item.title}
+          {/* Icon */}
+          <motion.div
+            whileHover={{ scale: 1.06 }}
+            transition={{ duration: 0.12 }}
+            style={{ marginBottom: '20px' }}
+          >
+            {item.icon}
+          </motion.div>
+
+          {/* DARK PREVIEW BOX */}
+          <div
             style={{
-              width: '100%',
-              height: '300px',
-              objectFit: 'cover',
-              borderRadius: '8px',
-              marginBottom: '24px'
+              background: '#0F172A',
+              borderRadius: '14px',
+              padding: '16px',
+              border: '1px solid rgba(255,255,255,0.08)',
+              fontSize: '14px',
+              color: 'rgba(226,232,240,0.95)',
+              textAlign: 'left',
+              marginBottom: '24px',
+              boxShadow: '0 8px 20px rgba(0,0,0,0.25)'
             }}
-          />
+          >
+            <div style={{ marginBottom: '6px', opacity: 0.9 }}>
+              {item.snippetTitle}
+            </div>
+            <div style={{ color: '#facc15' }}>
+              {item.snippetMeta}
+            </div>
+          </div>
 
           <h3
             style={{
-              fontSize: '28px',
+              fontSize: '26px',
               fontWeight: 600,
-              marginBottom: '16px'
+              marginBottom: '14px',
+              color: '#111'
             }}
           >
             {item.title}
           </h3>
 
-          <p style={{ color: '#666', marginBottom: '24px' }}>
+          <p
+            style={{
+              color: '#555',
+              marginBottom: '26px',
+              fontSize: '16px',
+              lineHeight: '1.6'
+            }}
+          >
             {item.desc}
           </p>
 
@@ -405,9 +468,11 @@ export default function Home() {
               color: '#8B4513',
               padding: '12px 32px',
               fontWeight: 600,
-              cursor: 'pointer'
+              cursor: 'pointer',
+              borderRadius: '6px'
             }}
             whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.12 }}
           >
             {item.cta}
           </motion.button>
@@ -416,6 +481,8 @@ export default function Home() {
     </div>
   </div>
 </section>
+
+
 
 
       {/* TRUST INDICATORS */}

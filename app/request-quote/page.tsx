@@ -4,20 +4,15 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Check } from 'lucide-react'
 import Navigation from '@/components/Navigation'
 
-export default function DealerKitPage() {
+export default function RequestQuotePage() {
   const [formData, setFormData] = useState({
-    businessName: '',
-    contactName: '',
+    name: '',
     email: '',
     phone: '',
-    state: ''
+    zip: '',
+    projectType: '',
+    notes: ''
   })
-
-  const states = [
-    'AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD',
-    'MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC',
-    'SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'
-  ]
 
   useEffect(() => {
     document.documentElement.scrollTop = 0
@@ -92,7 +87,7 @@ export default function DealerKitPage() {
                 marginBottom: '12px'
               }}
             >
-              Request Dealer Kit
+              Request a Quote
             </h2>
 
             <p
@@ -103,82 +98,39 @@ export default function DealerKitPage() {
                 fontSize: '16px'
               }}
             >
-              Get product details, pricing, and installation specifications.
+              Get pricing, product recommendations, and installer options for your project.
             </p>
 
-            {/* Inner wrapper so fields don't hit the card edges */}
-            <div
-              style={{
-                maxWidth: '440px',
-                margin: '0 auto'
-              }}
-            >
-              {/* FORM FIELDS */}
+            <div style={{ maxWidth: '440px', margin: '0 auto' }}>
               <div style={{ display: 'grid', gap: '18px' }}>
                 {[
-                { key: 'businessName', placeholder: 'Business Name' },
-                { key: 'contactName', placeholder: 'Contact Name' },
-                { key: 'email', placeholder: 'Email Address', type: 'email' },
-                { key: 'phone', placeholder: 'Phone Number', type: 'tel' }
-              ].map((field) => (
-                <input
-                  key={field.key}
-                  type={field.type || 'text'}
-                  placeholder={field.placeholder}
-                  value={formData[field.key as keyof typeof formData]}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      [field.key as keyof typeof formData]: e.target.value
-                    })
-                  }
-                  style={{
-                    width: '100%',
-                    padding: '16px 20px',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.22)',
-                    borderRadius: '10px',
-                    fontSize: '16px',
-                    color: 'white',
-                    boxSizing: 'border-box'
-                  }}
-                />
-              ))}
-
-
-                {/* STATE DROPDOWN */}
-                <select
-                  value={formData.state}
-                  name="state"
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      state: e.target.value
-                    })g
-                  }
-                  style={{
-                    width: '100%',
-                    padding: '16px 20px',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.22)',
-                    borderRadius: '10px',
-                    fontSize: '16px',
-                    color: formData.state ? 'white' : 'rgba(255,255,255,0.5)',
-                    boxSizing: 'border-box'
-                  }}
-                >
-
-                  <option value="">Select State</option>
-                  {states.map((state) => (
-                    <option
-                      key={state}
-                      value={state}
-                      style={{ background: '#222' }}
-                    >
-                      {state}
-                    </option>
-                  ))}
-                </select>
+                  { key: 'name', placeholder: 'Your Name' },
+                  { key: 'email', placeholder: 'Email Address', type: 'email' },
+                  { key: 'phone', placeholder: 'Phone Number', type: 'tel' },
+                  { key: 'zip', placeholder: 'Zip Code' },
+                  { key: 'projectType', placeholder: 'Project Type (e.g. backyard, pool, commercial)' },
+                  { key: 'notes', placeholder: 'Additional Notes (optional)' }
+                ].map((field) => (
+                  <input
+                    key={field.key}
+                    type={field.type || 'text'}
+                    placeholder={field.placeholder}
+                    value={formData[field.key as keyof typeof formData]}
+                    onChange={(e) =>
+                      setFormData({ ...formData, [field.key]: e.target.value })
+                    }
+                    style={{
+                      width: '100%',
+                      padding: '16px 20px',
+                      background: 'rgba(255,255,255,0.06)',
+                      border: '1px solid rgba(255,255,255,0.22)',
+                      borderRadius: '10px',
+                      fontSize: '16px',
+                      color: 'white',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                ))}
 
                 {/* SUBMIT BUTTON */}
                 <motion.button
@@ -201,7 +153,7 @@ export default function DealerKitPage() {
                     marginTop: '10px'
                   }}
                 >
-                  Request Kit
+                  Request Quote
                   <ArrowRight size={20} />
                 </motion.button>
 
@@ -216,11 +168,11 @@ export default function DealerKitPage() {
                   }}
                 >
                   <a
-                    href="/request-quote"
+                    href="/get-dealer-kit"
                     style={{ textDecoration: 'none', color: 'inherit' }}
                   >
-                    Homeowner?{' '}
-                    <span style={{ textDecoration: 'underline' }}>Click here</span>
+                    Contractor or dealer?{' '}
+                    <span style={{ textDecoration: 'underline' }}>Get kit</span>
                   </a>
                   <a
                     href="/dealer"
@@ -246,15 +198,9 @@ export default function DealerKitPage() {
                   textAlign: 'center'
                 }}
               >
-                <div>
-                  <Check size={14} color="#D97706" /> 20‑Year Warranty
-                </div>
-                <div>
-                  <Check size={14} color="#D97706" /> Fast Quotes
-                </div>
-                <div>
-                  <Check size={14} color="#D97706" /> Dealer Support
-                </div>
+                <div><Check size={14} color="#D97706" /> 20‑Year Warranty</div>
+                <div><Check size={14} color="#D97706" /> Fast Quotes</div>
+                <div><Check size={14} color="#D97706" /> Installer Network</div>
               </div>
             </div>
           </div>

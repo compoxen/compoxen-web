@@ -1,21 +1,48 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
 export default function Navigation() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+  const router = useRouter()
 
   const navLinks = [
     { label: 'Home', href: '/' },
-    { label: 'Gallery', href: '/gallery' },
-    { label: 'Colors & Textures', href: '/colors' },
-    { label: 'Why Composite', href: '/why-composite' },
-    { label: 'Resources', href: '/resources' },
-    { label: 'Become a Dealer', href: '/dealer/request' }
+    { label: 'Gallery', href: '#installations', type: 'anchor' },
+    { label: 'Colors & Textures', href: '#five-arc', type: 'anchor' },
+    { label: 'Why Composite', href: '/why-compoxen', type: 'page' },
+    { label: 'Become a Dealer', href: '/dealer-kit', type: 'page' }
   ]
+
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id)
+    if (!el) return
+
+    const yOffset = -80 // adjust for fixed nav height
+    const y = el.getBoundingClientRect().top + window.scrollY + yOffset
+
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
+    })
+  }
+
+  const handleAnchorClick = (id: string) => {
+    if (pathname === '/') {
+      // Already on home: just scroll
+      scrollToId(id)
+    } else {
+      // Go to home, then scroll
+      router.push(`/#${id}`)
+      // small timeout to ensure content is rendered before scrolling
+      setTimeout(() => scrollToId(id), 400)
+    }
+  }
 
   return (
     <nav
@@ -38,7 +65,7 @@ export default function Navigation() {
           justifyContent: 'space-between'
         }}
       >
-        {/* Logo with left padding */}
+        {/* Logo */}
         <Link
           href="/"
           style={{
@@ -66,54 +93,55 @@ export default function Navigation() {
             gap: '36px'
           }}
         >
-          {navLinks.map((link) => (
-            <motion.div
-              key={link.href}
-              whileHover={{ y: -2, opacity: 1 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Link
-                href={link.href}
-                style={{
-                  color: 'rgba(255,255,255,0.85)',
-                  fontSize: '15px',
-                  fontWeight: 500,
-                  textDecoration: 'none'
-                }}
+          {navLinks.map((link) => {
+            if (link.type === 'anchor') {
+              const id = link.href.replace('#', '')
+              return (
+                <motion.button
+                  key={link.label}
+                  whileHover={{ y: -2, opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={() => handleAnchorClick(id)}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    padding: 0,
+                    margin: 0,
+                    cursor: 'pointer',
+                    color: 'rgba(255,255,255,0.85)',
+                    fontSize: '15px',
+                    fontWeight: 500
+                  }}
+                >
+                  {link.label}
+                </motion.button>
+              )
+            }
+
+            return (
+              <motion.div
+                key={link.href}
+                whileHover={{ y: -2, opacity: 1 }}
+                transition={{ duration: 0.2 }}
               >
-                {link.label}
-              </Link>
-            </motion.div>
-          ))}
+                <Link
+                  href={link.href}
+                  style={{
+                    color: 'rgba(255,255,255,0.85)',
+                    fontSize: '15px',
+                    fontWeight: 500,
+                    textDecoration: 'none'
+                  }}
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
+            )
+          })}
 
-          {/* Get Quote */}
+          {/* GET QUOTE — BRAND COLOR */}
           <Link
-            href="/quote"
-            style={{
-              color: 'rgba(255,255,255,0.9)',
-              padding: '10px 18px',
-              borderRadius: '6px',
-              border: '1px solid rgba(255,255,255,0.25)',
-              fontSize: '15px',
-              fontWeight: 500,
-              textDecoration: 'none',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(255,255,255,0.1)'
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent'
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'
-            }}
-          >
-            Get Quote
-          </Link>
-
-          {/* Portal Login → Dealer Dashboard */}
-          <Link
-            href="/dealer/dashboard"
+            href="/request-quote"
             style={{
               background: '#D97706',
               color: 'white',
@@ -122,10 +150,17 @@ export default function Navigation() {
               fontSize: '15px',
               fontWeight: 600,
               textDecoration: 'none',
-              boxShadow: '0 4px 20px rgba(217,119,6,0.35)'
+              boxShadow: '0 4px 20px rgba(217,119,6,0.35)',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#B45309'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#D97706'
             }}
           >
-            Portal Login
+            Get Quote
           </Link>
         </div>
 
@@ -158,37 +193,51 @@ export default function Navigation() {
               padding: '0 24px'
             }}
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                style={{
-                  color: 'rgba(255,255,255,0.9)',
-                  fontSize: '18px',
-                  textDecoration: 'none'
-                }}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              if (link.type === 'anchor') {
+                const id = link.href.replace('#', '')
+                return (
+                  <button
+                    key={link.label}
+                    onClick={() => {
+                      handleAnchorClick(id)
+                      setOpen(false)
+                    }}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      padding: 0,
+                      margin: 0,
+                      textAlign: 'left',
+                      cursor: 'pointer',
+                      color: 'rgba(255,255,255,0.9)',
+                      fontSize: '18px'
+                    }}
+                  >
+                    {link.label}
+                  </button>
+                )
+              }
 
-            {/* Get Quote */}
-            <Link
-              href="/quote"
-              onClick={() => setOpen(false)}
-              style={{
-                color: 'rgba(255,255,255,0.9)',
-                fontSize: '18px',
-                textDecoration: 'none'
-              }}
-            >
-              Get Quote
-            </Link>
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  style={{
+                    color: 'rgba(255,255,255,0.9)',
+                    fontSize: '18px',
+                    textDecoration: 'none'
+                  }}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
 
-            {/* Portal Login */}
+            {/* GET QUOTE — MOBILE */}
             <Link
-              href="/dealer/dashboard"
+              href="/request-quote"
               onClick={() => setOpen(false)}
               style={{
                 background: '#D97706',
@@ -202,7 +251,7 @@ export default function Navigation() {
                 marginTop: '10px'
               }}
             >
-              Portal Login
+              Get Quote
             </Link>
           </div>
         </motion.div>
