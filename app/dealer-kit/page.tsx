@@ -38,7 +38,6 @@ export default function DealerKitPage() {
           padding: '100px 20px'
         }}
       >
-        {/* Background Image */}
         <img
           src="/images/hero-fence-bg.jpg"
           alt="Fence"
@@ -52,7 +51,6 @@ export default function DealerKitPage() {
           }}
         />
 
-        {/* Dark Overlay */}
         <div
           style={{
             position: 'absolute',
@@ -61,7 +59,6 @@ export default function DealerKitPage() {
           }}
         />
 
-        {/* Centered Form */}
         <div
           style={{
             position: 'relative',
@@ -106,47 +103,43 @@ export default function DealerKitPage() {
               Get product details, pricing, and installation specifications.
             </p>
 
-            {/* Inner wrapper so fields don't hit the card edges */}
             <div
               style={{
                 maxWidth: '440px',
                 margin: '0 auto'
               }}
             >
-              {/* FORM FIELDS */}
               <div style={{ display: 'grid', gap: '18px' }}>
                 {[
-                { key: 'businessName', placeholder: 'Business Name' },
-                { key: 'contactName', placeholder: 'Contact Name' },
-                { key: 'email', placeholder: 'Email Address', type: 'email' },
-                { key: 'phone', placeholder: 'Phone Number', type: 'tel' }
-              ].map((field) => (
-                <input
-                  key={field.key}
-                  type={field.type || 'text'}
-                  placeholder={field.placeholder}
-                  value={formData[field.key as keyof typeof formData]}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      [field.key as keyof typeof formData]: e.target.value
-                    })
-                  }
-                  style={{
-                    width: '100%',
-                    padding: '16px 20px',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.22)',
-                    borderRadius: '10px',
-                    fontSize: '16px',
-                    color: 'white',
-                    boxSizing: 'border-box'
-                  }}
-                />
-              ))}
+                  { key: 'businessName', placeholder: 'Business Name' },
+                  { key: 'contactName', placeholder: 'Contact Name' },
+                  { key: 'email', placeholder: 'Email Address', type: 'email' },
+                  { key: 'phone', placeholder: 'Phone Number', type: 'tel' }
+                ].map((field) => (
+                  <input
+                    key={field.key}
+                    type={field.type || 'text'}
+                    placeholder={field.placeholder}
+                    value={formData[field.key as keyof typeof formData]}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        [field.key as keyof typeof formData]: e.target.value
+                      })
+                    }
+                    style={{
+                      width: '100%',
+                      padding: '16px 20px',
+                      background: 'rgba(255,255,255,0.06)',
+                      border: '1px solid rgba(255,255,255,0.22)',
+                      borderRadius: '10px',
+                      fontSize: '16px',
+                      color: 'white',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                ))}
 
-
-                {/* STATE DROPDOWN */}
                 <select
                   value={formData.state}
                   name="state"
@@ -154,7 +147,7 @@ export default function DealerKitPage() {
                     setFormData({
                       ...formData,
                       state: e.target.value
-                    })g
+                    })
                   }
                   style={{
                     width: '100%',
@@ -167,7 +160,6 @@ export default function DealerKitPage() {
                     boxSizing: 'border-box'
                   }}
                 >
-
                   <option value="">Select State</option>
                   {states.map((state) => (
                     <option
@@ -180,7 +172,6 @@ export default function DealerKitPage() {
                   ))}
                 </select>
 
-                {/* SUBMIT BUTTON */}
                 <motion.button
                   type="submit"
                   whileHover={{ scale: 1.02 }}
@@ -205,7 +196,6 @@ export default function DealerKitPage() {
                   <ArrowRight size={20} />
                 </motion.button>
 
-                {/* Secondary Links */}
                 <div
                   style={{
                     display: 'flex',
@@ -232,7 +222,6 @@ export default function DealerKitPage() {
                 </div>
               </div>
 
-              {/* TRUST ROW */}
               <div
                 style={{
                   display: 'grid',
