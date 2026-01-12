@@ -72,7 +72,7 @@ export default function WhyCompoxen() {
       </Section>
 
       {/* COLOR PALETTE */}
-      <Section className="bg-neutral-900 text-white">
+      <Section background="bg-neutral-900" className="text-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-light mb-8 text-white">
             Five Modern, Architect‑Led Colors
