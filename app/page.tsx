@@ -3,10 +3,11 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Download, Percent, BarChart3, Package, Lightbulb, Users, Calculator } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Home() {
   return (
-    <main className="w-full overflow-x-hidden">
+    <div className="w-full overflow-x-hidden">
 
       {/* ========================= */}
       {/*         HERO SECTION      */}
@@ -36,7 +37,7 @@ export default function Home() {
           >
             <span className="block mb-4">
               <span
-                className="bg-gradient-to-br from-amber-300 to-amber-600 bg-clip-text text-transparent"
+                className="bg-linear-to-br from-amber-300 to-amber-600 bg-clip-text text-transparent"
               >
                 Beyond Wood.
               </span>{' '}
@@ -46,7 +47,7 @@ export default function Home() {
             <span className="block">
               <span className="text-white/95">Beyond Time.</span>{' '}
               <span
-                className="bg-gradient-to-br from-amber-300 to-amber-600 bg-clip-text text-transparent"
+                className="bg-linear-to-br from-amber-300 to-amber-600 bg-clip-text text-transparent"
               >
                 Beyond Beautiful.
               </span>
@@ -84,7 +85,7 @@ export default function Home() {
 
               {/* Shimmer */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent"
                 animate={{ x: ['-200%', '200%'] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
@@ -202,7 +203,7 @@ export default function Home() {
                 whileHover={{ y: -6 }}
                 className="text-center"
               >
-                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-xl mb-3">
+                <div className="w-full aspect-3/4 rounded-xl overflow-hidden shadow-xl mb-3">
                   <img src={color.file} alt={color.name} className="w-full h-full object-cover" />
                 </div>
 
@@ -469,10 +470,10 @@ export default function Home() {
             >
               <h4 className="text-lg font-semibold mb-5">Navigate</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="/" className="hover:text-white transition">Home</a></li>
-                <li><a href="/#installations" className="hover:text-white transition">Gallery</a></li>
-                <li><a href="/#five-arc" className="hover:text-white transition">Colors & Textures</a></li>
-                <li><a href="/why-compoxen" className="hover:text-white transition">Why Composite</a></li>
+                <li><Link href="/" className="hover:text-white transition">Home</Link></li>
+                <li><Link href="/#installations" className="hover:text-white transition">Gallery</Link></li>
+                <li><Link href="/#five-arc" className="hover:text-white transition">Colors & Textures</Link></li>
+                <li><Link href="/why-compoxen" className="hover:text-white transition">Why Composite</Link></li>
               </ul>
             </motion.div>
 
@@ -484,8 +485,8 @@ export default function Home() {
             >
               <h4 className="text-lg font-semibold mb-5">Dealers</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="/get-dealer-kit" className="hover:text-white transition">Become a Dealer</a></li>
-                <li><a href="/request-quote" className="hover:text-white transition">Get Quote</a></li>
+                <li><Link href="/dealer-kit" className="hover:text-white transition">Become a Dealer</Link></li>
+                <li><Link href="/request-quote" className="hover:text-white transition">Get Quote</Link></li>
               </ul>
             </motion.div>
 
@@ -497,9 +498,9 @@ export default function Home() {
             >
               <h4 className="text-lg font-semibold mb-5">Company</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="/why-compoxen" className="hover:text-white transition">Our Materials</a></li>
-                <li><a href="/get-dealer-kit" className="hover:text-white transition">Dealer Kit</a></li>
-                <li><a href="/request-quote" className="hover:text-white transition">Request Quote</a></li>
+                <li><Link href="/why-compoxen" className="hover:text-white transition">Our Materials</Link></li>
+                <li><Link href="/dealer-kit" className="hover:text-white transition">Dealer Kit</Link></li>
+                <li><Link href="/request-quote" className="hover:text-white transition">Request Quote</Link></li>
               </ul>
 
               <div className="mt-6">
@@ -520,11 +521,7 @@ export default function Home() {
         </div>
       </footer>
 
-    </main>
+    </div>
   )
 }
-
-
-
-
 

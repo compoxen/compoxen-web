@@ -46,7 +46,7 @@ export default function DealerIntroPage() {
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             className="inline-block bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10"
           >
-            <div className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent mb-2 tabular-nums">
+            <div className="text-6xl md:text-8xl font-bold bg-linear-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent mb-2 tabular-nums">
               {roundedValue}
             </div>
             <div className="text-slate-400 uppercase tracking-widest text-sm font-medium">

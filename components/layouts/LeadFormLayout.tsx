@@ -3,11 +3,6 @@
 import React, { ReactNode } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import Navigation from '@/components/Navigation' // Needed only if layout.tsx doesn't handle inner routes well (but it should!)
-
-// Actually, per audit, layout.tsx handles Navigation globally. 
-// EXCEPT the audit said "Double Navigation rendering".
-// So we will NOT include Navigation here, assuming layout.tsx has it.
 
 interface LeadFormLayoutProps {
   title: string
@@ -43,7 +38,7 @@ export default function LeadFormLayout({
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative z-10 w-full max-w-[520px]"
+        className="relative z-10 w-full max-w-130"
       >
         <div className="bg-surface-glass backdrop-blur-xl border border-surface-glassBorder rounded-2xl p-6 md:p-12 shadow-2xl">
           <h1 className="text-3xl md:text-4xl font-bold text-center text-white mb-4">

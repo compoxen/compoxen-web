@@ -3,6 +3,9 @@
 import { motion } from 'framer-motion'
 import Section from '@/components/layouts/Section'
 
+// Note: Metadata must be in a separate layout.tsx or page.tsx without 'use client'
+// For client components, use Head from next/head or create a parallel server component
+
 export default function WhyCompoxen() {
   return (
     <main className="bg-gray-50">
@@ -58,7 +61,7 @@ export default function WhyCompoxen() {
           <ul className="grid sm:grid-cols-2 gap-4 text-lg text-neutral-700">
             {['Deep matte finish that hides dust', 'Subtle woodgrain, organic feel', 'Zero maintenance — no sealing', 'No warping, cracking, splintering', 'Fade‑resistant for harsh sun', 'Acoustically quiet, solid core'].map((item) => (
               <li key={item} className="flex items-center gap-3">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-amber flex-shrink-0" />
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-amber shrink-0" />
                 {item}
               </li>
             ))}
