@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Menu, X } from 'lucide-react'
 import clsx from 'clsx'
 
@@ -11,17 +11,35 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+  // Stable scroll handler with useCallback
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 20)
   }, [])
 
   useEffect(() => {
+    // Check initial scroll position
+    handleScroll()
+    
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
+
+  // Close mobile menu on route change
+  useEffect(() => {
     setIsOpen(false)
   }, [pathname])
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
 
   const navLinks = [
     { label: 'Home', href: '/' },
@@ -32,71 +50,111 @@ export default function Navigation() {
   ]
 
   return (
-    <nav
-      className={clsx(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b',
-        scrolled 
-          ? 'bg-black/45 backdrop-blur-md border-white/10 py-3' 
-          : 'bg-transparent border-transparent py-5'
-      )}
-      aria-label="Main Navigation"
-    >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="relative z-50 flex items-center group">
-           <img
-             src="/images/compoxen-logo.png"
-             alt="Compoxen"
-             className="h-10 w-auto brightness-0 invert transition-opacity group-hover:opacity-80"
-           />
-        </Link>
+    <header className="fixed top-0 left-0 w-full z-50">
+      <nav
+        className={clsx(
+          'w-full transition-all duration-300 border-b',
+          scrolled 
+            ? 'bg-black/60 backdrop-blur-md border-white/10 py-3' 
+            : 'bg-black/30 backdrop-blur-sm border-transparent py-5'
+        )}
+        aria-label="Main Navigation"
+        role="navigation"
+      >
+        <div className="container mx-auto px-6 flex items-center justify-between">
+          {/* Logo */}
+          <Link 
+            href="/" 
+            className="relative flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black/50 rounded-sm"
+          >
+            <img
+              src="/images/compoxen-logo.png"
+              alt="Compoxen - Return to Homepage"
+              className="h-10 w-auto brightness-0 invert transition-opacity group-hover:opacity-80"
+            />
+          </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          <ul className="flex items-center gap-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors uppercase"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            <ul className="flex items-center gap-8" role="list">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={clsx(
+                      'text-sm font-medium tracking-wide uppercase transition-colors',
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:rounded-sm',
+                      pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href.split('#')[0]))
+                        ? 'text-white'
+                        : 'text-white/80 hover:text-white'
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Mobile Toggle Button */}
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            className={clsx(
+              'md:hidden relative z-[60] text-white p-2 rounded-lg transition-colors',
+              'hover:bg-white/10',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500'
+            )}
+            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+          >
+            {isOpen ? <X size={28} aria-hidden="true" /> : <Menu size={28} aria-hidden="true" />}
+          </button>
         </div>
+      </nav>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden relative z-50 text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-
-        {/* Mobile Overlay */}
-        <div
-          className={clsx(
-            'fixed inset-0 bg-black/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center transition-all duration-300 md:hidden',
-            isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-          )}
-        >
-          <ul className="flex flex-col items-center gap-8 text-center">
-            {navLinks.map((link) => (
+      {/* Mobile Navigation Overlay */}
+      <div
+        id="mobile-navigation"
+        className={clsx(
+          'fixed inset-0 z-[55] flex flex-col items-center justify-center md:hidden',
+          'bg-black/95 backdrop-blur-xl',
+          'transition-all duration-300 ease-in-out',
+          isOpen 
+            ? 'opacity-100 visible' 
+            : 'opacity-0 invisible pointer-events-none'
+        )}
+        aria-hidden={!isOpen}
+      >
+        <nav aria-label="Mobile Navigation">
+          <ul className="flex flex-col items-center gap-8 text-center" role="list">
+            {navLinks.map((link, index) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-white text-2xl font-light tracking-widest uppercase hover:text-brand-amber transition-colors"
+                  className={clsx(
+                    'block text-2xl font-light tracking-widest uppercase transition-all duration-200',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:rounded-sm px-4 py-2',
+                    pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href.split('#')[0]))
+                      ? 'text-brand-amber'
+                      : 'text-white hover:text-brand-amber'
+                  )}
                   onClick={() => setIsOpen(false)}
+                  tabIndex={isOpen ? 0 : -1}
+                  style={{
+                    transitionDelay: isOpen ? `${index * 50}ms` : '0ms',
+                    transform: isOpen ? 'translateY(0)' : 'translateY(-10px)',
+                    opacity: isOpen ? 1 : 0
+                  }}
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
   )
 }

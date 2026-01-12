@@ -8,29 +8,31 @@ import Section from '@/components/layouts/Section'
 
 export default function WhyCompoxen() {
   return (
-    <main className="bg-gray-50">
+    <main className="bg-gray-50 min-h-screen">
       
       {/* HERO */}
-      <div className="pt-32 pb-20 container mx-auto px-6 max-w-6xl">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-display-md md:text-display-lg font-extralight text-center mb-8 text-neutral-900 tracking-tight"
-        >
-          The Fence That <span className="font-semibold">Completes</span> Your Architecture
-        </motion.h1>
+      <section className="pt-32 md:pt-40 pb-16 md:pb-20">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight text-center mb-8 text-neutral-900 tracking-tight leading-tight"
+          >
+            The Fence That <span className="font-semibold">Completes</span> Your Architecture
+          </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-center text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto mb-20 leading-relaxed font-light"
-        >
-          Composite engineered for permanence, silence, and modern outdoor living.  
-          Built to disappear into the landscape while elevating everything around it.
-        </motion.p>
-      </div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-center text-lg sm:text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto mb-16 md:mb-20 leading-relaxed font-light"
+          >
+            Composite engineered for permanence, silence, and modern outdoor living.  
+            Built to disappear into the landscape while elevating everything around it.
+          </motion.p>
+        </div>
+      </section>
 
       {/* STORY */}
       <Section className="border-t border-gray-200">
