@@ -44,9 +44,8 @@ export default function Navigation() {
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'Gallery', href: '/#installations' },
-    { label: 'Colors & Textures', href: '/#five-arc' },
-    { label: 'Why Composite', href: '/why-compoxen' },
-    { label: 'Become a Dealer', href: '/dealer-kit' }
+    { label: 'Colors & Textures', href: '/#architect-colors' },
+    { label: 'Why Composite', href: '/why-compoxen' }
   ]
 
   return (
@@ -94,6 +93,18 @@ export default function Navigation() {
                 </li>
               ))}
             </ul>
+            
+            {/* Get Quote CTA Button */}
+            <Link
+              href="/get-quote"
+              className={clsx(
+                'ml-4 px-6 py-2 bg-brand-amber text-black font-semibold text-sm uppercase tracking-wide rounded-lg',
+                'transition-all duration-200 hover:bg-amber-500 hover:shadow-lg',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black/50'
+              )}
+            >
+              Get Quote
+            </Link>
           </div>
 
           {/* Mobile Toggle Button */}
@@ -152,6 +163,27 @@ export default function Navigation() {
                 </Link>
               </li>
             ))}
+            
+            {/* Mobile Get Quote CTA */}
+            <li>
+              <Link
+                href="/get-quote"
+                className={clsx(
+                  'block mt-4 px-8 py-3 bg-brand-amber text-black font-semibold text-lg uppercase tracking-wide rounded-lg',
+                  'transition-all duration-200 hover:bg-amber-500',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400'
+                )}
+                onClick={() => setIsOpen(false)}
+                tabIndex={isOpen ? 0 : -1}
+                style={{
+                  transitionDelay: isOpen ? `${navLinks.length * 50}ms` : '0ms',
+                  transform: isOpen ? 'translateY(0)' : 'translateY(-10px)',
+                  opacity: isOpen ? 1 : 0
+                }}
+              >
+                Get Quote
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

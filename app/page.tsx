@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Download, Percent, BarChart3, Package, Lightbulb, Users, Calculator } from 'lucide-react'
+import { ArrowRight, Download, Percent, BarChart3, Package, Lightbulb, Calculator } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -160,10 +160,10 @@ export default function Home() {
         </div>
       </section>
 
-            {/* ========================= */}
+      {/* ========================= */}
       {/*     FIVE ARC COLORS       */}
       {/* ========================= */}
-      <section id="five-arc" className="py-24 bg-gray-100">
+      <section id="architect-colors" className="py-24 bg-gray-100">
         <div className="container mx-auto px-6 max-w-6xl">
 
           <motion.h2
@@ -405,12 +405,11 @@ export default function Home() {
             Whether you're designing a backyard, specifying materials for a build, or just exploring modern fencing — start here.
           </motion.p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-4xl mx-auto">
             {[
-              { icon: Package, label: 'Order Samples', desc: 'See and feel the finish', href: '/samples' },
-              { icon: Lightbulb, label: 'Get Inspired', desc: 'Browse real installations', href: '/gallery' },
-              { icon: Users, label: 'Find Installer', desc: 'Connect with a certified pro', href: '/find-installer' },
-              { icon: Calculator, label: 'Request a Quote', desc: 'Get pricing for your project', href: '/quote' }
+              { icon: Package, label: 'Order Samples', desc: 'See and feel the finish', href: '/dealer-kit' },
+              { icon: Lightbulb, label: 'Get Inspired', desc: 'Browse real installations', href: '/#installations' },
+              { icon: Calculator, label: 'Request a Quote', desc: 'Get pricing for your project', href: '/get-quote' }
             ].map((item, i) => (
               <motion.div
                 key={item.label}
@@ -472,7 +471,7 @@ export default function Home() {
               <ul className="space-y-2 text-gray-400">
                 <li><Link href="/" className="hover:text-white transition">Home</Link></li>
                 <li><Link href="/#installations" className="hover:text-white transition">Gallery</Link></li>
-                <li><Link href="/#five-arc" className="hover:text-white transition">Colors & Textures</Link></li>
+                <li><Link href="/#architect-colors" className="hover:text-white transition">Colors & Textures</Link></li>
                 <li><Link href="/why-compoxen" className="hover:text-white transition">Why Composite</Link></li>
               </ul>
             </motion.div>
@@ -486,7 +485,7 @@ export default function Home() {
               <h4 className="text-lg font-semibold mb-5">Dealers</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><Link href="/dealer-kit" className="hover:text-white transition">Become a Dealer</Link></li>
-                <li><Link href="/request-quote" className="hover:text-white transition">Get Quote</Link></li>
+                <li><Link href="/get-quote" className="hover:text-white transition">Get Quote</Link></li>
               </ul>
             </motion.div>
 
@@ -500,7 +499,8 @@ export default function Home() {
               <ul className="space-y-2 text-gray-400">
                 <li><Link href="/why-compoxen" className="hover:text-white transition">Our Materials</Link></li>
                 <li><Link href="/dealer-kit" className="hover:text-white transition">Dealer Kit</Link></li>
-                <li><Link href="/request-quote" className="hover:text-white transition">Request Quote</Link></li>
+                <li><Link href="/get-quote" className="hover:text-white transition">Request Quote</Link></li>
+                <li><Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link></li>
               </ul>
 
               <div className="mt-6">

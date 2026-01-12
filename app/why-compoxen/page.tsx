@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import Section from '@/components/layouts/Section'
 
 // Note: Metadata must be in a separate layout.tsx or page.tsx without 'use client'
@@ -95,6 +96,16 @@ export default function WhyCompoxen() {
                 <p className="text-white/60">{color.desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* CTA Button */}
+          <div className="mt-12 text-center">
+            <Link
+              href="/#architect-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-amber text-black font-semibold text-lg rounded-lg transition-all duration-200 hover:bg-amber-500 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+            >
+              Explore Architect-Led Colors
+            </Link>
           </div>
         </div>
       </Section>

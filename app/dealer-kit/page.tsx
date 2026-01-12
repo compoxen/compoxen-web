@@ -1,6 +1,7 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
@@ -109,6 +110,17 @@ export default function DealerKitPage() {
       <p className="text-center text-white/40 text-sm mt-4">
         Exclusively for licensed contractors and distributors.
       </p>
+
+      {/* Additional CTA */}
+      <div className="mt-8 pt-6 border-t border-white/10 text-center">
+        <Link
+          href="/dealer"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-brand-amber text-black font-semibold rounded-lg transition-all duration-200 hover:bg-amber-500 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+        >
+          Apply to Become a Dealer
+          <ArrowRight size={20} />
+        </Link>
+      </div>
     </LeadFormLayout>
   )
 }

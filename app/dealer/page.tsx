@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { motion, useMotionValue, useTransform, animate, useMotionValueEvent } from 'framer-motion'
 import Section from '@/components/layouts/Section'
 
@@ -67,6 +68,19 @@ export default function DealerIntroPage() {
                <p className="text-slate-300 leading-relaxed">{item.desc}</p>
              </div>
           ))}
+        </div>
+
+        {/* Become a Dealer CTA */}
+        <div className="text-center pb-16">
+          <Link
+            href="/dealer-kit"
+            className="inline-flex items-center gap-2 px-10 py-5 bg-brand-amber text-black font-bold text-lg rounded-lg transition-all duration-200 hover:bg-amber-500 hover:shadow-xl hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+          >
+            Become a Dealer
+          </Link>
+          <p className="text-slate-400 mt-4 text-sm">
+            Join our network of certified contractors and distributors.
+          </p>
         </div>
 
       </div>
