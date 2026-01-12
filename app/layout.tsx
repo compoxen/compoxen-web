@@ -6,6 +6,7 @@ import Navigation from '@/components/Navigation'
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -20,13 +21,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased bg-white text-black">
-        <div className="noise-overlay" />
-        <Navigation />
-        <main className="relative">
-          {children}
-        </main>
+    <html lang="en" className={`${inter.variable} scroll-smooth scroll-pt-24`}>
+      <body className="font-sans antialiased bg-white text-black min-h-screen flex flex-col">
+          <div className="noise-overlay" />
+          <Navigation />
+          <main className="relative flex-grow">
+            {children}
+          </main>
       </body>
     </html>
   )

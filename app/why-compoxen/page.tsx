@@ -1,138 +1,110 @@
-'use client';
+'use client'
 
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
+import Section from '@/components/layouts/Section'
 
 export default function WhyCompoxen() {
   return (
-    <section style={{ padding: '140px 0', background: '#F7F7F7' }}>
-      <div className="container mx-auto px-8" style={{ maxWidth: '1100px' }}>
-
-        {/* HERO */}
+    <main className="bg-gray-50">
+      
+      {/* HERO */}
+      <div className="pt-32 pb-20 container mx-auto px-6 max-w-6xl">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          style={{
-            fontSize: '64px',
-            fontWeight: 200,
-            textAlign: 'center',
-            marginBottom: '32px',
-            color: '#111',
-            letterSpacing: '-0.5px',
-            lineHeight: '1.1'
-          }}
+          className="text-display-md md:text-display-lg font-extralight text-center mb-8 text-neutral-900 tracking-tight"
         >
-          The Fence That <span style={{ fontWeight: 600 }}>Completes</span> Your Architecture
+          The Fence That <span className="font-semibold">Completes</span> Your Architecture
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          style={{
-            textAlign: 'center',
-            fontSize: '22px',
-            color: '#555',
-            maxWidth: '760px',
-            margin: '0 auto 120px',
-            lineHeight: '1.6'
-          }}
+          className="text-center text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto mb-20 leading-relaxed font-light"
         >
           Composite engineered for permanence, silence, and modern outdoor living.  
           Built to disappear into the landscape while elevating everything around it.
         </motion.p>
+      </div>
 
-        {/* STORY */}
-        <section style={{ marginBottom: '140px' }}>
-          <h2 style={{ fontSize: '40px', fontWeight: 300, marginBottom: '24px', color: '#222' }}>
+      {/* STORY */}
+      <Section className="border-t border-gray-200">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-light mb-6 text-neutral-900">
             Born From Every Fence That Failed
           </h2>
-          <p style={{ fontSize: '20px', color: '#555', lineHeight: '1.75', maxWidth: '900px' }}>
+          <p className="text-xl md:text-2xl text-neutral-600 leading-relaxed">
             Wood rots. Vinyl warps. Metal rusts. Traditional fencing forces homeowners into a cycle of
             repairs, repainting, and replacement. Compoxen was engineered to end that cycle permanently.
             A material that looks refined, feels substantial, and stands quietly in the background while
             your architecture, landscape, and lifestyle take center stage.
           </p>
-        </section>
+        </div>
+      </Section>
 
-        {/* MATERIAL SCIENCE */}
-        <section style={{ marginBottom: '140px' }}>
-          <h2 style={{ fontSize: '40px', fontWeight: 300, marginBottom: '24px', color: '#222' }}>
+      {/* MATERIAL SCIENCE */}
+      <Section background="bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-light mb-8 text-neutral-900">
             Engineered for 25+ Years of Quiet Performance
           </h2>
-          <p style={{ fontSize: '20px', color: '#555', lineHeight: '1.75', marginBottom: '32px' }}>
+          <p className="text-xl text-neutral-600 leading-relaxed mb-8">
             Compoxen is built from a dense composite core wrapped in a UV‑stable matte shell.  
             Every detail is designed for longevity, stability, and architectural clarity.
           </p>
 
-          <ul style={{ fontSize: '20px', color: '#555', lineHeight: '1.9', paddingLeft: '24px' }}>
-            <li>Deep matte finish that hides dust and fingerprints</li>
-            <li>Subtle woodgrain that feels organic without imitation</li>
-            <li>Zero maintenance — no painting, staining, or sealing</li>
-            <li>No warping, cracking, or splintering</li>
-            <li>Fade‑resistant color for harsh sun and mountain climates</li>
-            <li>Acoustically quiet — no rattling, no hollow vinyl sound</li>
+          <ul className="grid sm:grid-cols-2 gap-4 text-lg text-neutral-700">
+            {['Deep matte finish that hides dust', 'Subtle woodgrain, organic feel', 'Zero maintenance — no sealing', 'No warping, cracking, splintering', 'Fade‑resistant for harsh sun', 'Acoustically quiet, solid core'].map((item) => (
+              <li key={item} className="flex items-center gap-3">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-amber flex-shrink-0" />
+                {item}
+              </li>
+            ))}
           </ul>
-        </section>
+        </div>
+      </Section>
 
-        {/* COLOR PALETTE */}
-        <section style={{ marginBottom: '140px' }}>
-          <h2 style={{ fontSize: '40px', fontWeight: 300, marginBottom: '24px', color: '#222' }}>
+      {/* COLOR PALETTE */}
+      <Section className="bg-neutral-900 text-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-light mb-8 text-white">
             Five Modern, Architect‑Led Colors
           </h2>
-          <p style={{ fontSize: '20px', color: '#555', marginBottom: '32px', lineHeight: '1.75' }}>
+          <p className="text-xl text-white/80 mb-10 leading-relaxed">
             Inspired by coastlines, mountains, desert mesas, and modern urban materials.  
             Each tone is crafted to sit quietly next to stone, stucco, steel, and glass.
           </p>
 
-          <ul style={{ fontSize: '20px', color: '#555', lineHeight: '1.9', paddingLeft: '24px' }}>
-            <li>Harbor Slate — modern grey with coastal clarity</li>
-            <li>Mesa Taupe — warm, grounded, stone‑friendly tone</li>
-            <li>Shadow Forge — grey‑black with industrial depth</li>
-            <li>Redwood Ember — rich red‑brown with natural warmth</li>
-            <li>Cocoa Ridge — deep chocolate tone with architectural presence</li>
-          </ul>
-        </section>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { name: 'Harbor Slate', desc: 'Modern grey with coastal clarity' },
+              { name: 'Mesa Taupe', desc: 'Warm, grounded, stone‑friendly tone' },
+              { name: 'Shadow Forge', desc: 'Grey‑black with industrial depth' },
+              { name: 'Redwood Ember', desc: 'Rich red‑brown with natural warmth' },
+              { name: 'Cocoa Ridge', desc: 'Deep chocolate tone' }
+            ].map((color) => (
+              <div key={color.name} className="border-l-2 border-brand-amber/50 pl-6 py-1">
+                <h3 className="text-2xl font-medium mb-1">{color.name}</h3>
+                <p className="text-white/60">{color.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
 
-        {/* EXPERIENCE */}
-        <section style={{ marginBottom: '140px' }}>
-          <h2 style={{ fontSize: '40px', fontWeight: 300, marginBottom: '24px', color: '#222' }}>
+      {/* EXPERIENCE */}
+      <Section>
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-light mb-8 text-neutral-900">
             A Fence You Don’t Have to Think About
           </h2>
-          <p style={{ fontSize: '20px', color: '#555', lineHeight: '1.75', maxWidth: '900px' }}>
-            Compoxen is built for people who value their time, their space, and their peace.
-            No seasonal repairs. No fading or peeling. No maintenance schedules.  
-            Just a clean, modern boundary that elevates everything around it.
+          <p className="text-xl text-neutral-600 mb-12">
+            The ultimate luxury is the absence of worry.
           </p>
-        </section>
-
-        {/* CTA */}
-<div style={{ textAlign: 'center' }}>
-  <motion.button
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-    onClick={() => (window.location.href = '/request-quote')}
-    style={{
-      background: '#D97706', // brand amber
-      border: 'none',
-      color: 'white',
-      padding: '16px 48px',
-      fontWeight: 600,
-      fontSize: '20px',
-      cursor: 'pointer',
-      letterSpacing: '0.5px',
-      borderRadius: '8px',
-      boxShadow: '0 6px 22px rgba(217,119,6,0.35)'
-    }}
-    whileHover={{ scale: 1.05 }}
-  >
-    Get Quote
-  </motion.button>
-</div>
-
-
-      </div>
-    </section>
-  );
+        </div>
+      </Section>
+    </main>
+  )
 }

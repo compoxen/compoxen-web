@@ -1,201 +1,131 @@
 'use client'
-import { Download, Percent, BarChart3 } from 'lucide-react';
+
 import { motion } from 'framer-motion'
-import {
-  ArrowRight,
-  Users,
-  Calculator,
-  Lightbulb,
-  Package
-} from 'lucide-react'
-import { useState } from 'react'
-import Link from 'next/link' // ← FIXED
+import { ArrowRight, Download, Percent, BarChart3, Package, Lightbulb, Users, Calculator } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('residential')
-
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6 }
-  }
-
   return (
-    <>
-      {/* HERO */}
-      <section style={{ minHeight: '80vh', position: 'relative', overflow: 'hidden' }}>
+    <main className="w-full overflow-x-hidden">
+
+      {/* ========================= */}
+      {/*         HERO SECTION      */}
+      {/* ========================= */}
+      <section className="relative min-h-[80vh] overflow-hidden flex items-center justify-center">
+        
+        {/* Background Image */}
         <motion.img
           src="/images/hero-fence-bg.jpg"
           alt="Premium fence"
-          style={{
-            position: 'absolute',
-            inset: '-5%',
-            width: '110%',
-            height: '110%',
-            objectFit: 'cover',
-            objectPosition: 'center 30%'
-          }}
+          className="absolute inset-0 w-[110%] h-[110%] object-cover object-center"
           animate={{ scale: [1, 1.05] }}
           transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse' }}
         />
 
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'radial-gradient(circle at 20% 50%, rgba(0,0,0,0.7) 0%, transparent 70%)'
-          }}
-        />
+        {/* Radial Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(0,0,0,0.7)_0%,transparent_70%)]" />
 
-        <div className="container mx-auto px-8" style={{ paddingTop: '120px', position: 'relative', zIndex: 10 }}>
-          <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center', paddingBottom: '60px' }}>
-            <motion.h1
-              initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              style={{
-                fontSize: '64px',
-                fontWeight: 700,
-                marginBottom: '32px',
-                lineHeight: 1
-              }}
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-6 pt-32 pb-20 text-center max-w-4xl">
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-white font-bold leading-tight text-4xl sm:text-5xl md:text-6xl mb-8"
+          >
+            <span className="block mb-4">
+              <span
+                className="bg-gradient-to-br from-amber-300 to-amber-600 bg-clip-text text-transparent"
+              >
+                Beyond Wood.
+              </span>{' '}
+              <span className="text-white/95">Beyond Weather.</span>
+            </span>
+
+            <span className="block">
+              <span className="text-white/95">Beyond Time.</span>{' '}
+              <span
+                className="bg-gradient-to-br from-amber-300 to-amber-600 bg-clip-text text-transparent"
+              >
+                Beyond Beautiful.
+              </span>
+            </span>
+          </motion.h1>
+
+          {/* Subtext */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-white/90 text-lg sm:text-xl md:text-2xl font-light leading-relaxed mb-12"
+          >
+            20-year warranty. Zero maintenance.
+            <br className="hidden sm:block" />
+            The premium choice for homeowners who expect excellence.
+          </motion.p>
+
+          {/* Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            {/* Dealer Kit Button */}
+            <motion.button
+              onClick={() => (window.location.href = '/dealer-kit')}
+              className="relative overflow-hidden bg-amber-600 text-white font-bold text-lg px-10 py-5 rounded-lg shadow-xl flex items-center justify-center gap-3 hover:scale-105 transition-transform"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <motion.span style={{ display: 'block', marginBottom: '20px' }}>
-                <span
-                  style={{
-                    background: 'linear-gradient(135deg, #FFB74D 0%, #D97706 100%)',
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                    color: 'transparent'
-                  }}
-                >
-                  Beyond Wood.
-                </span>{' '}
-                <span style={{ color: 'rgba(255,255,255,0.95)' }}>Beyond Weather.</span>
-              </motion.span>
+              <span className="relative z-10">Get Your Dealer Kit</span>
+              <ArrowRight size={20} className="relative z-10" />
 
-              <motion.span style={{ display: 'block' }}>
-                <span style={{ color: 'rgba(255,255,255,0.95)' }}>Beyond Time.</span>{' '}
-                <span
-                  style={{
-                    background: 'linear-gradient(135deg, #FFB74D 0%, #D97706 100%)',
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                    color: 'transparent'
-                  }}
-                >
-                  Beyond Beautiful.
-                </span>
-              </motion.span>
-            </motion.h1>
+              {/* Shimmer */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                animate={{ x: ['-200%', '200%'] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              />
+            </motion.button>
 
-            <motion.p
-              {...fadeIn}
-              transition={{ delay: 0.2 }}
-              style={{
-                fontSize: '24px',
-                color: 'rgba(255,255,255,0.9)',
-                marginBottom: '56px',
-                lineHeight: 1.5,
-                fontWeight: 300
+            {/* Gallery Scroll Button */}
+            <motion.button
+              onClick={() => {
+                const el = document.getElementById('installations')
+                if (el) {
+                  const yOffset = -80
+                  const y = el.getBoundingClientRect().top + window.scrollY + yOffset
+                  window.scrollTo({ top: y, behavior: 'smooth' })
+                }
               }}
+              className="backdrop-blur-md border border-white/80 text-white font-semibold text-lg px-10 py-5 rounded-lg hover:bg-white/10 transition"
             >
-              20-year warranty. Zero maintenance.
-              <br />
-              The premium choice for homeowners who expect excellence.
-            </motion.p>
-
-            <motion.div
-  {...fadeIn}
-  transition={{ delay: 0.4 }}
-  style={{ display: 'flex', gap: '24px', justifyContent: 'center' }}
->
-
-  {/* BUTTON 1 — Dealer Kit */}
-  <motion.button
-    onClick={() => (window.location.href = '/dealer-kit')}
-    style={{
-      background: '#D97706',
-      color: 'white',
-      padding: '24px 56px',
-      border: 'none',
-      fontSize: '20px',
-      fontWeight: 700,
-      cursor: 'pointer',
-      borderRadius: '8px',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '12px',
-      boxShadow: '0 10px 40px rgba(217,119,6,0.4)',
-      position: 'relative',
-      overflow: 'hidden'
-    }}
-    whileHover={{ scale: 1.05, boxShadow: '0 20px 60px rgba(217,119,6,0.6)' }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <span style={{ position: 'relative', zIndex: 2 }}>Get Your Dealer Kit</span>
-    <ArrowRight size={20} style={{ position: 'relative', zIndex: 2 }} />
-    <motion.div
-      style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)'
-      }}
-      animate={{ x: ['-200%', '200%'] }}
-      transition={{ duration: 1.5, repeat: Infinity }}
-    />
-  </motion.button>
-
-  {/* BUTTON 2 — Scroll to Installations */}
-  <motion.button
-    onClick={() => {
-      const el = document.getElementById('installations')
-      if (el) {
-        const yOffset = -80 // adjust for fixed nav
-        const y = el.getBoundingClientRect().top + window.scrollY + yOffset
-        window.scrollTo({ top: y, behavior: 'smooth' })
-      }
-    }}
-    style={{
-      background: 'transparent',
-      color: 'white',
-      padding: '24px 56px',
-      border: '2px solid rgba(255,255,255,0.8)',
-      fontSize: '20px',
-      fontWeight: 600,
-      cursor: 'pointer',
-      borderRadius: '8px',
-      backdropFilter: 'blur(10px)'
-    }}
-    whileHover={{ backgroundColor: 'rgba(255,255,255,0.1)', borderColor: 'white' }}
-  >
-    View Gallery
-  </motion.button>
-
-</motion.div>
-
-          </div>
+              View Gallery
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 
-      {/* COMPOSITE FACTS */}
-      <section style={{ padding: '65px 0', background: 'white' }}>
-        <div className="container mx-auto px-8" style={{ maxWidth: '1200px' }}>
+
+      {/* ========================= */}
+      {/*     COMPOSITE FACTS       */}
+      {/* ========================= */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6 max-w-5xl">
+          
           <motion.h2
-            {...fadeIn}
-            style={{
-              fontSize: '48px',
-              fontWeight: 300,
-              textAlign: 'center',
-              marginBottom: '60px',
-              color: '#1A1A1A'
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-12"
           >
             Engineered for the Long Run
           </motion.h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '60px' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
             {[
               {
                 title: 'Built From Advanced Composites',
@@ -210,101 +140,98 @@ export default function Home() {
                 desc: 'Independent testing shows superior impact resistance, fade protection, and long‑term stability.'
               }
             ].map((item, i) => (
-              <motion.div key={item.title} {...fadeIn} transition={{ delay: 0.1 * i }}>
-                <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '16px', color: '#8B4513' }}>
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+              >
+                <h3 className="text-xl sm:text-2xl font-semibold text-amber-800 mb-3">
                   {item.title}
                 </h3>
-                <p style={{ fontSize: '18px', color: '#444', lineHeight: 1.6 }}>{item.desc}</p>
+                <p className="text-gray-700 text-base leading-relaxed">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* COLOR CLOSE-UPS */}
-<section id="five-arc" style={{ padding: '120px 0', background: '#F4F4F4' }}>
-  <div className="container mx-auto px-8" style={{ maxWidth: '1200px' }}>
-    <motion.h2
-      {...fadeIn}
-      style={{
-        fontSize: '48px',
-        fontWeight: 300,
-        textAlign: 'center',
-        marginBottom: '24px',
-        color: '#1A1A1A'
-      }}
-    >
-      Five Modern, Architect‑Led Colors
-    </motion.h2>
+            {/* ========================= */}
+      {/*     FIVE ARC COLORS       */}
+      {/* ========================= */}
+      <section id="five-arc" className="py-24 bg-gray-100">
+        <div className="container mx-auto px-6 max-w-6xl">
 
-
-    <motion.p
-      {...fadeIn}
-      transition={{ delay: 0.1 }}
-      style={{
-        textAlign: 'center',
-        fontSize: '18px',
-        color: '#555',
-        maxWidth: '640px',
-        margin: '0 auto 60px'
-      }}
-    >
-      A palette shaped by landscape and architecture — subtle woodgrain, deep matte surfaces, and tones that hold their own against glass, steel, stone, and sky. Built for composite fencing that feels at home in the mountains, on the coast, and everywhere in between.
-    </motion.p>
-
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '20px' }}>
-      {[
-        { name: 'Harbor Slate', file: '/images/colors-harbor-slate.png', note: 'Modern grey with coastal clarity.' },
-        { name: 'Mesa Taupe', file: '/images/colors-mesa-taupe.png', note: 'Warm, grounded, stone‑friendly tone.' },
-        { name: 'Shadow Forge', file: '/images/colors-shadow-forge.png', note: 'Charcoal‑black with industrial depth.' },
-        { name: 'Redwood Ember', file: '/images/colors-redwood-ember.png', note: 'Rich red‑brown with natural warmth.' },
-        { name: 'Cocoa Ridge', file: '/images/colors-cocoa-ridge.png', note: 'Deep chocolate tone with architectural presence.' }
-      ].map((color, i) => (
-        <motion.div
-          key={color.name}
-          {...fadeIn}
-          transition={{ delay: 0.1 * i }}
-          whileHover={{ y: -6 }}
-          style={{ textAlign: 'center' }}
-        >
-          <div
-            style={{
-              width: '100%',
-              aspectRatio: '3 / 4',
-              borderRadius: '10px',
-              overflow: 'hidden',
-              boxShadow: '0 14px 35px rgba(0,0,0,0.12)',
-              marginBottom: '14px'
-            }}
-          >
-            <img src={color.file} alt={color.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          </div>
-          <div style={{ fontSize: '16px', fontWeight: 600, marginBottom: '4px', color: '#222' }}>{color.name}</div>
-          <div style={{ fontSize: '13px', color: '#666' }}>{color.note}</div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
-
-
-      {/* GALLERY */}
-      <section id="installations" style={{ padding: '120px 0', background: '#1A1A1A' }}>
-        <div className="container mx-auto px-8">
           <motion.h2
-            {...fadeIn}
-            style={{
-              fontSize: '56px',
-              fontWeight: 700,
-              textAlign: 'center',
-              marginBottom: '80px',
-              color: 'white'
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-6"
+          >
+            Five Modern, Architect‑Led Colors
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-center text-gray-600 text-base sm:text-lg max-w-2xl mx-auto mb-16"
+          >
+            A palette shaped by landscape and architecture — subtle woodgrain, deep matte surfaces, and tones that hold their own against glass, steel, stone, and sky.
+          </motion.p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            {[
+              { name: 'Harbor Slate', file: '/images/colors-harbor-slate.png', note: 'Modern grey with coastal clarity.' },
+              { name: 'Mesa Taupe', file: '/images/colors-mesa-taupe.png', note: 'Warm, grounded, stone‑friendly tone.' },
+              { name: 'Shadow Forge', file: '/images/colors-shadow-forge.png', note: 'Charcoal‑black with industrial depth.' },
+              { name: 'Redwood Ember', file: '/images/colors-redwood-ember.png', note: 'Rich red‑brown with natural warmth.' },
+              { name: 'Cocoa Ridge', file: '/images/colors-cocoa-ridge.png', note: 'Deep chocolate tone with architectural presence.' }
+            ].map((color, i) => (
+              <motion.div
+                key={color.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                whileHover={{ y: -6 }}
+                className="text-center"
+              >
+                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-xl mb-3">
+                  <img src={color.file} alt={color.name} className="w-full h-full object-cover" />
+                </div>
+
+                <div className="text-gray-900 font-semibold text-base">{color.name}</div>
+                <div className="text-gray-600 text-sm">{color.note}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ========================= */}
+      {/*   INSTALLATIONS GALLERY   */}
+      {/* ========================= */}
+      <section id="installations" className="py-24 bg-gray-900">
+        <div className="container mx-auto px-6">
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-16"
           >
             Installations That Inspire
           </motion.h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
             {[
               { img: '/images/gallery-1.jpg', title: 'Modern Minimalist' },
               { img: '/images/gallery-2.jpg', title: 'Luxury Estate' },
@@ -313,211 +240,157 @@ export default function Home() {
               { img: '/images/gallery-5.jpg', title: 'Hillside Haven' },
               { img: '/images/gallery-6.jpg', title: 'Backyard Oasis' }
             ].map((item, i) => (
-              <motion.div key={item.title} {...fadeIn} transition={{ delay: i * 0.1 }} whileHover={{ scale: 1.04 }}>
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                whileHover={{ scale: 1.04 }}
+                className="cursor-pointer"
+              >
                 <img
                   src={item.img}
                   alt={item.title}
-                  style={{
-                    width: '100%',
-                    height: '300px',
-                    objectFit: 'cover',
-                    borderRadius: '8px'
-                  }}
+                  className="w-full h-64 object-cover rounded-lg"
                 />
-                <p style={{ color: 'white', marginTop: '16px', fontSize: '18px' }}>{item.title}</p>
+                <p className="text-white mt-4 text-lg">{item.title}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* RESOURCE HUB — ENTERPRISE V4 */}
-<section style={{ padding: '120px 0', background: 'white' }}>
-  <div className="container mx-auto px-8">
+            {/* ========================= */}
+      {/*       RESOURCE HUB        */}
+      {/* ========================= */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-6">
 
-    <h2
-      style={{
-        fontSize: '48px',
-        fontWeight: 300,
-        textAlign: 'center',
-        marginBottom: '80px',
-        color: '#111',
-        letterSpacing: '-0.5px'
-      }}
-    >
-      Everything You Need to <span style={{ fontWeight: 700 }}>Succeed</span>
-    </h2>
+          <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-16">
+            Everything You Need to <span className="font-bold">Succeed</span>
+          </h2>
 
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        gap: '48px'
-      }}
-    >
-      {[
-        {
-          icon: <Download size={38} color="#8B4513" />,
-          title: '2026 Contractor Guide',
-          desc: 'Specs, pricing tiers, installation diagrams, and material breakdowns — engineered for contractors who demand clarity and speed.',
-          cta: 'ORDER FREE GUIDE',
-          href: '/get-dealer-kit',
-          snippetTitle: 'Contractor Guide',
-          snippetMeta: '2026 Edition • PDF + Print'
-        },
-        {
-          icon: <Percent size={38} color="#8B4513" />,
-          title: 'Material Science',
-          desc: 'Explore the engineering behind Compoxen — composite density, UV‑stable shell, acoustic dampening, and 25+ year performance.',
-          cta: 'LEARN MORE',
-          href: '/why-compoxen',
-          snippetTitle: 'Material Performance',
-          snippetMeta: 'Fade‑Resistant • Zero Maintenance'
-        },
-        {
-          icon: <BarChart3 size={38} color="#8B4513" />,
-          title: 'Dealer Dashboard',
-          desc: 'Track orders, manage samples, unlock pricing tiers, and accelerate your business with real‑time insights.',
-          cta: 'VIEW DASHBOARD',
-          href: '/dealer',
-          snippetTitle: 'Dealer Dashboard',
-          snippetMeta: 'Orders • Samples • Pricing Tiers'
-        }
-      ].map((item, i) => (
-        <motion.div
-          key={item.title}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, delay: i * 0.08 }}
-          whileHover={{
-            y: -6,
-            scale: 1.015,
-            boxShadow: '0 12px 28px rgba(0,0,0,0.12)'
-          }}
-          style={{
-            width: '100%',
-            maxWidth: '360px',
-            background: 'white',
-            borderRadius: '16px',
-            border: '1px solid #e5e5e5',
-            padding: '32px',
-            textAlign: 'center',
-            transition: 'all 0.18s ease-out',
-            position: 'relative'
-          }}
-        >
-          {/* Icon */}
-          <motion.div
-            whileHover={{ scale: 1.06 }}
-            transition={{ duration: 0.12 }}
-            style={{ marginBottom: '20px' }}
-          >
-            {item.icon}
-          </motion.div>
+          <div className="flex flex-wrap justify-center gap-12">
+            {[
+              {
+                icon: <Download size={38} color="#8B4513" />,
+                title: '2026 Contractor Guide',
+                desc: 'Specs, pricing tiers, installation diagrams, and material breakdowns — engineered for contractors who demand clarity and speed.',
+                cta: 'ORDER FREE GUIDE',
+                href: '/get-dealer-kit',
+                snippetTitle: 'Contractor Guide',
+                snippetMeta: '2026 Edition • PDF + Print'
+              },
+              {
+                icon: <Percent size={38} color="#8B4513" />,
+                title: 'Material Science',
+                desc: 'Explore the engineering behind Compoxen — composite density, UV‑stable shell, acoustic dampening, and 25+ year performance.',
+                cta: 'LEARN MORE',
+                href: '/why-compoxen',
+                snippetTitle: 'Material Performance',
+                snippetMeta: 'Fade‑Resistant • Zero Maintenance'
+              },
+              {
+                icon: <BarChart3 size={38} color="#8B4513" />,
+                title: 'Dealer Dashboard',
+                desc: 'Track orders, manage samples, unlock pricing tiers, and accelerate your business with real‑time insights.',
+                cta: 'VIEW DASHBOARD',
+                href: '/dealer',
+                snippetTitle: 'Dealer Dashboard',
+                snippetMeta: 'Orders • Samples • Pricing Tiers'
+              }
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: i * 0.08 }}
+                whileHover={{
+                  y: -6,
+                  scale: 1.015,
+                  boxShadow: '0 12px 28px rgba(0,0,0,0.12)'
+                }}
+                className="w-full max-w-xs bg-white rounded-2xl border border-gray-200 p-8 text-center transition-all"
+              >
+                {/* Icon */}
+                <motion.div
+                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.12 }}
+                  className="mb-5"
+                >
+                  {item.icon}
+                </motion.div>
 
-          {/* DARK PREVIEW BOX */}
-          <div
-            style={{
-              background: '#0F172A',
-              borderRadius: '14px',
-              padding: '16px',
-              border: '1px solid rgba(255,255,255,0.08)',
-              fontSize: '14px',
-              color: 'rgba(226,232,240,0.95)',
-              textAlign: 'left',
-              marginBottom: '24px',
-              boxShadow: '0 8px 20px rgba(0,0,0,0.25)'
-            }}
-          >
-            <div style={{ marginBottom: '6px', opacity: 0.9 }}>
-              {item.snippetTitle}
-            </div>
-            <div style={{ color: '#facc15' }}>
-              {item.snippetMeta}
-            </div>
+                {/* Dark Preview Box */}
+                <div className="bg-slate-900 rounded-xl p-4 border border-white/10 text-left text-slate-200 shadow-xl mb-6">
+                  <div className="mb-1 opacity-90">{item.snippetTitle}</div>
+                  <div className="text-yellow-400">{item.snippetMeta}</div>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3">
+                  {item.title}
+                </h3>
+
+                <p className="text-gray-600 text-base leading-relaxed mb-6">
+                  {item.desc}
+                </p>
+
+                <motion.button
+                  onClick={() => item.href && (window.location.href = item.href)}
+                  className="border-2 border-amber-800 text-amber-800 px-6 py-3 rounded-md font-semibold hover:scale-105 transition"
+                >
+                  {item.cta}
+                </motion.button>
+              </motion.div>
+            ))}
           </div>
-
-          <h3
-            style={{
-              fontSize: '26px',
-              fontWeight: 600,
-              marginBottom: '14px',
-              color: '#111'
-            }}
-          >
-            {item.title}
-          </h3>
-
-          <p
-            style={{
-              color: '#555',
-              marginBottom: '26px',
-              fontSize: '16px',
-              lineHeight: '1.6'
-            }}
-          >
-            {item.desc}
-          </p>
-
-          <motion.button
-            onClick={() => item.href && (window.location.href = item.href)}
-            style={{
-              background: 'transparent',
-              border: '2px solid #8B4513',
-              color: '#8B4513',
-              padding: '12px 32px',
-              fontWeight: 600,
-              cursor: 'pointer',
-              borderRadius: '6px'
-            }}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.12 }}
-          >
-            {item.cta}
-          </motion.button>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
 
-
-
-      {/* TRUST INDICATORS */}
-      <section style={{ padding: '100px 0', background: '#F8F8F8' }}>
-        <div className="container mx-auto px-8" style={{ maxWidth: '1000px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px', textAlign: 'center' }}>
+      {/* ========================= */}
+      {/*     TRUST INDICATORS      */}
+      {/* ========================= */}
+      <section className="py-20 bg-gray-100">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 text-center">
             {[
               { number: '500+', label: 'Contractors Trust Us' },
               { number: '2M+', label: 'Linear Feet Installed' },
               { number: '99%', label: 'Satisfaction Rate' },
               { number: 'A+', label: 'BBB Rating' }
             ].map((stat, i) => (
-              <motion.div key={stat.label} {...fadeIn}>
-                <div style={{ fontSize: '42px', fontWeight: 700, color: '#8B4513', marginBottom: '8px' }}>
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+              >
+                <div className="text-3xl sm:text-4xl font-bold text-amber-800 mb-2">
                   {stat.number}
                 </div>
-                <div style={{ color: '#666', fontSize: '16px' }}>{stat.label}</div>
+                <div className="text-gray-600 text-sm sm:text-base">{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* EXPLORE COMPOXEN */}
-      <section style={{ padding: '120px 0', background: '#F8F8F8' }}>
-        <div className="container mx-auto px-8 text-center">
+
+      {/* ========================= */}
+      {/*     EXPLORE COMPOXEN      */}
+      {/* ========================= */}
+      <section className="py-24 bg-gray-100">
+        <div className="container mx-auto px-6 text-center">
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            style={{
-              fontSize: '48px',
-              fontWeight: 700,
-              marginBottom: '24px',
-              color: '#1A1A1A'
-            }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
             Explore Compoxen
           </motion.h2>
@@ -525,22 +398,16 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            style={{
-              fontSize: '20px',
-              color: '#555',
-              marginBottom: '60px',
-              maxWidth: '700px',
-              marginLeft: 'auto',
-              marginRight: 'auto'
-            }}
+            viewport={{ once: true }}
+            className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto mb-16"
           >
             Whether you're designing a backyard, specifying materials for a build, or just exploring modern fencing — start here.
           </motion.p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px' }}>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
             {[
               { icon: Package, label: 'Order Samples', desc: 'See and feel the finish', href: '/samples' },
-                            { icon: Lightbulb, label: 'Get Inspired', desc: 'Browse real installations', href: '/gallery' },
+              { icon: Lightbulb, label: 'Get Inspired', desc: 'Browse real installations', href: '/gallery' },
               { icon: Users, label: 'Find Installer', desc: 'Connect with a certified pro', href: '/find-installer' },
               { icon: Calculator, label: 'Request a Quote', desc: 'Get pricing for your project', href: '/quote' }
             ].map((item, i) => (
@@ -548,41 +415,18 @@ export default function Home() {
                 key={item.label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                style={{ cursor: 'pointer', textAlign: 'center' }}
+                className="cursor-pointer text-center"
               >
-                <div
-                  style={{
-                    width: '80px',
-                    height: '80px',
-                    background: '#8B4513',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 24px',
-                    boxShadow: '0 10px 30px rgba(139,69,19,0.2)'
-                  }}
-                >
+                <div className="w-20 h-20 bg-amber-800 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
                   <item.icon size={36} color="white" />
                 </div>
 
-                <h3 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '8px' }}>
-                  {item.label}
-                </h3>
+                <h3 className="text-lg font-semibold mb-2">{item.label}</h3>
+                <p className="text-gray-600 text-sm mb-2">{item.desc}</p>
 
-                <p style={{ color: '#666', fontSize: '14px', marginBottom: '12px' }}>
-                  {item.desc}
-                </p>
-
-                <Link
-                  href={item.href}
-                  style={{
-                    fontSize: '14px',
-                    color: '#8B4513',
-                    textDecoration: 'underline'
-                  }}
-                >
+                <Link href={item.href} className="text-amber-800 underline text-sm">
                   Learn more
                 </Link>
               </motion.div>
@@ -591,136 +435,96 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PREMIUM FOOTER */}
-      <footer
-        style={{
-          background: '#111',
-          color: 'white',
-          padding: '100px 0 60px'
-        }}
-      >
-        <div
-          className="container mx-auto px-8"
-          style={{ maxWidth: '1300px' }}
-        >
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '2fr 1fr 1fr 1fr',
-              gap: '60px',
-              marginBottom: '60px'
-            }}
-          >
+            {/* ========================= */}
+      {/*          FOOTER           */}
+      {/* ========================= */}
+      <footer className="bg-[#111] text-white py-24">
+        <div className="container mx-auto px-6 max-w-6xl">
+
+          {/* GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
+
             {/* Brand Column */}
-            <motion.div {...fadeIn}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
               <img
                 src="/images/compoxen-logo.png"
                 alt="Compoxen"
-                style={{
-                  height: '48px',
-                  marginBottom: '24px',
-                  filter: 'brightness(0) invert(1)'
-                }}
+                className="h-12 mb-6 brightness-0 invert"
               />
-              <p
-                style={{
-                  color: '#aaa',
-                  lineHeight: 1.6,
-                  fontSize: '16px',
-                  maxWidth: '320px'
-                }}
-              >
-                Composite fencing engineered for modern architecture.  
+              <p className="text-gray-400 leading-relaxed text-base max-w-xs">
+                Composite fencing engineered for modern architecture.
                 Built to last. Designed to impress.
               </p>
             </motion.div>
 
-            {/* Navigation */}
-            <motion.div {...fadeIn}>
-              <h4
-                style={{
-                  fontSize: '18px',
-                  fontWeight: 600,
-                  marginBottom: '20px'
-                }}
-              >
-                Navigate
-              </h4>
-              <ul style={{ listStyle: 'none', padding: 0, lineHeight: 2 }}>
-                <li><a href="/" style={{ color: '#aaa', textDecoration: 'none' }}>Home</a></li>
-                <li><a href="/#installations" style={{ color: '#aaa', textDecoration: 'none' }}>Gallery</a></li>
-                <li><a href="/#five-arc" style={{ color: '#aaa', textDecoration: 'none' }}>Colors & Textures</a></li>
-                <li><a href="/why-compoxen" style={{ color: '#aaa', textDecoration: 'none' }}>Why Composite</a></li>
+            {/* Navigate */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-lg font-semibold mb-5">Navigate</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="/" className="hover:text-white transition">Home</a></li>
+                <li><a href="/#installations" className="hover:text-white transition">Gallery</a></li>
+                <li><a href="/#five-arc" className="hover:text-white transition">Colors & Textures</a></li>
+                <li><a href="/why-compoxen" className="hover:text-white transition">Why Composite</a></li>
               </ul>
             </motion.div>
 
             {/* Dealers */}
-            <motion.div {...fadeIn}>
-              <h4
-                style={{
-                  fontSize: '18px',
-                  fontWeight: 600,
-                  marginBottom: '20px'
-                }}
-              >
-                Dealers
-              </h4>
-              <ul style={{ listStyle: 'none', padding: 0, lineHeight: 2 }}>
-                <li><a href="/get-dealer-kit" style={{ color: '#aaa', textDecoration: 'none' }}>Become a Dealer</a></li>
-                <li><a href="/request-quote" style={{ color: '#aaa', textDecoration: 'none' }}>Get Quote</a></li>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-lg font-semibold mb-5">Dealers</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="/get-dealer-kit" className="hover:text-white transition">Become a Dealer</a></li>
+                <li><a href="/request-quote" className="hover:text-white transition">Get Quote</a></li>
               </ul>
             </motion.div>
 
-            {/* Contact */}
-            <motion.div {...fadeIn}>
-              <h4
-                style={{
-                  fontSize: '18px',
-                  fontWeight: 600,
-                  marginBottom: '20px'
-                }}
-              >
-                Company
-              </h4>
-              <ul style={{ listStyle: 'none', padding: 0, lineHeight: 2 }}>
-                <li><a href="/why-compoxen" style={{ color: '#aaa', textDecoration: 'none' }}>Our Materials</a></li>
-                <li><a href="/get-dealer-kit" style={{ color: '#aaa', textDecoration: 'none' }}>Dealer Kit</a></li>
-                <li><a href="/request-quote" style={{ color: '#aaa', textDecoration: 'none' }}>Request Quote</a></li>
+            {/* Company / Contact */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-lg font-semibold mb-5">Company</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="/why-compoxen" className="hover:text-white transition">Our Materials</a></li>
+                <li><a href="/get-dealer-kit" className="hover:text-white transition">Dealer Kit</a></li>
+                <li><a href="/request-quote" className="hover:text-white transition">Request Quote</a></li>
               </ul>
 
-              <div style={{ marginTop: '24px' }}>
-                <h5
-                  style={{
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    marginBottom: '8px',
-                    color: '#ddd'
-                  }}
-                >
-                  Contact
-                </h5>
-                <p style={{ color: '#aaa', fontSize: '14px' }}>
-                  385‑483‑3700  
-                  <br />
-                  info@compoxen.com  
-                  <br />
+              <div className="mt-6">
+                <h5 className="text-sm font-semibold text-gray-300 mb-2">Contact</h5>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  385‑483‑3700<br />
+                  info@compoxen.com<br />
                   Lehi, Utah
                 </p>
               </div>
             </motion.div>
+
           </div>
 
           {/* Divider */}
-          <div
-            style={{
-              height: '1px',
-              background: 'rgba(255,255,255,0.08)',
-              margin: '40px 0'
-            }}
-          />
+          <div className="h-px bg-white/10 my-10" />
+
         </div>
       </footer>
 
-    </>
+    </main>
   )
 }
+
+
+
+
+
