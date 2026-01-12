@@ -18,7 +18,7 @@ export default function LeadFormLayout({
   backgroundImage = '/images/hero-fence-bg.jpg'
 }: LeadFormLayoutProps) {
   return (
-    <main className="min-h-screen relative flex items-center justify-center py-24 px-6 bg-brand-dark">
+    <main className="min-h-screen relative flex items-center justify-center py-20 md:py-28 px-6 bg-brand-dark">
       
       {/* Background with optimized Image */}
       <div className="absolute inset-0 z-0">
@@ -38,14 +38,14 @@ export default function LeadFormLayout({
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative z-10 w-full max-w-130"
+        className="relative z-10 w-full max-w-md"
       >
-        <div className="bg-surface-glass backdrop-blur-xl border border-surface-glassBorder rounded-2xl p-6 md:p-12 shadow-2xl">
-          <h1 className="text-3xl md:text-4xl font-bold text-center text-white mb-4">
+        <div className="bg-surface-glass backdrop-blur-xl border border-surface-glassBorder rounded-xl p-6 md:p-10 shadow-2xl">
+          <h1 className="text-2xl md:text-3xl font-bold text-center text-white mb-3">
             {title}
           </h1>
           
-          <p className="text-center text-white/70 mb-8 text-base md:text-lg leading-relaxed">
+          <p className="text-center text-white/60 mb-6 text-sm md:text-base leading-relaxed">
             {description}
           </p>
 

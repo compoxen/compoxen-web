@@ -10,14 +10,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const id = props.id || props.name || label.toLowerCase().replace(/\s+/g, '-')
     
     // Shared container
-    const wrapperClass = 'flex flex-col gap-2 w-full'
+    const wrapperClass = 'flex flex-col gap-1.5 w-full'
     
     // Shared input/select styles
     const inputClass = `
-      w-full px-5 py-4
+      w-full px-4 py-3
       bg-surface-glass border border-surface-glassBorder
       rounded-lg
-      text-white placeholder-white/40
+      text-white text-sm placeholder-white/40
       focus:outline-none focus:ring-2 focus:ring-brand-amber focus:border-transparent
       transition-all duration-200
       ${className}

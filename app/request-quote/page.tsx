@@ -53,7 +53,7 @@ export default function RequestQuotePage() {
           onChange={handleChange}
           required
         />
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-3">
           <Input 
             id="phone"
             type="tel"
@@ -87,12 +87,13 @@ export default function RequestQuotePage() {
 
         <Button 
           type="submit" 
-          className="w-full mt-4" 
+          className="w-full mt-2" 
           variant="primary"
+          size="lg"
           disabled={loading}
         >
           {loading ? 'Processing...' : 'Get Quote'}
-          {!loading && <ArrowRight size={20} />}
+          {!loading && <ArrowRight size={18} />}
         </Button>
       </form>
     </LeadFormLayout>

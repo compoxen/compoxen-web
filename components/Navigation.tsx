@@ -74,18 +74,18 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <ul className="flex items-center gap-8" role="list">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            <ul className="flex items-center gap-6 lg:gap-8" role="list">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
                     className={clsx(
-                      'text-sm font-medium tracking-wide uppercase transition-colors',
+                      'text-sm font-medium tracking-wide uppercase transition-colors duration-200',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:rounded-sm',
                       pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href.split('#')[0]))
                         ? 'text-white'
-                        : 'text-white/80 hover:text-white'
+                        : 'text-white/70 hover:text-white'
                     )}
                   >
                     {link.label}
@@ -98,8 +98,8 @@ export default function Navigation() {
             <Link
               href="/get-quote"
               className={clsx(
-                'ml-4 px-6 py-2 bg-brand-amber text-black font-semibold text-sm uppercase tracking-wide rounded-lg',
-                'transition-all duration-200 hover:bg-amber-500 hover:shadow-lg',
+                'ml-2 px-5 py-2.5 bg-brand-amber text-black font-semibold text-sm uppercase tracking-wide rounded-lg',
+                'transition-all duration-200 hover:bg-amber-500 hover:shadow-lg hover:-translate-y-0.5',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black/50'
               )}
             >
@@ -112,15 +112,15 @@ export default function Navigation() {
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             className={clsx(
-              'md:hidden relative z-[60] text-white p-2 rounded-lg transition-colors',
-              'hover:bg-white/10',
+              'md:hidden relative z-60 text-white p-2.5 rounded-lg transition-colors duration-200',
+              'hover:bg-white/10 active:bg-white/20',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500'
             )}
             aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
           >
-            {isOpen ? <X size={28} aria-hidden="true" /> : <Menu size={28} aria-hidden="true" />}
+            {isOpen ? <X size={26} aria-hidden="true" /> : <Menu size={26} aria-hidden="true" />}
           </button>
         </div>
       </nav>
@@ -129,7 +129,7 @@ export default function Navigation() {
       <div
         id="mobile-navigation"
         className={clsx(
-          'fixed inset-0 z-[55] flex flex-col items-center justify-center md:hidden',
+          'fixed inset-0 z-55 flex flex-col items-center justify-center md:hidden',
           'bg-black/95 backdrop-blur-xl',
           'transition-all duration-300 ease-in-out',
           isOpen 
@@ -139,13 +139,13 @@ export default function Navigation() {
         aria-hidden={!isOpen}
       >
         <nav aria-label="Mobile Navigation">
-          <ul className="flex flex-col items-center gap-8 text-center" role="list">
+          <ul className="flex flex-col items-center gap-6 text-center" role="list">
             {navLinks.map((link, index) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   className={clsx(
-                    'block text-2xl font-light tracking-widest uppercase transition-all duration-200',
+                    'block text-xl sm:text-2xl font-light tracking-widest uppercase transition-all duration-200',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:rounded-sm px-4 py-2',
                     pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href.split('#')[0]))
                       ? 'text-brand-amber'
@@ -169,8 +169,8 @@ export default function Navigation() {
               <Link
                 href="/get-quote"
                 className={clsx(
-                  'block mt-4 px-8 py-3 bg-brand-amber text-black font-semibold text-lg uppercase tracking-wide rounded-lg',
-                  'transition-all duration-200 hover:bg-amber-500',
+                  'block mt-6 px-8 py-3.5 bg-brand-amber text-black font-semibold text-base uppercase tracking-wide rounded-lg',
+                  'transition-all duration-200 hover:bg-amber-500 active:scale-95',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400'
                 )}
                 onClick={() => setIsOpen(false)}

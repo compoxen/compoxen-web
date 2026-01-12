@@ -115,10 +115,10 @@ export default function DealerKitPage() {
       <div className="mt-8 pt-6 border-t border-white/10 text-center">
         <Link
           href="/dealer"
-          className="inline-flex items-center gap-2 px-8 py-4 bg-brand-amber text-black font-semibold rounded-lg transition-all duration-200 hover:bg-amber-500 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-brand-amber text-black font-semibold text-sm rounded-lg transition-all duration-200 hover:bg-amber-500 hover:shadow-lg hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
         >
-          Apply to Become a Dealer
-          <ArrowRight size={20} />
+          Explore Dealer Dashboard
+          <ArrowRight size={18} />
         </Link>
       </div>
     </LeadFormLayout>
