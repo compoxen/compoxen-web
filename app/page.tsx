@@ -1,9 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Download, Percent, BarChart3, Package, Lightbulb, Calculator } from 'lucide-react'
+import { ArrowRight, Download, Percent, BarChart3, Package, Lightbulb, Calculator, MapPin } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import AvailabilityChecker from '@/components/AvailabilityChecker'
 
 export default function Home() {
   return (
@@ -28,6 +29,17 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 container mx-auto px-6 pt-32 pb-20 text-center max-w-4xl">
+
+          {/* Designed in USA Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-5 py-2 rounded-full mb-8"
+          >
+            <span className="text-amber-400 text-sm font-semibold tracking-wide">🇺🇸 Designed in USA</span>
+            <span className="text-white/40">|</span>
+            <span className="text-white/70 text-sm">Perfected in the Mountains</span>
+          </motion.div>
 
           {/* Headline */}
           <motion.h1
@@ -201,9 +213,9 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
                 whileHover={{ y: -6 }}
-                className="text-center group w-full max-w-[280px] mx-auto"
+                className="text-center group w-full max-w-70 mx-auto"
               >
-                <div className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300 mb-4 mx-auto">
+                <div className="w-full aspect-3/4 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300 mb-4 mx-auto">
                   <img src={color.file} alt={color.name} className="w-full h-full object-cover" />
                 </div>
 
@@ -281,7 +293,7 @@ export default function Home() {
                 title: '2026 Contractor Guide',
                 desc: 'Specs, pricing tiers, installation diagrams, and material breakdowns — engineered for contractors who demand clarity and speed.',
                 cta: 'ORDER FREE GUIDE',
-                href: '/get-dealer-kit',
+                href: '/dealer-kit',
                 snippetTitle: 'Contractor Guide',
                 snippetMeta: '2026 Edition • PDF + Print'
               },
@@ -331,7 +343,7 @@ export default function Home() {
                   {item.title}
                 </h3>
 
-                <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                <p className="text-gray-600 text-base leading-relaxed mb-6 grow">
                   {item.desc}
                 </p>
 
@@ -377,6 +389,100 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* ========================= */}
+      {/*   CHECK AVAILABILITY      */}
+      {/* ========================= */}
+      <section className="py-20 md:py-28 bg-gray-900">
+        <div className="container mx-auto px-6 max-w-2xl text-center">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-4"
+          >
+            Designed in USA • Currently Serving UT, CO, ID, CA
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-5"
+          >
+            Check Availability
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-white/60 text-base sm:text-lg max-w-xl mx-auto mb-10"
+          >
+            Enter your zip code to see if Compoxen is available in your area, or join the waiting list for expansion updates.
+          </motion.p>
+          <AvailabilityChecker />
+          <Link
+            href="/states"
+            className="inline-flex items-center gap-2 text-white/50 hover:text-white/80 text-sm mt-8 transition-colors"
+          >
+            <MapPin size={14} /> View all service areas →
+          </Link>
+        </div>
+      </section>
+
+      {/* ========================= */}
+      {/*     DESIGNED IN USA       */}
+      {/* ========================= */}
+      <section className="py-16 md:py-20 bg-linear-to-r from-slate-900 via-slate-800 to-slate-900 border-y border-white/5">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-3">
+                Our Story
+              </p>
+              <h2 className="text-white text-3xl sm:text-4xl font-bold leading-tight mb-5">
+                Designed in USA.
+                <br />
+                Perfected in the Mountains.
+              </h2>
+              <p className="text-white/60 leading-relaxed mb-6">
+                Every Compoxen product begins at our innovation center in Salt Lake City, Utah. 
+                We test against the Mountain West&apos;s most extreme conditions — scorching desert heat, 
+                sub-zero alpine winters, high-altitude UV, and relentless wind — so your fence performs 
+                beautifully anywhere in America.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {['Salt Lake City Design Center', '4-State Testing Network', 'Expanding Nationwide'].map((item) => (
+                  <span key={item} className="bg-white/10 text-white/80 px-3 py-1.5 rounded-lg text-sm">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-2 gap-4"
+            >
+              {[
+                { value: '4', label: 'States Served' },
+                { value: '162+', label: 'Certified Installers' },
+                { value: '20yr', label: 'Warranty' },
+                { value: '0', label: 'Maintenance Required' },
+              ].map((stat) => (
+                <div key={stat.label} className="bg-white/5 border border-white/10 rounded-xl p-5 text-center">
+                  <div className="text-amber-400 text-3xl font-bold mb-1">{stat.value}</div>
+                  <div className="text-white/50 text-sm">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* ========================= */}
       {/*     EXPLORE COMPOXEN      */}

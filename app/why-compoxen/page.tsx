@@ -14,6 +14,15 @@ export default function WhyCompoxen() {
       {/* HERO */}
       <section className="pt-28 md:pt-36 pb-14 md:pb-20">
         <div className="container mx-auto px-6 max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex justify-center mb-6"
+          >
+            <span className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 px-4 py-1.5 rounded-full text-sm font-semibold">
+              🇺🇸 Designed in USA • Salt Lake City, UT
+            </span>
+          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -105,6 +114,41 @@ export default function WhyCompoxen() {
               className="inline-flex items-center gap-2 px-8 py-4 bg-brand-amber text-black font-semibold text-base rounded-lg transition-all duration-200 hover:bg-amber-500 hover:shadow-lg hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
             >
               Explore Architect-Led Colors
+            </Link>
+          </div>
+        </div>
+      </Section>
+
+      {/* DESIGNED IN USA */}
+      <Section background="bg-gradient-to-br from-slate-50 to-amber-50/30">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-light mb-5 text-neutral-900">
+            Designed in <span className="font-semibold">America</span>. Perfected in the <span className="font-semibold">Mountains</span>.
+          </h2>
+          <p className="text-lg text-neutral-600 leading-relaxed mb-8">
+            Every Compoxen product is designed at our innovation center in Salt Lake City, Utah — 
+            then tested against the Mountain West&apos;s most extreme conditions. Scorching summers, 
+            sub-zero winters, high-altitude UV, relentless wind. If it performs here, it performs anywhere.
+          </p>
+          <div className="grid sm:grid-cols-4 gap-4 text-center">
+            {[
+              { state: 'Utah', status: 'HQ & Testing' },
+              { state: 'Colorado', status: 'Active' },
+              { state: 'Idaho', status: 'Active' },
+              { state: 'California', status: 'Active' },
+            ].map((item) => (
+              <div key={item.state} className="bg-white rounded-xl p-4 border border-gray-200">
+                <div className="text-neutral-900 font-semibold">{item.state}</div>
+                <div className="text-amber-700 text-sm">{item.status}</div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-6">
+            <Link
+              href="/states"
+              className="text-amber-700 font-medium text-sm hover:underline"
+            >
+              View all service areas & expansion timeline →
             </Link>
           </div>
         </div>

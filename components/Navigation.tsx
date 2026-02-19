@@ -45,7 +45,8 @@ export default function Navigation() {
     { label: 'Home', href: '/' },
     { label: 'Gallery', href: '/#installations' },
     { label: 'Colors & Textures', href: '/#architect-colors' },
-    { label: 'Why Composite', href: '/why-compoxen' }
+    { label: 'Why Composite', href: '/why-compoxen' },
+    { label: 'Service Areas', href: '/states' },
   ]
 
   return (
