@@ -22,7 +22,7 @@ export default function StatePage() {
     <div className="w-full overflow-x-hidden">
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-slate-900 via-slate-800 to-amber-900/30" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #0c0c10 0%, #141418 50%, #1a1410 100%)' }} />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(217,119,6,0.15)_0%,transparent_60%)]" />
 
         <div className="relative z-10 container mx-auto px-6 pt-32 pb-20">
@@ -52,7 +52,7 @@ export default function StatePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-white font-bold text-4xl sm:text-5xl md:text-6xl leading-tight mb-6"
+              className="text-white font-bold text-4xl sm:text-5xl md:text-6xl leading-tight mb-6 tracking-tight"
             >
               Premium Composite Fencing
               <br />
@@ -82,7 +82,7 @@ export default function StatePage() {
                 <>
                   <Link
                     href="/get-quote"
-                    className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-500 text-white font-bold text-lg px-8 py-4 rounded-lg transition-all hover:scale-105"
+                    className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-500 text-white font-bold text-lg px-8 py-4 rounded-lg transition-all hover:scale-105 cta-glow"
                   >
                     Get a Quote <ArrowRight size={20} />
                   </Link>
@@ -96,7 +96,7 @@ export default function StatePage() {
               ) : (
                 <a
                   href="#waiting-list"
-                  className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-500 text-white font-bold text-lg px-8 py-4 rounded-lg transition-all hover:scale-105"
+                  className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-500 text-white font-bold text-lg px-8 py-4 rounded-lg transition-all hover:scale-105 cta-glow"
                 >
                   Join the Waiting List <ArrowRight size={20} />
                 </a>
@@ -136,7 +136,7 @@ export default function StatePage() {
       )}
 
       {/* ═══ CLIMATE BENEFITS ═══ */}
-      <section className="py-20 md:py-28 bg-gray-50">
+      <section className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #f8f8f6 0%, #f2f2f0 100%)' }}>
         <div className="container mx-auto px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -144,7 +144,7 @@ export default function StatePage() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-light text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 tracking-tight">
               Engineered for <span className="font-bold">{state.name}&apos;s Climate</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -161,7 +161,7 @@ export default function StatePage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4 bg-white p-6 rounded-xl border border-gray-200 shadow-sm"
+                className="flex items-start gap-4 bg-white p-6 rounded-xl border border-gray-200/80 shadow-sm card-premium"
               >
                 <div className="shrink-0 w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
                   <CheckCircle size={20} className="text-amber-700" />
@@ -174,13 +174,13 @@ export default function StatePage() {
       </section>
 
       {/* ═══ COLOR SHOWCASE ═══ */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #ffffff 0%, #f8f8f6 100%)' }}>
         <div className="container mx-auto px-6 max-w-6xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center text-3xl sm:text-4xl font-light text-gray-900 mb-5"
+            className="text-center text-3xl sm:text-4xl font-semibold text-gray-900 mb-5 tracking-tight"
           >
             Available Colors in {state.name}
           </motion.h2>
@@ -217,7 +217,7 @@ export default function StatePage() {
       </section>
 
       {/* ═══ CHECK AVAILABILITY / WAITING LIST ═══ */}
-      <section id="waiting-list" className="py-20 md:py-28 bg-gray-900">
+      <section id="waiting-list" className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%)' }}>
         <div className="container mx-auto px-6 max-w-2xl text-center">
           {isActive ? (
             <>
@@ -272,17 +272,17 @@ export default function StatePage() {
       </section>
 
       {/* ═══ DESIGNED IN USA BANNER ═══ */}
-      <section className="py-16 bg-linear-to-r from-slate-900 to-slate-800">
+      <section className="py-16" style={{ background: 'linear-gradient(135deg, #0c0c10 0%, #141418 100%)' }}>
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-3">
+            <p className="text-amber-400 text-sm font-bold tracking-widest uppercase mb-3">
               {BRAND.designOrigin}
             </p>
-            <h2 className="text-white text-2xl sm:text-3xl font-light mb-4">
+            <h2 className="text-white text-2xl sm:text-3xl font-semibold mb-4 tracking-tight">
               Perfected in the Mountains. Coming to Your State.
             </h2>
             <p className="text-white/60 max-w-2xl mx-auto mb-8">

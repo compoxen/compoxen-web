@@ -99,8 +99,8 @@ export default function Navigation() {
             <Link
               href="/get-quote"
               className={clsx(
-                'ml-2 px-5 py-2.5 bg-brand-amber text-black font-semibold text-sm uppercase tracking-wide rounded-lg',
-                'transition-all duration-200 hover:bg-amber-500 hover:shadow-lg hover:-translate-y-0.5',
+                'ml-2 px-5 py-2.5 bg-brand-amber text-black font-bold text-sm uppercase tracking-wider rounded-lg',
+                'transition-all duration-200 hover:bg-amber-500 hover:shadow-lg hover:-translate-y-0.5 cta-glow',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black/50'
               )}
             >
@@ -146,7 +146,7 @@ export default function Navigation() {
                 <Link
                   href={link.href}
                   className={clsx(
-                    'block text-xl sm:text-2xl font-light tracking-widest uppercase transition-all duration-200',
+                    'block text-xl sm:text-2xl font-light tracking-[0.15em] uppercase transition-all duration-200',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:rounded-sm px-4 py-2',
                     pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href.split('#')[0]))
                       ? 'text-brand-amber'
@@ -170,8 +170,8 @@ export default function Navigation() {
               <Link
                 href="/get-quote"
                 className={clsx(
-                  'block mt-6 px-8 py-3.5 bg-brand-amber text-black font-semibold text-base uppercase tracking-wide rounded-lg',
-                  'transition-all duration-200 hover:bg-amber-500 active:scale-95',
+                  'block mt-6 px-8 py-3.5 bg-brand-amber text-black font-bold text-base uppercase tracking-wider rounded-lg',
+                  'transition-all duration-200 hover:bg-amber-500 active:scale-95 cta-glow',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400'
                 )}
                 onClick={() => setIsOpen(false)}

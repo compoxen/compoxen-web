@@ -6,8 +6,8 @@ import { MapPin } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-900 text-white py-12 md:py-16 lg:py-20">
-      <div className="container mx-auto px-6 max-w-7xl">
+    <footer className="relative text-white py-14 md:py-20 lg:py-24" style={{ background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)' }}>
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
 
         {/* GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 mb-12">
@@ -40,8 +40,8 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center sm:text-left"
           >
-            <h4 className="text-base font-semibold mb-4">Navigate</h4>
-            <ul className="space-y-2.5 text-gray-400 text-sm">
+            <h4 className="text-base font-bold mb-4 tracking-wide">Navigate</h4>
+            <ul className="space-y-3 text-gray-400 text-sm">
               <li><Link href="/" className="hover:text-white transition-colors duration-200">Home</Link></li>
               <li><Link href="/#installations" className="hover:text-white transition-colors duration-200">Gallery</Link></li>
               <li><Link href="/#architect-colors" className="hover:text-white transition-colors duration-200">Colors & Textures</Link></li>
@@ -57,13 +57,13 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center sm:text-left"
           >
-            <h4 className="text-base font-semibold mb-4">Service Areas</h4>
-            <ul className="space-y-2.5 text-gray-400 text-sm">
+            <h4 className="text-base font-bold mb-4 tracking-wide">Service Areas</h4>
+            <ul className="space-y-3 text-gray-400 text-sm">
               <li><Link href="/states/utah" className="hover:text-white transition-colors duration-200"><MapPin size={12} className="inline mr-1" />Utah</Link></li>
               <li><Link href="/states/colorado" className="hover:text-white transition-colors duration-200"><MapPin size={12} className="inline mr-1" />Colorado</Link></li>
               <li><Link href="/states/idaho" className="hover:text-white transition-colors duration-200"><MapPin size={12} className="inline mr-1" />Idaho</Link></li>
               <li><Link href="/states/california" className="hover:text-white transition-colors duration-200"><MapPin size={12} className="inline mr-1" />California</Link></li>
-              <li><Link href="/states" className="text-amber-500 hover:text-amber-400 transition-colors duration-200">Check Availability →</Link></li>
+              <li><Link href="/states" className="text-amber-500 hover:text-amber-400 hover:brightness-110 transition-all duration-200">Check Availability →</Link></li>
             </ul>
           </motion.div>
 
@@ -74,8 +74,8 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center sm:text-left"
           >
-            <h4 className="text-base font-semibold mb-4">Partners</h4>
-            <ul className="space-y-2.5 text-gray-400 text-sm">
+            <h4 className="text-base font-bold mb-4 tracking-wide">Partners</h4>
+            <ul className="space-y-3 text-gray-400 text-sm">
               <li><Link href="/dealer-kit" className="hover:text-white transition-colors duration-200">Become an Installer</Link></li>
               <li><Link href="/get-quote" className="hover:text-white transition-colors duration-200">Get a Quote</Link></li>
               <li><Link href="/dealer" className="hover:text-white transition-colors duration-200">Dealer Dashboard</Link></li>
@@ -89,8 +89,8 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center sm:text-left"
           >
-            <h4 className="text-base font-semibold mb-4">Company</h4>
-            <ul className="space-y-2.5 text-gray-400 text-sm">
+            <h4 className="text-base font-bold mb-4 tracking-wide">Company</h4>
+            <ul className="space-y-3 text-gray-400 text-sm">
               <li><Link href="/why-compoxen" className="hover:text-white transition-colors duration-200">Our Materials</Link></li>
               <li><Link href="/privacy-policy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link></li>
             </ul>
@@ -108,7 +108,8 @@ export default function Footer() {
         </div>
 
         {/* Divider & Copyright */}
-        <div className="border-t border-white/10 pt-8">
+        <div className="section-divider mb-0" />
+        <div className="pt-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-gray-500 text-sm">
               © {new Date().getFullYear()} Compoxen. All rights reserved.

@@ -14,13 +14,13 @@ export default function StatesIndex() {
     <div className="w-full overflow-x-hidden">
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-slate-900 via-slate-800 to-amber-900/20" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #0c0c10 0%, #141418 50%, #1a1410 100%)' }} />
 
         <div className="relative z-10 container mx-auto px-6 pt-32 pb-20 text-center">
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-4"
+            className="text-amber-400 text-sm font-bold tracking-widest uppercase mb-4"
           >
             {BRAND.designOrigin} • Perfected in the Mountains
           </motion.p>
@@ -29,7 +29,7 @@ export default function StatesIndex() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-white font-bold text-4xl sm:text-5xl md:text-6xl leading-tight mb-6 max-w-3xl mx-auto"
+            className="text-white font-bold text-4xl sm:text-5xl md:text-6xl leading-tight mb-6 max-w-3xl mx-auto tracking-tight"
           >
             Where Compoxen
             <br />
@@ -61,7 +61,7 @@ export default function StatesIndex() {
       </section>
 
       {/* ═══ ACTIVE STATES ═══ */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #ffffff 0%, #f8f8f6 100%)' }}>
         <div className="container mx-auto px-6 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -121,7 +121,7 @@ export default function StatesIndex() {
       </section>
 
       {/* ═══ COMING SOON STATES ═══ */}
-      <section className="py-20 md:py-28 bg-gray-50">
+      <section className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #f8f8f6 0%, #f2f2f0 100%)' }}>
         <div className="container mx-auto px-6 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -177,7 +177,7 @@ export default function StatesIndex() {
       </section>
 
       {/* ═══ NOT YOUR STATE? ═══ */}
-      <section className="py-20 md:py-28 bg-gray-900">
+      <section className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%)' }}>
         <div className="container mx-auto px-6 max-w-2xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

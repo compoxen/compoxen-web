@@ -61,7 +61,6 @@ export default function RootLayout({
         <SchemaScript data={[getOrganizationSchema(), getProductSchema(), getFAQSchema()]} />
       </head>
       <body className="font-sans antialiased bg-white text-black min-h-screen flex flex-col">
-          <div className="noise-overlay" />
           <Navigation />
           <main className="relative grow">
             {children}

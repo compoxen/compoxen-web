@@ -29,7 +29,7 @@ export default function WhyCompoxen() {
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl md:text-6xl font-extralight text-center mb-6 text-neutral-900 tracking-tight leading-tight"
           >
-            The Fence That <span className="font-semibold">Completes</span> Your Architecture
+            The Fence That <span className="font-bold">Completes</span> Your Architecture
           </motion.h1>
 
           <motion.p
@@ -47,7 +47,7 @@ export default function WhyCompoxen() {
       {/* STORY */}
       <Section className="border-t border-gray-200">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light mb-5 text-neutral-900">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-5 text-neutral-900 tracking-tight">
             Born From Every Fence That Failed
           </h2>
           <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
@@ -62,7 +62,7 @@ export default function WhyCompoxen() {
       {/* MATERIAL SCIENCE */}
       <Section background="bg-white">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light mb-6 text-neutral-900">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-neutral-900 tracking-tight">
             Engineered for 25+ Years of Quiet Performance
           </h2>
           <p className="text-lg text-neutral-600 leading-relaxed mb-8">
@@ -84,7 +84,7 @@ export default function WhyCompoxen() {
       {/* COLOR PALETTE */}
       <Section background="bg-neutral-900" className="text-white">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light mb-6 text-white">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-white tracking-tight">
             Five Modern, Architect‑Led Colors
           </h2>
           <p className="text-lg text-white/70 mb-10 leading-relaxed">
@@ -111,7 +111,7 @@ export default function WhyCompoxen() {
           <div className="mt-10 text-center">
             <Link
               href="/#architect-colors"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-amber text-black font-semibold text-base rounded-lg transition-all duration-200 hover:bg-amber-500 hover:shadow-lg hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-amber text-black font-bold text-base rounded-lg transition-all duration-200 hover:bg-amber-500 hover:shadow-lg hover:-translate-y-0.5 cta-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
             >
               Explore Architect-Led Colors
             </Link>
@@ -123,7 +123,7 @@ export default function WhyCompoxen() {
       <Section background="bg-gradient-to-br from-slate-50 to-amber-50/30">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-light mb-5 text-neutral-900">
-            Designed in <span className="font-semibold">America</span>. Perfected in the <span className="font-semibold">Mountains</span>.
+            Designed in <span className="font-bold">America</span>. Perfected in the <span className="font-bold">Mountains</span>.
           </h2>
           <p className="text-lg text-neutral-600 leading-relaxed mb-8">
             Every Compoxen product is designed at our innovation center in Salt Lake City, Utah — 
@@ -157,7 +157,7 @@ export default function WhyCompoxen() {
       {/* EXPERIENCE */}
       <Section>
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-light mb-5 text-neutral-900">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-5 text-neutral-900 tracking-tight">
             A Fence You Don't Have to Think About
           </h2>
           <p className="text-lg text-neutral-500 mb-10">
@@ -165,7 +165,7 @@ export default function WhyCompoxen() {
           </p>
           <Link
             href="/get-quote"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-amber-700 text-white font-semibold text-base rounded-lg transition-all duration-200 hover:bg-amber-600 hover:shadow-lg hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-amber-700 text-white font-bold text-base rounded-lg transition-all duration-200 hover:bg-amber-600 hover:shadow-lg hover:-translate-y-0.5 cta-glow"
           >
             Get a Quote
           </Link>

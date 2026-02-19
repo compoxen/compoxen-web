@@ -45,7 +45,7 @@ export default function Home() {
           <motion.h1
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-white font-bold leading-tight text-4xl sm:text-5xl md:text-6xl mb-8"
+            className="text-white font-bold leading-tight text-4xl sm:text-5xl md:text-6xl mb-8 tracking-tight"
           >
             <span className="block mb-4">
               <span
@@ -88,7 +88,7 @@ export default function Home() {
             {/* Dealer Kit Button */}
             <motion.button
               onClick={() => (window.location.href = '/dealer-kit')}
-              className="relative overflow-hidden bg-amber-600 text-white font-bold text-lg px-10 py-5 rounded-lg shadow-xl flex items-center justify-center gap-3 hover:scale-105 transition-transform"
+              className="relative overflow-hidden bg-amber-600 text-white font-bold text-lg px-10 py-5 rounded-lg shadow-xl flex items-center justify-center gap-3 hover:scale-105 transition-transform cta-glow"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -125,7 +125,7 @@ export default function Home() {
       {/* ========================= */}
       {/*     COMPOSITE FACTS       */}
       {/* ========================= */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #ffffff 0%, #f8f8f6 100%)' }}>
         <div className="container mx-auto px-6 max-w-5xl">
           
           <motion.h2
@@ -133,7 +133,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-14"
+            className="text-center text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 mb-14 tracking-tight"
           >
             Engineered for the Long Run
           </motion.h2>
@@ -175,7 +175,7 @@ export default function Home() {
       {/* ========================= */}
       {/*     FIVE ARC COLORS       */}
       {/* ========================= */}
-      <section id="architect-colors" className="py-20 md:py-28 bg-gray-100">
+      <section id="architect-colors" className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #f3f3f0 0%, #eaeae6 100%)' }}>
         <div className="container mx-auto px-6 max-w-6xl">
 
           <motion.h2
@@ -183,7 +183,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-5"
+            className="text-center text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 mb-5 tracking-tight"
           >
             Five Modern, Architect‑Led Colors
           </motion.h2>
@@ -231,7 +231,7 @@ export default function Home() {
       {/* ========================= */}
       {/*   INSTALLATIONS GALLERY   */}
       {/* ========================= */}
-      <section id="installations" className="py-20 md:py-28 bg-gray-900">
+      <section id="installations" className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #111111 0%, #1a1a1a 50%, #111111 100%)' }}>
         <div className="container mx-auto px-6 max-w-6xl">
 
           <motion.h2
@@ -239,7 +239,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-14"
+            className="text-center text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-14 tracking-tight"
           >
             Installations That Inspire
           </motion.h2>
@@ -279,10 +279,10 @@ export default function Home() {
             {/* ========================= */}
       {/*       RESOURCE HUB        */}
       {/* ========================= */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #ffffff 0%, #fafaf8 100%)' }}>
         <div className="container mx-auto px-6 max-w-6xl">
 
-          <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-14">
+          <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 mb-14 tracking-tight">
             Everything You Need to <span className="font-bold">Succeed</span>
           </h2>
 
@@ -326,7 +326,7 @@ export default function Home() {
                   y: -6,
                   boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
                 }}
-                className="flex flex-col bg-white rounded-2xl border border-gray-200 p-8 text-center transition-all duration-300"
+                className="flex flex-col bg-white rounded-2xl border border-gray-200/80 p-8 text-center card-premium"
               >
                 {/* Icon */}
                 <div className="mb-6">
@@ -349,7 +349,7 @@ export default function Home() {
 
                 <button
                   onClick={() => item.href && (window.location.href = item.href)}
-                  className="mt-auto border-2 border-amber-700 text-amber-700 px-6 py-3 rounded-lg font-semibold text-sm uppercase tracking-wide hover:bg-amber-700 hover:text-white transition-colors duration-200"
+                  className="mt-auto border-2 border-amber-700 text-amber-700 px-6 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:bg-amber-700 hover:text-white hover:shadow-lg transition-all duration-300"
                 >
                   {item.cta}
                 </button>
@@ -363,7 +363,7 @@ export default function Home() {
       {/* ========================= */}
       {/*     TRUST INDICATORS      */}
       {/* ========================= */}
-      <section className="py-16 md:py-20 bg-gray-100">
+      <section className="py-16 md:py-20" style={{ background: 'linear-gradient(180deg, #f5f5f3 0%, #ededeb 100%)' }}>
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12 text-center">
             {[
@@ -393,13 +393,13 @@ export default function Home() {
       {/* ========================= */}
       {/*   CHECK AVAILABILITY      */}
       {/* ========================= */}
-      <section className="py-20 md:py-28 bg-gray-900">
+      <section className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%)' }}>
         <div className="container mx-auto px-6 max-w-2xl text-center">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-4"
+            className="text-amber-400 text-sm font-bold tracking-widest uppercase mb-4"
           >
             Designed in USA • Currently Serving UT, CO, ID, CA
           </motion.p>
@@ -407,7 +407,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-5"
+            className="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-5 tracking-tight"
           >
             Check Availability
           </motion.h2>
@@ -432,7 +432,7 @@ export default function Home() {
       {/* ========================= */}
       {/*     DESIGNED IN USA       */}
       {/* ========================= */}
-      <section className="py-16 md:py-20 bg-linear-to-r from-slate-900 via-slate-800 to-slate-900 border-y border-white/5">
+      <section className="py-16 md:py-20 border-y border-white/5" style={{ background: 'linear-gradient(135deg, #0c0c10 0%, #141418 50%, #0c0c10 100%)' }}>
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -443,7 +443,7 @@ export default function Home() {
               <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-3">
                 Our Story
               </p>
-              <h2 className="text-white text-3xl sm:text-4xl font-bold leading-tight mb-5">
+              <h2 className="text-white text-3xl sm:text-4xl font-bold leading-tight mb-5 tracking-tight">
                 Designed in USA.
                 <br />
                 Perfected in the Mountains.
@@ -474,9 +474,9 @@ export default function Home() {
                 { value: '20yr', label: 'Warranty' },
                 { value: '0', label: 'Maintenance Required' },
               ].map((stat) => (
-                <div key={stat.label} className="bg-white/5 border border-white/10 rounded-xl p-5 text-center">
+                <div key={stat.label} className="bg-white/5 border border-white/10 rounded-xl p-5 text-center hover:bg-white/8 hover:border-white/15 transition-all duration-300">
                   <div className="text-amber-400 text-3xl font-bold mb-1">{stat.value}</div>
-                  <div className="text-white/50 text-sm">{stat.label}</div>
+                  <div className="text-white/50 text-sm font-medium">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -487,14 +487,14 @@ export default function Home() {
       {/* ========================= */}
       {/*     EXPLORE COMPOXEN      */}
       {/* ========================= */}
-      <section className="py-20 md:py-28 bg-gray-50">
+      <section className="py-20 md:py-28" style={{ background: 'linear-gradient(180deg, #fafaf8 0%, #f5f5f3 100%)' }}>
         <div className="container mx-auto px-6 text-center max-w-5xl">
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-5"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-5 tracking-tight"
           >
             Explore Compoxen
           </motion.h2>
@@ -524,7 +524,7 @@ export default function Home() {
                 className="group"
               >
                 <Link href={item.href} className="block">
-                  <div className="w-20 h-20 bg-amber-700 rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg group-hover:shadow-xl group-hover:bg-amber-600 transition-all duration-300">
+                  <div className="w-20 h-20 bg-amber-700 rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg group-hover:shadow-xl group-hover:bg-amber-600 group-hover:brightness-110 transition-all duration-300">
                     <item.icon size={34} className="text-white" />
                   </div>
 

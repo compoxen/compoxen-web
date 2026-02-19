@@ -37,13 +37,25 @@
     font-family: var(--font-sans);
     background: #fafafa;
     color: #1a1a1a;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3 {
-    font-weight: 300;
+  h1, h2, h3, h4 {
+    font-weight: 400;
     line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  h1 { font-weight: 700; }
+  h2 { font-weight: 600; }
+  h3 { font-weight: 600; }
+
+  p {
+    font-weight: 400;
   }
 }
 
@@ -69,16 +81,27 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  /* Noise overlay utility - z-index set high but below modal content */
-  .noise-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 10;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  /* Premium CTA glow effect */
+  .cta-glow {
+    box-shadow: 0 0 20px rgba(217, 119, 6, 0.3), 0 0 60px rgba(217, 119, 6, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  .cta-glow:hover {
+    box-shadow: 0 0 30px rgba(217, 119, 6, 0.5), 0 0 80px rgba(217, 119, 6, 0.2);
+  }
+
+  /* Premium card hover */
+  .card-premium {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  }
+  .card-premium:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Subtle section divider */
+  .section-divider {
+    background: linear-gradient(90deg, transparent, rgba(217, 119, 6, 0.2), transparent);
+    height: 1px;
   }
 }
