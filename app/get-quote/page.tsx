@@ -121,12 +121,12 @@ export default function GetQuotePage() {
 
         {/* Real-time availability indicator */}
         {zipStatus && (
-          <div className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium ${
+          <div className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-xs font-medium ${
             zipStatus === 'active'
-              ? 'bg-green-500/15 text-green-300 border border-green-500/20'
+              ? 'bg-green-500/10 text-green-300 border border-green-500/15'
               : zipStatus === 'coming-soon'
-              ? 'bg-amber-500/15 text-amber-300 border border-amber-500/20'
-              : 'bg-white/5 text-white/60 border border-white/10'
+              ? 'bg-amber-500/10 text-amber-300 border border-amber-500/15'
+              : 'bg-white/4 text-white/50 border border-white/6'
           }`}>
             {zipStatus === 'active' && <><CheckCircle size={14} /> We serve {zipStateName}! A dealer will be assigned.</>}
             {zipStatus === 'coming-soon' && <><Clock size={14} /> {zipStateName} is coming soon. We&apos;ll add you to the priority list.</>}
@@ -141,9 +141,9 @@ export default function GetQuotePage() {
           value={formData.projectType}
           onChange={handleChange}
         >
-          <option value="residential" className="bg-brand-dark">Residential</option>
-          <option value="commercial" className="bg-brand-dark">Commercial</option>
-          <option value="hoa" className="bg-brand-dark">HOA / Multi-Family</option>
+          <option value="residential" className="bg-enterprise-950">Residential</option>
+          <option value="commercial" className="bg-enterprise-950">Commercial</option>
+          <option value="hoa" className="bg-enterprise-950">HOA / Multi-Family</option>
         </Input>
 
         <Button 
@@ -157,8 +157,8 @@ export default function GetQuotePage() {
           {!loading && <ArrowRight size={18} />}
         </Button>
 
-        <p className="text-white/30 text-xs text-center mt-3">
-          🇺🇸 Designed in USA • Currently Serving UT, CO, ID, CA
+        <p className="text-white/20 text-xs text-center mt-3">
+          🇺🇸 Designed in USA · Currently Serving UT, CO, ID, CA
         </p>
       </form>
     </LeadFormLayout>

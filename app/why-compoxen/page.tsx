@@ -1,176 +1,324 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import Link from 'next/link'
-import Section from '@/components/layouts/Section'
+import { Check, X, ArrowRight, Shield, Droplets, Sun, Wind, Volume2, Paintbrush } from 'lucide-react'
 
-// Note: Metadata must be in a separate layout.tsx or page.tsx without 'use client'
-// For client components, use Head from next/head or create a parallel server component
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
+}
+const stagger = {
+  visible: { transition: { staggerChildren: 0.08 } },
+}
 
 export default function WhyCompoxen() {
   return (
-    <main className="bg-gray-50 min-h-screen">
-      
-      {/* HERO */}
-      <section className="pt-28 md:pt-36 pb-14 md:pb-20">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex justify-center mb-6"
-          >
-            <span className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 px-4 py-1.5 rounded-full text-sm font-semibold">
-              🇺🇸 Designed in USA • Salt Lake City, UT
-            </span>
+    <main className="bg-enterprise-50 min-h-screen">
+
+      {/* ── HERO ── */}
+      <section className="relative pt-32 md:pt-40 pb-20 md:pb-28 overflow-hidden" style={{ background: '#050505' }}>
+        <div className="dot-grid-dark absolute inset-0 opacity-40" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(217,119,6,0.08)_0%,transparent_60%)]" />
+
+        <div className="relative z-10 container mx-auto px-6 max-w-4xl text-center">
+          <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="badge-dark text-xs">Material Science</span>
           </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extralight text-center mb-6 text-neutral-900 tracking-tight leading-tight"
+            transition={{ delay: 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 text-white font-semibold tracking-tight leading-[1.08]"
+            style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}
           >
-            The Fence That <span className="font-bold">Completes</span> Your Architecture
+            The fence that <span className="text-gradient-light">completes</span> your architecture
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-center text-lg sm:text-xl md:text-2xl text-neutral-500 max-w-3xl mx-auto leading-relaxed font-light"
+            transition={{ delay: 0.25, duration: 0.8 }}
+            className="mt-5 text-white/40 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
           >
-            Composite engineered for permanence, silence, and modern outdoor living.  
+            Composite engineered for permanence, silence, and modern outdoor living.
             Built to disappear into the landscape while elevating everything around it.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="mt-8 flex flex-wrap justify-center gap-3"
+          >
+            <Link
+              href="/get-quote"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-brand-amber text-black font-semibold text-sm rounded-xl hover:bg-amber-500 transition-all"
+            >
+              Get a Quote <ArrowRight size={16} />
+            </Link>
+            <Link
+              href="/#architect-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-white/10 text-white/70 font-medium text-sm rounded-xl hover:bg-white/6 transition-all"
+            >
+              Explore Colors
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-enterprise-50 to-transparent" />
+      </section>
+
+      {/* ── THE PROBLEM ── */}
+      <section className="py-20 md:py-28 bg-enterprise-50">
+        <div className="container mx-auto px-6 max-w-3xl">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.span variants={fadeUp} className="badge-amber text-xs">The Problem</motion.span>
+            <motion.h2
+              variants={fadeUp}
+              className="mt-4 text-3xl md:text-4xl font-semibold text-enterprise-950 tracking-tight"
+            >
+              Born from every fence that failed
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="mt-4 text-lg text-enterprise-950/50 leading-relaxed"
+            >
+              Wood rots. Vinyl warps. Metal rusts. Traditional fencing forces homeowners into
+              a cycle of repairs, repainting, and replacement. Compoxen was engineered to end
+              that cycle permanently — a material that looks refined, feels substantial, and
+              stands quietly in the background while your architecture takes center stage.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
-      {/* STORY */}
-      <Section className="border-t border-gray-200">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-5 text-neutral-900 tracking-tight">
-            Born From Every Fence That Failed
-          </h2>
-          <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
-            Wood rots. Vinyl warps. Metal rusts. Traditional fencing forces homeowners into a cycle of
-            repairs, repainting, and replacement. Compoxen was engineered to end that cycle permanently.
-            A material that looks refined, feels substantial, and stands quietly in the background while
-            your architecture, landscape, and lifestyle take center stage.
-          </p>
-        </div>
-      </Section>
+      {/* ── MATERIAL SCIENCE ── */}
+      <section className="py-20 md:py-28 bg-white border-y border-enterprise-950/4">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-14">
+            <motion.span variants={fadeUp} className="badge-amber text-xs">Engineering</motion.span>
+            <motion.h2 variants={fadeUp} className="mt-4 text-3xl md:text-4xl font-semibold text-enterprise-950 tracking-tight">
+              Engineered for 25+ years of quiet performance
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-4 text-enterprise-950/50 max-w-2xl mx-auto">
+              Dense composite core wrapped in a UV‑stable matte shell. Every detail is designed
+              for longevity, stability, and architectural clarity.
+            </motion.p>
+          </motion.div>
 
-      {/* MATERIAL SCIENCE */}
-      <Section background="bg-white">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-neutral-900 tracking-tight">
-            Engineered for 25+ Years of Quiet Performance
-          </h2>
-          <p className="text-lg text-neutral-600 leading-relaxed mb-8">
-            Compoxen is built from a dense composite core wrapped in a UV‑stable matte shell.  
-            Every detail is designed for longevity, stability, and architectural clarity.
-          </p>
-
-          <ul className="grid sm:grid-cols-2 gap-3 text-base text-neutral-700">
-            {['Deep matte finish that hides dust', 'Subtle woodgrain, organic feel', 'Zero maintenance — no sealing', 'No warping, cracking, splintering', 'Fade‑resistant for harsh sun', 'Acoustically quiet, solid core'].map((item) => (
-              <li key={item} className="flex items-center gap-3">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-amber shrink-0" />
-                {item}
-              </li>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            {[
+              { icon: Paintbrush, title: 'Deep matte finish', desc: 'Hides dust and fingerprints with an organic, matte surface.' },
+              { icon: Shield, title: 'Zero maintenance', desc: 'No sealing, staining, or painting — ever.' },
+              { icon: Droplets, title: 'Moisture resistant', desc: 'Won\'t warp, crack, or splinter in any climate.' },
+              { icon: Sun, title: 'UV stable', desc: 'Fade‑resistant shell tested in high-altitude sun exposure.' },
+              { icon: Volume2, title: 'Acoustically quiet', desc: 'Solid-core dampens wind and impact noise.' },
+              { icon: Wind, title: 'Wind rated', desc: 'Engineered to withstand sustained high winds without flex.' },
+            ].map((item) => (
+              <motion.div key={item.title} variants={fadeUp} className="card-enterprise p-6">
+                <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-4">
+                  <item.icon size={20} className="text-amber-600" />
+                </div>
+                <h3 className="font-semibold text-enterprise-950 mb-1">{item.title}</h3>
+                <p className="text-sm text-enterprise-950/50 leading-relaxed">{item.desc}</p>
+              </motion.div>
             ))}
-          </ul>
+          </motion.div>
         </div>
-      </Section>
+      </section>
 
-      {/* COLOR PALETTE */}
-      <Section background="bg-neutral-900" className="text-white">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-white tracking-tight">
-            Five Modern, Architect‑Led Colors
-          </h2>
-          <p className="text-lg text-white/70 mb-10 leading-relaxed">
-            Inspired by coastlines, mountains, desert mesas, and modern urban materials.  
-            Each tone is crafted to sit quietly next to stone, stucco, steel, and glass.
-          </p>
+      {/* ── HEAD-TO-HEAD COMPARISON ── */}
+      <section className="py-20 md:py-28 bg-enterprise-50">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
+            <motion.span variants={fadeUp} className="badge-amber text-xs">Comparison</motion.span>
+            <motion.h2 variants={fadeUp} className="mt-4 text-3xl md:text-4xl font-semibold text-enterprise-950 tracking-tight">
+              How Compoxen stacks up
+            </motion.h2>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="card-enterprise overflow-hidden"
+          >
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-enterprise-950/6">
+                    <th className="text-left py-4 px-5 text-enterprise-950/40 font-medium">Feature</th>
+                    <th className="py-4 px-4 text-center font-semibold text-amber-700 bg-amber-50/60">Compoxen</th>
+                    <th className="py-4 px-4 text-center text-enterprise-950/50 font-medium">Wood</th>
+                    <th className="py-4 px-4 text-center text-enterprise-950/50 font-medium">Vinyl</th>
+                    <th className="py-4 px-4 text-center text-enterprise-950/50 font-medium">Metal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ['20‑Year Warranty',       true,  false, false, false],
+                    ['Zero Maintenance',        true,  false, true,  false],
+                    ['Won\'t Rot or Warp',      true,  false, true,  true],
+                    ['Fade Resistant',           true,  false, false, true],
+                    ['Natural Texture',          true,  true,  false, false],
+                    ['Sound Dampening',          true,  false, false, false],
+                    ['Eco‑Friendly Materials',   true,  false, false, false],
+                    ['Architect‑Ready Colors',   true,  false, false, false],
+                  ].map(([feature, ...vals], i) => (
+                    <tr key={i} className="border-b border-enterprise-950/4 last:border-0">
+                      <td className="py-3.5 px-5 text-enterprise-950/70">{feature as string}</td>
+                      {(vals as boolean[]).map((v, j) => (
+                        <td key={j} className={`py-3.5 px-4 text-center ${j === 0 ? 'bg-amber-50/40' : ''}`}>
+                          {v
+                            ? <Check size={16} className="mx-auto text-green-600" />
+                            : <X size={16} className="mx-auto text-enterprise-950/15" />
+                          }
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── COLOR PALETTE ── */}
+      <section className="relative py-20 md:py-28 overflow-hidden" style={{ background: '#050505' }}>
+        <div className="dot-grid-dark absolute inset-0 opacity-30" />
+        <div className="relative z-10 container mx-auto px-6 max-w-4xl">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.span variants={fadeUp} className="badge-dark text-xs">Palette</motion.span>
+            <motion.h2 variants={fadeUp} className="mt-4 text-3xl md:text-4xl font-semibold text-white tracking-tight">
+              Five architect‑led colors
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-3 text-white/35 max-w-xl leading-relaxed">
+              Inspired by coastlines, mountains, desert mesas, and modern urban materials.
+              Each tone sits quietly next to stone, stucco, steel, and glass.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mt-10 grid sm:grid-cols-2 gap-4"
+          >
             {[
               { name: 'Harbor Slate', desc: 'Modern grey with coastal clarity' },
               { name: 'Mesa Taupe', desc: 'Warm, grounded, stone‑friendly tone' },
               { name: 'Shadow Forge', desc: 'Grey‑black with industrial depth' },
               { name: 'Redwood Ember', desc: 'Rich red‑brown with natural warmth' },
-              { name: 'Cocoa Ridge', desc: 'Deep chocolate tone' }
+              { name: 'Cocoa Ridge', desc: 'Deep chocolate tone' },
             ].map((color) => (
-              <div key={color.name} className="border-l-2 border-brand-amber/50 pl-5 py-2">
-                <h3 className="text-xl font-medium mb-1">{color.name}</h3>
-                <p className="text-white/50 text-sm">{color.desc}</p>
-              </div>
+              <motion.div key={color.name} variants={fadeUp} className="card-enterprise-dark p-5">
+                <h3 className="text-white font-medium mb-0.5">{color.name}</h3>
+                <p className="text-white/30 text-sm">{color.desc}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          {/* CTA Button */}
-          <div className="mt-10 text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-8 text-center"
+          >
             <Link
               href="/#architect-colors"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-amber text-black font-bold text-base rounded-lg transition-all duration-200 hover:bg-amber-500 hover:shadow-lg hover:-translate-y-0.5 cta-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-brand-amber text-black font-semibold text-sm rounded-xl hover:bg-amber-500 transition-all"
             >
-              Explore Architect-Led Colors
+              Explore Colors <ArrowRight size={16} />
             </Link>
-          </div>
+          </motion.div>
         </div>
-      </Section>
+      </section>
 
-      {/* DESIGNED IN USA */}
-      <Section background="bg-gradient-to-br from-slate-50 to-amber-50/30">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light mb-5 text-neutral-900">
-            Designed in <span className="font-bold">America</span>. Perfected in the <span className="font-bold">Mountains</span>.
-          </h2>
-          <p className="text-lg text-neutral-600 leading-relaxed mb-8">
-            Every Compoxen product is designed at our innovation center in Salt Lake City, Utah — 
-            then tested against the Mountain West&apos;s most extreme conditions. Scorching summers, 
-            sub-zero winters, high-altitude UV, relentless wind. If it performs here, it performs anywhere.
-          </p>
-          <div className="grid sm:grid-cols-4 gap-4 text-center">
+      {/* ── DESIGNED IN USA ── */}
+      <section className="relative py-20 md:py-28 bg-white overflow-hidden">
+        <div className="dot-grid absolute inset-0 opacity-40" />
+        <div className="relative z-10 container mx-auto px-6 max-w-4xl">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.span variants={fadeUp} className="badge-amber text-xs">Origin</motion.span>
+            <motion.h2 variants={fadeUp} className="mt-4 text-3xl md:text-4xl font-semibold text-enterprise-950 tracking-tight">
+              Designed in America. Perfected in the mountains.
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-4 text-lg text-enterprise-950/50 leading-relaxed max-w-2xl">
+              Every product is designed at our innovation center in Salt Lake City, Utah —
+              then tested against the Mountain West&apos;s most extreme conditions. Scorching summers,
+              sub-zero winters, high-altitude UV, relentless wind. If it performs here, it performs anywhere.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3"
+          >
             {[
               { state: 'Utah', status: 'HQ & Testing' },
               { state: 'Colorado', status: 'Active' },
               { state: 'Idaho', status: 'Active' },
               { state: 'California', status: 'Active' },
             ].map((item) => (
-              <div key={item.state} className="bg-white rounded-xl p-4 border border-gray-200">
-                <div className="text-neutral-900 font-semibold">{item.state}</div>
-                <div className="text-amber-700 text-sm">{item.status}</div>
-              </div>
+              <motion.div key={item.state} variants={fadeUp} className="card-enterprise p-4 text-center">
+                <div className="font-semibold text-enterprise-950">{item.state}</div>
+                <div className="text-amber-600 text-xs mt-0.5">{item.status}</div>
+              </motion.div>
             ))}
-          </div>
-          <div className="text-center mt-6">
-            <Link
-              href="/states"
-              className="text-amber-700 font-medium text-sm hover:underline"
-            >
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-6 text-center"
+          >
+            <Link href="/states" className="text-amber-700 font-medium text-sm hover:underline">
               View all service areas & expansion timeline →
             </Link>
-          </div>
+          </motion.div>
         </div>
-      </Section>
+      </section>
 
-      {/* EXPERIENCE */}
-      <Section>
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-5 text-neutral-900 tracking-tight">
-            A Fence You Don't Have to Think About
-          </h2>
-          <p className="text-lg text-neutral-500 mb-10">
-            The ultimate luxury is the absence of worry.
-          </p>
-          <Link
-            href="/get-quote"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-amber-700 text-white font-bold text-base rounded-lg transition-all duration-200 hover:bg-amber-600 hover:shadow-lg hover:-translate-y-0.5 cta-glow"
-          >
-            Get a Quote
-          </Link>
+      {/* ── FINAL CTA ── */}
+      <section className="py-20 md:py-28 bg-enterprise-50 border-t border-enterprise-950/4">
+        <div className="container mx-auto px-6 max-w-2xl text-center">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.h2
+              variants={fadeUp}
+              className="text-3xl md:text-4xl font-semibold text-enterprise-950 tracking-tight"
+            >
+              A fence you don&apos;t have to think about
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-3 text-enterprise-950/40 text-lg">
+              The ultimate luxury is the absence of worry.
+            </motion.p>
+            <motion.div variants={fadeUp} className="mt-8">
+              <Link
+                href="/get-quote"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-enterprise-950 text-white font-semibold text-sm rounded-xl hover:bg-enterprise-950/90 transition-all"
+              >
+                Get a Quote <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
-      </Section>
+      </section>
     </main>
   )
 }

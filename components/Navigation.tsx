@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useCallback } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronRight } from 'lucide-react'
 import clsx from 'clsx'
 
 export default function Navigation() {
@@ -11,52 +11,53 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
-  // Stable scroll handler with useCallback
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 20)
   }, [])
 
   useEffect(() => {
-    // Check initial scroll position
     handleScroll()
-    
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false)
   }, [pathname])
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
   }, [isOpen])
 
   const navLinks = [
-    { label: 'Home', href: '/' },
+    { label: 'Products', href: '/#architect-colors' },
     { label: 'Gallery', href: '/#installations' },
-    { label: 'Colors & Textures', href: '/#architect-colors' },
     { label: 'Why Composite', href: '/why-compoxen' },
     { label: 'Service Areas', href: '/states' },
+    { label: 'Dealers', href: '/dealer-kit' },
   ]
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
+      {/* Announcement Bar */}
+      <div className="announcement-bar text-center py-2 px-4">
+        <p className="text-[13px] text-white/60 font-medium">
+          <span className="text-amber-400/80">New:</span>{' '}
+          Now serving California — 
+          <Link href="/states/california" className="text-white/80 hover:text-white underline underline-offset-2 ml-1 transition-colors">
+            check availability
+          </Link>
+        </p>
+      </div>
+
+      {/* Main Nav */}
       <nav
         className={clsx(
-          'w-full transition-all duration-300 border-b',
+          'w-full transition-all duration-300',
           scrolled 
-            ? 'bg-black/60 backdrop-blur-md border-white/10 py-3' 
-            : 'bg-black/30 backdrop-blur-sm border-transparent py-5'
+            ? 'bg-black/80 backdrop-blur-xl border-b border-white/6 py-3' 
+            : 'bg-black/20 backdrop-blur-sm border-b border-transparent py-4'
         )}
         aria-label="Main Navigation"
         role="navigation"
@@ -65,28 +66,27 @@ export default function Navigation() {
           {/* Logo */}
           <Link 
             href="/" 
-            className="relative flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black/50 rounded-sm"
+            className="relative flex items-center group"
           >
             <img
               src="/images/compoxen-logo.png"
-              alt="Compoxen - Return to Homepage"
-              className="h-10 w-auto brightness-0 invert transition-opacity group-hover:opacity-80"
+              alt="Compoxen"
+              className="h-8 w-auto brightness-0 invert transition-opacity group-hover:opacity-80"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
-            <ul className="flex items-center gap-6 lg:gap-8" role="list">
+          <div className="hidden md:flex items-center gap-1">
+            <ul className="flex items-center gap-1" role="list">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
                     className={clsx(
-                      'text-sm font-medium tracking-wide uppercase transition-colors duration-200',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:rounded-sm',
+                      'text-[13px] font-medium px-3.5 py-2 rounded-lg transition-all duration-200',
                       pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href.split('#')[0]))
-                        ? 'text-white'
-                        : 'text-white/70 hover:text-white'
+                        ? 'text-white bg-white/10'
+                        : 'text-white/60 hover:text-white hover:bg-white/6'
                     )}
                   >
                     {link.label}
@@ -95,33 +95,31 @@ export default function Navigation() {
               ))}
             </ul>
             
-            {/* Get Quote CTA Button */}
+            {/* CTA */}
             <Link
               href="/get-quote"
               className={clsx(
-                'ml-2 px-5 py-2.5 bg-brand-amber text-black font-bold text-sm uppercase tracking-wider rounded-lg',
-                'transition-all duration-200 hover:bg-amber-500 hover:shadow-lg hover:-translate-y-0.5 cta-glow',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black/50'
+                'ml-3 px-4 py-2 bg-brand-amber text-black font-semibold text-[13px] rounded-lg',
+                'transition-all duration-200 hover:bg-amber-500 cta-glow'
               )}
             >
-              Get Quote
+              Get a Quote
             </Link>
           </div>
 
-          {/* Mobile Toggle Button */}
+          {/* Mobile Toggle */}
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             className={clsx(
-              'md:hidden relative z-60 text-white p-2.5 rounded-lg transition-colors duration-200',
-              'hover:bg-white/10 active:bg-white/20',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500'
+              'md:hidden relative z-60 text-white p-2 rounded-lg transition-colors duration-200',
+              'hover:bg-white/10 active:bg-white/20'
             )}
             aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
           >
-            {isOpen ? <X size={26} aria-hidden="true" /> : <Menu size={26} aria-hidden="true" />}
+            {isOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
           </button>
         </div>
       </nav>
@@ -131,7 +129,7 @@ export default function Navigation() {
         id="mobile-navigation"
         className={clsx(
           'fixed inset-0 z-55 flex flex-col items-center justify-center md:hidden',
-          'bg-black/95 backdrop-blur-xl',
+          'bg-black/98 backdrop-blur-2xl',
           'transition-all duration-300 ease-in-out',
           isOpen 
             ? 'opacity-100 visible' 
@@ -140,23 +138,22 @@ export default function Navigation() {
         aria-hidden={!isOpen}
       >
         <nav aria-label="Mobile Navigation">
-          <ul className="flex flex-col items-center gap-6 text-center" role="list">
+          <ul className="flex flex-col items-center gap-2 text-center" role="list">
             {navLinks.map((link, index) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   className={clsx(
-                    'block text-xl sm:text-2xl font-light tracking-[0.15em] uppercase transition-all duration-200',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:rounded-sm px-4 py-2',
+                    'block text-xl font-medium tracking-tight px-6 py-3 rounded-xl transition-all duration-200',
                     pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href.split('#')[0]))
-                      ? 'text-brand-amber'
-                      : 'text-white hover:text-brand-amber'
+                      ? 'text-brand-amber bg-white/5'
+                      : 'text-white/70 hover:text-white hover:bg-white/5'
                   )}
                   onClick={() => setIsOpen(false)}
                   tabIndex={isOpen ? 0 : -1}
                   style={{
                     transitionDelay: isOpen ? `${index * 50}ms` : '0ms',
-                    transform: isOpen ? 'translateY(0)' : 'translateY(-10px)',
+                    transform: isOpen ? 'translateY(0)' : 'translateY(-8px)',
                     opacity: isOpen ? 1 : 0
                   }}
                 >
@@ -165,24 +162,22 @@ export default function Navigation() {
               </li>
             ))}
             
-            {/* Mobile Get Quote CTA */}
             <li>
               <Link
                 href="/get-quote"
                 className={clsx(
-                  'block mt-6 px-8 py-3.5 bg-brand-amber text-black font-bold text-base uppercase tracking-wider rounded-lg',
-                  'transition-all duration-200 hover:bg-amber-500 active:scale-95 cta-glow',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400'
+                  'block mt-6 px-8 py-3.5 bg-brand-amber text-black font-semibold text-base rounded-xl',
+                  'transition-all duration-200 hover:bg-amber-500 active:scale-95 cta-glow'
                 )}
                 onClick={() => setIsOpen(false)}
                 tabIndex={isOpen ? 0 : -1}
                 style={{
                   transitionDelay: isOpen ? `${navLinks.length * 50}ms` : '0ms',
-                  transform: isOpen ? 'translateY(0)' : 'translateY(-10px)',
+                  transform: isOpen ? 'translateY(0)' : 'translateY(-8px)',
                   opacity: isOpen ? 1 : 0
                 }}
               >
-                Get Quote
+                Get a Quote
               </Link>
             </li>
           </ul>

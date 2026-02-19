@@ -7,6 +7,7 @@ interface SectionProps {
   id?: string
   containerClass?: string
   background?: string
+  narrow?: boolean
 }
 
 export default function Section({ 
@@ -14,18 +15,19 @@ export default function Section({
   className = '', 
   id, 
   containerClass = '',
-  background = 'bg-white' // default to white
+  background = 'bg-white',
+  narrow = false,
 }: SectionProps) {
   return (
     <section 
       id={id} 
       className={clsx(
-        'py-16 md:py-32 relative overflow-hidden',
+        'py-20 md:py-28 relative overflow-hidden',
         background,
         className
       )}
     >
-      <div className={clsx('container mx-auto px-6', containerClass)}>
+      <div className={clsx('container mx-auto px-6', narrow ? 'max-w-4xl' : 'max-w-6xl', containerClass)}>
         {children}
       </div>
     </section>

@@ -1,128 +1,137 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { MapPin } from 'lucide-react'
+import { MapPin, ArrowRight, Mail } from 'lucide-react'
 
 export default function Footer() {
-  return (
-    <footer className="relative text-white py-14 md:py-20 lg:py-24" style={{ background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)' }}>
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+  const [email, setEmail] = useState('')
+  const [subscribed, setSubscribed] = useState(false)
 
-        {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 mb-12">
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email) return
+    console.log('Newsletter subscribe:', email)
+    setSubscribed(true)
+    setEmail('')
+  }
+
+  return (
+    <footer className="relative text-white" style={{ background: '#0a0a0a' }}>
+      
+      {/* Newsletter CTA band */}
+      <div className="border-b border-white/6">
+        <div className="container mx-auto px-6 max-w-6xl py-14 md:py-16">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-center md:text-left">
+              <h3 className="text-xl font-semibold text-white mb-2">Stay in the loop</h3>
+              <p className="text-white/40 text-sm max-w-sm">
+                Product updates, expansion news, and dealer opportunities. No spam, ever.
+              </p>
+            </div>
+            {subscribed ? (
+              <div className="flex items-center gap-2 text-green-400 text-sm font-medium">
+                <Mail size={16} /> You&apos;re subscribed — thank you!
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex gap-2 w-full max-w-md">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="grow px-4 py-3 bg-white/6 border border-white/8 rounded-xl text-white text-sm placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent transition-all"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="px-5 py-3 bg-brand-amber text-black font-semibold text-sm rounded-xl hover:bg-amber-500 transition-all shrink-0"
+                >
+                  Subscribe
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer Grid */}
+      <div className="container mx-auto px-6 max-w-6xl py-14 md:py-16">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-10">
 
           {/* Brand Column */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="col-span-1 sm:col-span-2 lg:col-span-1 text-center sm:text-left"
-          >
+          <div className="col-span-2 sm:col-span-3 lg:col-span-2">
             <img
               src="/images/compoxen-logo.png"
               alt="Compoxen"
-              className="h-10 mb-5 brightness-0 invert mx-auto sm:mx-0"
+              className="h-7 mb-5 brightness-0 invert"
             />
-            <p className="text-gray-400 leading-relaxed text-sm max-w-xs mx-auto sm:mx-0 mb-4">
-              Premium composite fencing designed in the USA.
-              Perfected in the Mountains. Built to last.
+            <p className="text-white/30 leading-relaxed text-sm max-w-xs mb-5">
+              Premium composite fencing engineered in the USA. 
+              20-year warranty. Zero maintenance. Five architect-led colors.
             </p>
-            <div className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-xs text-amber-400 font-medium">
-              🇺🇸 Designed in USA
+            <div className="inline-flex items-center gap-2 badge-dark text-xs">
+              🇺🇸 Designed in Salt Lake City, UT
             </div>
-          </motion.div>
+          </div>
 
-          {/* Navigate */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center sm:text-left"
-          >
-            <h4 className="text-base font-bold mb-4 tracking-wide">Navigate</h4>
-            <ul className="space-y-3 text-gray-400 text-sm">
-              <li><Link href="/" className="hover:text-white transition-colors duration-200">Home</Link></li>
-              <li><Link href="/#installations" className="hover:text-white transition-colors duration-200">Gallery</Link></li>
-              <li><Link href="/#architect-colors" className="hover:text-white transition-colors duration-200">Colors & Textures</Link></li>
-              <li><Link href="/why-compoxen" className="hover:text-white transition-colors duration-200">Why Composite</Link></li>
-              <li><Link href="/states" className="hover:text-white transition-colors duration-200">Service Areas</Link></li>
+          {/* Products */}
+          <div>
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Products</h4>
+            <ul className="space-y-2.5 text-[13px]">
+              <li><Link href="/#architect-colors" className="text-white/40 hover:text-white transition-colors duration-200">Colors & Textures</Link></li>
+              <li><Link href="/#installations" className="text-white/40 hover:text-white transition-colors duration-200">Gallery</Link></li>
+              <li><Link href="/why-compoxen" className="text-white/40 hover:text-white transition-colors duration-200">Material Science</Link></li>
             </ul>
-          </motion.div>
+          </div>
 
           {/* Service Areas */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center sm:text-left"
-          >
-            <h4 className="text-base font-bold mb-4 tracking-wide">Service Areas</h4>
-            <ul className="space-y-3 text-gray-400 text-sm">
-              <li><Link href="/states/utah" className="hover:text-white transition-colors duration-200"><MapPin size={12} className="inline mr-1" />Utah</Link></li>
-              <li><Link href="/states/colorado" className="hover:text-white transition-colors duration-200"><MapPin size={12} className="inline mr-1" />Colorado</Link></li>
-              <li><Link href="/states/idaho" className="hover:text-white transition-colors duration-200"><MapPin size={12} className="inline mr-1" />Idaho</Link></li>
-              <li><Link href="/states/california" className="hover:text-white transition-colors duration-200"><MapPin size={12} className="inline mr-1" />California</Link></li>
-              <li><Link href="/states" className="text-amber-500 hover:text-amber-400 hover:brightness-110 transition-all duration-200">Check Availability →</Link></li>
+          <div>
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Service Areas</h4>
+            <ul className="space-y-2.5 text-[13px]">
+              <li><Link href="/states/utah" className="text-white/40 hover:text-white transition-colors duration-200">Utah</Link></li>
+              <li><Link href="/states/colorado" className="text-white/40 hover:text-white transition-colors duration-200">Colorado</Link></li>
+              <li><Link href="/states/idaho" className="text-white/40 hover:text-white transition-colors duration-200">Idaho</Link></li>
+              <li><Link href="/states/california" className="text-white/40 hover:text-white transition-colors duration-200">California</Link></li>
+              <li><Link href="/states" className="text-amber-500/70 hover:text-amber-400 transition-colors duration-200">All Areas →</Link></li>
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Dealers */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center sm:text-left"
-          >
-            <h4 className="text-base font-bold mb-4 tracking-wide">Partners</h4>
-            <ul className="space-y-3 text-gray-400 text-sm">
-              <li><Link href="/dealer-kit" className="hover:text-white transition-colors duration-200">Become an Installer</Link></li>
-              <li><Link href="/get-quote" className="hover:text-white transition-colors duration-200">Get a Quote</Link></li>
-              <li><Link href="/dealer" className="hover:text-white transition-colors duration-200">Dealer Dashboard</Link></li>
+          {/* Partners */}
+          <div>
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Partners</h4>
+            <ul className="space-y-2.5 text-[13px]">
+              <li><Link href="/dealer-kit" className="text-white/40 hover:text-white transition-colors duration-200">Become a Dealer</Link></li>
+              <li><Link href="/get-quote" className="text-white/40 hover:text-white transition-colors duration-200">Get a Quote</Link></li>
+              <li><Link href="/dealer" className="text-white/40 hover:text-white transition-colors duration-200">Dealer Dashboard</Link></li>
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Company / Contact */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center sm:text-left"
-          >
-            <h4 className="text-base font-bold mb-4 tracking-wide">Company</h4>
-            <ul className="space-y-3 text-gray-400 text-sm">
-              <li><Link href="/why-compoxen" className="hover:text-white transition-colors duration-200">Our Materials</Link></li>
-              <li><Link href="/privacy-policy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link></li>
+          {/* Company */}
+          <div>
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Company</h4>
+            <ul className="space-y-2.5 text-[13px]">
+              <li><Link href="/why-compoxen" className="text-white/40 hover:text-white transition-colors duration-200">About</Link></li>
+              <li><Link href="/privacy-policy" className="text-white/40 hover:text-white transition-colors duration-200">Privacy</Link></li>
+              <li><a href="mailto:info@compoxen.com" className="text-white/40 hover:text-white transition-colors duration-200">Contact</a></li>
             </ul>
-
-            <div className="mt-5">
-              <h5 className="text-xs font-semibold text-gray-300 mb-2 uppercase tracking-wide">Contact</h5>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                1‑800‑COMPOXEN<br />
-                info@compoxen.com<br />
-                Design Center: Salt Lake City, UT
-              </p>
-            </div>
-          </motion.div>
-
+          </div>
         </div>
+      </div>
 
-        {/* Divider & Copyright */}
-        <div className="section-divider mb-0" />
-        <div className="pt-10">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Compoxen. All rights reserved.
+      {/* Bottom bar */}
+      <div className="border-t border-white/6">
+        <div className="container mx-auto px-6 max-w-6xl py-5">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p className="text-white/20 text-xs">
+              © {new Date().getFullYear()} Compoxen, Inc. All rights reserved.
             </p>
-            <p className="text-gray-600 text-xs text-center sm:text-right">
-              Compoxen® | Designed in USA | Currently Serving UT, CO, ID, CA |{' '}
-              <Link href="/states" className="text-amber-500/70 hover:text-amber-400 transition-colors">
-                Check Availability
-              </Link>
+            <p className="text-white/15 text-xs">
+              Designed in USA · Currently Serving UT, CO, ID, CA
             </p>
           </div>
         </div>
-
       </div>
     </footer>
   )

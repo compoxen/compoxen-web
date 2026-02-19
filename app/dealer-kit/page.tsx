@@ -109,18 +109,18 @@ export default function DealerKitPage() {
           onChange={handleChange}
           required
         >
-          <option value="" className="bg-brand-dark text-white">Select State</option>
+          <option value="" className="bg-enterprise-950 text-white">Select State</option>
           {/* Active states first */}
           <optgroup label="Currently Serving">
             {ALL_US_STATES.filter(s => ACTIVE_STATE_ABBREVS.includes(s.abbreviation)).map((s) => (
-              <option key={s.abbreviation} value={s.abbreviation} className="bg-brand-dark text-white">
+              <option key={s.abbreviation} value={s.abbreviation} className="bg-enterprise-950 text-white">
                 {s.name} ✓
               </option>
             ))}
           </optgroup>
           <optgroup label="All States">
             {ALL_US_STATES.filter(s => !ACTIVE_STATE_ABBREVS.includes(s.abbreviation)).map((s) => (
-              <option key={s.abbreviation} value={s.abbreviation} className="bg-brand-dark text-white">
+              <option key={s.abbreviation} value={s.abbreviation} className="bg-enterprise-950 text-white">
                 {s.name}
               </option>
             ))}
@@ -129,12 +129,12 @@ export default function DealerKitPage() {
 
         {/* State availability indicator */}
         {selectedStateStatus && (
-          <div className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium ${
+          <div className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-xs font-medium ${
             selectedStateStatus === 'active'
-              ? 'bg-green-500/15 text-green-300 border border-green-500/20'
+              ? 'bg-green-500/10 text-green-300 border border-green-500/15'
               : selectedStateStatus === 'coming-soon'
-              ? 'bg-amber-500/15 text-amber-300 border border-amber-500/20'
-              : 'bg-white/5 text-white/60 border border-white/10'
+              ? 'bg-amber-500/10 text-amber-300 border border-amber-500/15'
+              : 'bg-white/4 text-white/50 border border-white/6'
           }`}>
             {selectedStateStatus === 'active' && <><CheckCircle size={14} /> Active territory — dealer kits ship immediately.</>}
             {selectedStateStatus === 'coming-soon' && <><Clock size={14} /> Expanding soon — your application will be prioritized.</>}
@@ -153,20 +153,20 @@ export default function DealerKitPage() {
         </Button>
       </form>
       
-      <p className="text-center text-white/40 text-sm mt-4">
+      <p className="text-center text-white/30 text-sm mt-4">
         For licensed contractors, distributors, and design professionals.
         <br />
-        <span className="text-white/25">🇺🇸 Designed in USA • Currently Serving UT, CO, ID, CA</span>
+        <span className="text-white/15">🇺🇸 Designed in USA · Currently Serving UT, CO, ID, CA</span>
       </p>
 
       {/* Additional CTA */}
-      <div className="mt-8 pt-6 border-t border-white/10 text-center">
+      <div className="mt-8 pt-6 border-t border-white/6 text-center">
         <Link
           href="/dealer"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-brand-amber text-black font-semibold text-sm rounded-lg transition-all duration-200 hover:bg-amber-500 hover:shadow-lg hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-amber text-black font-semibold text-sm rounded-xl transition-all hover:bg-amber-500"
         >
           Explore Dealer Dashboard
-          <ArrowRight size={18} />
+          <ArrowRight size={16} />
         </Link>
       </div>
     </LeadFormLayout>
