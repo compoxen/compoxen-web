@@ -1,0 +1,48 @@
+# Compoxen
+
+> Compoxen is a U.S. designed brand of premium composite fencing made from
+> mineral-reinforced polymer composite. Every product carries a 20-year
+> warranty, requires zero maintenance, ships in five architect-led colors
+> (Harbor Slate, Mesa Taupe, Shadow Forge, Redwood Ember, Cocoa Ridge),
+> and is sold and installed through a certified dealer network.
+> Compoxen is currently available in Utah, Colorado, Idaho, and California,
+> and is launching in Nevada (Sep 2026), Arizona (Oct 2026), and Wyoming
+> (Jan 2027).
+
+## Product
+- [What is composite fencing](https://compoxen.com/composite-fencing): pillar guide to composite fencing as a category and to Compoxen specifically
+- [Specifications](https://compoxen.com/specifications): warranty, fire rating, wind rating, temperature range, fastener system
+- [Why Compoxen](https://compoxen.com/why-compoxen): material science behind mineral-reinforced polymer composite
+- [Colors](https://compoxen.com/why-compoxen#colors): five architect-led palette options with hex values
+
+## Comparisons
+- [Composite vs wood fencing](https://compoxen.com/composite-fencing-vs-wood)
+- [Composite vs vinyl fencing](https://compoxen.com/composite-fencing-vs-vinyl)
+- [Composite vs metal fencing](https://compoxen.com/composite-fencing-vs-metal)
+
+## Installation & Cost
+- [Installation process](https://compoxen.com/installation): four-step certified installer process with HowTo schema
+- [Pricing](https://compoxen.com/pricing): public price ranges by project type and region
+
+## Availability
+- [All service areas](https://compoxen.com/states)
+- [California](https://compoxen.com/states/california) — 67+ certified installers
+- [Colorado](https://compoxen.com/states/colorado) — 32+ certified installers
+- [Idaho](https://compoxen.com/states/idaho) — 18+ certified installers
+- [Utah](https://compoxen.com/states/utah) — 45+ certified installers
+- [Nevada (launching Sep 2026)](https://compoxen.com/states/nevada)
+- [Arizona (launching Oct 2026)](https://compoxen.com/states/arizona)
+- [Wyoming (launching Jan 2027)](https://compoxen.com/states/wyoming)
+
+## Lead capture
+- [Get a quote](https://compoxen.com/get-quote)
+- [Become a dealer](https://compoxen.com/dealer-kit)
+
+## Reference
+- [FAQ](https://compoxen.com/faq): 30+ visible Q&As covering material, lifecycle, installation, cost, and availability
+- [Glossary](https://compoxen.com/glossary): composite fencing terminology
+- [About Compoxen](https://compoxen.com/about): company, design center, leadership
+- [Blog](https://compoxen.com/blog): editorial guides on composite fencing
+
+## Optional
+- [Privacy policy](https://compoxen.com/privacy-policy)

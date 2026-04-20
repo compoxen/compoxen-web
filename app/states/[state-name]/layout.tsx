@@ -1,6 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getStateBySlug, SERVICE_STATES, EXPANSION_STATES, BRAND } from '@/lib/constants'
+import SchemaScript from '@/components/SchemaScript'
+import {
+  getServiceAreaSchema,
+  getStateLocalBusinessSchema,
+  getBreadcrumbSchema,
+} from '@/lib/schema'
 
 // Generate static params for all known state pages
 export function generateStaticParams() {
@@ -50,5 +56,20 @@ export default async function StateLayout({
     notFound()
   }
 
-  return <>{children}</>
+  return (
+    <>
+      <SchemaScript
+        data={[
+          getServiceAreaSchema(state),
+          getStateLocalBusinessSchema(state),
+          getBreadcrumbSchema([
+            { name: 'Home', url: '/' },
+            { name: 'Service Areas', url: '/states' },
+            { name: state.name, url: `/states/${state.slug}` },
+          ]),
+        ]}
+      />
+      {children}
+    </>
+  )
 }

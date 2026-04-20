@@ -4,7 +4,7 @@ import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import SchemaScript from '@/components/SchemaScript'
-import { getOrganizationSchema, getProductSchema, getFAQSchema } from '@/lib/schema'
+import { getOrganizationSchema, getProductSchema, getFAQSchema, getWebSiteSchema } from '@/lib/schema'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -18,12 +18,13 @@ export const metadata: Metadata = {
     default: 'COMPOXEN | Premium Composite Fencing — Designed in USA',
     template: '%s | COMPOXEN'
   },
-  description: 'Premium composite fencing designed in the USA. 20-year warranty, zero maintenance. Currently serving UT, CO, ID, CA. Expanding nationwide.',
+  description: 'Premium composite fencing designed in the USA. 20-year warranty, zero maintenance. Serving the Western US — California, Colorado, Idaho, Utah, and expanding.',
   keywords: [
     'composite fencing', 'premium fence materials', 'contractor supply', 'modern fencing',
     'zero maintenance fence', 'designed in USA', 'composite fence panels',
-    'Utah fencing', 'Colorado fencing', 'Idaho fencing', 'California fencing',
+    'composite fence vs wood', 'composite fence vs vinyl', 'composite fence cost',
     'commercial fencing', 'residential fencing', 'architect fencing',
+    'California fencing', 'Colorado fencing', 'Idaho fencing', 'Utah fencing',
   ],
   openGraph: {
     type: 'website',
@@ -58,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth scroll-pt-24`}>
       <head>
-        <SchemaScript data={[getOrganizationSchema(), getProductSchema(), getFAQSchema()]} />
+        <SchemaScript data={[getOrganizationSchema(), getProductSchema(), getWebSiteSchema(), getFAQSchema()]} />
       </head>
       <body className="font-sans antialiased bg-white text-black min-h-screen flex flex-col">
           <Navigation />

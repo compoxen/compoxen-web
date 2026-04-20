@@ -4,6 +4,7 @@
  */
 
 import { BRAND, PRODUCT_SPECS, PRODUCT_COLORS, type StateInfo } from './constants'
+import { FAQS, type FAQItem } from './faqs'
 
 // Organization schema - used site-wide
 export function getOrganizationSchema() {
@@ -154,53 +155,21 @@ export function getLocalBusinessSchema() {
   }
 }
 
-// FAQ schema for common questions
-export function getFAQSchema() {
+// FAQ schema for common questions.
+// Pass an explicit subset of FAQs (e.g. for a state-specific page) or omit
+// to render the full canonical list from lib/faqs.ts.
+export function getFAQSchema(items: FAQItem[] = FAQS) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Where is Compoxen composite fencing available?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Compoxen is currently available in Utah, Colorado, Idaho, and California with certified installer networks. We are expanding to additional states — check availability for your zip code on our website.',
-        },
+    mainEntity: items.map(item => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
       },
-      {
-        '@type': 'Question',
-        name: 'What warranty does Compoxen offer?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: `Compoxen offers a ${PRODUCT_SPECS.warranty} warranty on all composite fencing products. Our mineral-reinforced polymer composites are engineered for long-term performance with zero maintenance.`,
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Is Compoxen fencing designed in the USA?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. Compoxen is designed in the USA at our innovation center in Salt Lake City, Utah. Our products are perfected in the Mountain West\'s extreme conditions before reaching your market.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'How does composite fencing compare to wood?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Compoxen composite fencing outperforms wood in every measurable way: it never rots, warps, or needs staining. Independent testing shows superior impact resistance, fade protection, and long-term stability with zero annual maintenance.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Can I become a Compoxen installer?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes! We\'re building a network of certified installers across the country. If you\'re in our current service area (UT, CO, ID, CA), apply now. If you\'re in another state, join our waiting list to be notified when we expand to your area.',
-        },
-      },
-    ],
+    })),
   }
 }
 
@@ -215,5 +184,145 @@ export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
       name: item.name,
       item: item.url.startsWith('http') ? item.url : `${BRAND.url}${item.url}`,
     })),
+  }
+}
+
+// WebSite schema with SearchAction (helps AI engines surface in-site search)
+export function getWebSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: BRAND.name,
+    url: BRAND.url,
+    publisher: {
+      '@type': 'Organization',
+      name: BRAND.name,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${BRAND.url}/search?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  }
+}
+
+// HowTo schema for the certified-installer process
+export interface HowToStep {
+  name: string
+  text: string
+}
+
+export function getHowToSchema(opts: {
+  name: string
+  description: string
+  totalTime?: string // ISO-8601 duration, e.g. "PT3D"
+  steps: HowToStep[]
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: opts.name,
+    description: opts.description,
+    totalTime: opts.totalTime,
+    step: opts.steps.map((step, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: step.name,
+      text: step.text,
+    })),
+  }
+}
+
+// Article / BlogPosting schema for editorial content
+export interface ArticleSchemaInput {
+  type?: 'Article' | 'BlogPosting'
+  url: string
+  headline: string
+  description: string
+  image: string
+  datePublished: string
+  dateModified?: string
+  authorName?: string
+  section?: string
+  keywords?: string[]
+}
+
+export function getArticleSchema(input: ArticleSchemaInput) {
+  const imageUrl = input.image.startsWith('http') ? input.image : `${BRAND.url}${input.image}`
+  return {
+    '@context': 'https://schema.org',
+    '@type': input.type ?? 'BlogPosting',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': input.url.startsWith('http') ? input.url : `${BRAND.url}${input.url}`,
+    },
+    headline: input.headline,
+    description: input.description,
+    image: [imageUrl],
+    datePublished: input.datePublished,
+    dateModified: input.dateModified ?? input.datePublished,
+    author: {
+      '@type': 'Organization',
+      name: input.authorName ?? `${BRAND.name} Editorial`,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: BRAND.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${BRAND.url}/images/compoxen-logo.png`,
+      },
+    },
+    articleSection: input.section,
+    keywords: input.keywords?.join(', '),
+  }
+}
+
+// DefinedTerm / DefinedTermSet for the glossary
+export interface DefinedTerm {
+  term: string
+  definition: string
+  alternateName?: string[]
+}
+
+export function getDefinedTermSetSchema(name: string, terms: DefinedTerm[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTermSet',
+    name,
+    url: `${BRAND.url}/glossary`,
+    hasDefinedTerm: terms.map(t => ({
+      '@type': 'DefinedTerm',
+      name: t.term,
+      description: t.definition,
+      alternateName: t.alternateName,
+      inDefinedTermSet: `${BRAND.url}/glossary`,
+    })),
+  }
+}
+
+// State-specific LocalBusiness (per-state install network)
+export function getStateLocalBusinessSchema(state: StateInfo) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: `${BRAND.name} — ${state.name}`,
+    description: `Certified Compoxen composite fencing installer network serving ${state.name}.`,
+    telephone: BRAND.phone,
+    email: BRAND.email,
+    url: `${BRAND.url}/states/${state.slug}`,
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: state.abbreviation,
+      addressCountry: 'US',
+    },
+    areaServed: {
+      '@type': 'State',
+      name: state.name,
+    },
+    priceRange: '$$$',
   }
 }

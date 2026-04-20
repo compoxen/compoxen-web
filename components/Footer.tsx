@@ -58,7 +58,7 @@ export default function Footer() {
 
       {/* Main Footer Grid */}
       <div className="container mx-auto px-6 max-w-6xl py-14 md:py-16">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-8 lg:gap-10">
 
           {/* Brand Column */}
           <div className="col-span-2 sm:col-span-3 lg:col-span-2">
@@ -72,16 +72,30 @@ export default function Footer() {
               20-year warranty. Zero maintenance. Five architect-led colors.
             </p>
             <div className="inline-flex items-center gap-2 badge-dark text-xs">
-              🇺🇸 Designed in Salt Lake City, UT
+              🇺🇸 Designed in the USA
             </div>
           </div>
 
           {/* Products */}
           <div>
-            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Products</h4>
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Product</h4>
             <ul className="space-y-2.5 text-[13px]">
+              <li><Link href="/composite-fencing" className="text-white/40 hover:text-white transition-colors duration-200">Composite Fencing</Link></li>
+              <li><Link href="/specifications" className="text-white/40 hover:text-white transition-colors duration-200">Specifications</Link></li>
+              <li><Link href="/installation" className="text-white/40 hover:text-white transition-colors duration-200">Installation</Link></li>
+              <li><Link href="/pricing" className="text-white/40 hover:text-white transition-colors duration-200">Pricing</Link></li>
               <li><Link href="/#architect-colors" className="text-white/40 hover:text-white transition-colors duration-200">Colors & Textures</Link></li>
               <li><Link href="/#installations" className="text-white/40 hover:text-white transition-colors duration-200">Gallery</Link></li>
+            </ul>
+          </div>
+
+          {/* Compare */}
+          <div>
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Compare</h4>
+            <ul className="space-y-2.5 text-[13px]">
+              <li><Link href="/composite-fencing-vs-wood" className="text-white/40 hover:text-white transition-colors duration-200">vs Wood</Link></li>
+              <li><Link href="/composite-fencing-vs-vinyl" className="text-white/40 hover:text-white transition-colors duration-200">vs Vinyl</Link></li>
+              <li><Link href="/composite-fencing-vs-metal" className="text-white/40 hover:text-white transition-colors duration-200">vs Metal</Link></li>
               <li><Link href="/why-compoxen" className="text-white/40 hover:text-white transition-colors duration-200">Material Science</Link></li>
             </ul>
           </div>
@@ -90,10 +104,10 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Service Areas</h4>
             <ul className="space-y-2.5 text-[13px]">
-              <li><Link href="/states/utah" className="text-white/40 hover:text-white transition-colors duration-200">Utah</Link></li>
+              <li><Link href="/states/california" className="text-white/40 hover:text-white transition-colors duration-200">California</Link></li>
               <li><Link href="/states/colorado" className="text-white/40 hover:text-white transition-colors duration-200">Colorado</Link></li>
               <li><Link href="/states/idaho" className="text-white/40 hover:text-white transition-colors duration-200">Idaho</Link></li>
-              <li><Link href="/states/california" className="text-white/40 hover:text-white transition-colors duration-200">California</Link></li>
+              <li><Link href="/states/utah" className="text-white/40 hover:text-white transition-colors duration-200">Utah</Link></li>
               <li><Link href="/states" className="text-amber-500/70 hover:text-amber-400 transition-colors duration-200">All Areas →</Link></li>
             </ul>
           </div>
@@ -112,7 +126,10 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Company</h4>
             <ul className="space-y-2.5 text-[13px]">
-              <li><Link href="/why-compoxen" className="text-white/40 hover:text-white transition-colors duration-200">About</Link></li>
+              <li><Link href="/about" className="text-white/40 hover:text-white transition-colors duration-200">About</Link></li>
+              <li><Link href="/blog" className="text-white/40 hover:text-white transition-colors duration-200">Blog</Link></li>
+              <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors duration-200">FAQ</Link></li>
+              <li><Link href="/glossary" className="text-white/40 hover:text-white transition-colors duration-200">Glossary</Link></li>
               <li><Link href="/privacy-policy" className="text-white/40 hover:text-white transition-colors duration-200">Privacy</Link></li>
               <li><a href="mailto:info@compoxen.com" className="text-white/40 hover:text-white transition-colors duration-200">Contact</a></li>
             </ul>
@@ -128,7 +145,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Compoxen, Inc. All rights reserved.
             </p>
             <p className="text-white/15 text-xs">
-              Designed in USA · Currently Serving UT, CO, ID, CA
+              Designed in the USA · Serving the Western US
             </p>
           </div>
         </div>

@@ -31,10 +31,11 @@ export default function Navigation() {
   }, [isOpen])
 
   const navLinks = [
-    { label: 'Products', href: '/#architect-colors' },
+    { label: 'Composite Fencing', href: '/composite-fencing' },
+    { label: 'Pricing', href: '/pricing' },
     { label: 'Gallery', href: '/#installations' },
-    { label: 'Why Composite', href: '/why-compoxen' },
     { label: 'Service Areas', href: '/states' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Dealers', href: '/dealer-kit' },
   ]
 
