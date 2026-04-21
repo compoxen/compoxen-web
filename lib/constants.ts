@@ -11,7 +11,7 @@ export const BRAND = {
   designCenter: 'Salt Lake City, UT',
   phone: '1-800-COMPOXEN',
   localPhone: '385-483-3700',
-  email: 'info@compoxen.com',
+  email: 'contact@compoxen.com',
   privacyEmail: 'privacy@compoxen.com',
   address: 'Lehi, Utah',
   url: 'https://compoxen.com',

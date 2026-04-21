@@ -131,7 +131,7 @@ export default function Footer() {
               <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors duration-200">FAQ</Link></li>
               <li><Link href="/glossary" className="text-white/40 hover:text-white transition-colors duration-200">Glossary</Link></li>
               <li><Link href="/privacy-policy" className="text-white/40 hover:text-white transition-colors duration-200">Privacy</Link></li>
-              <li><a href="mailto:info@compoxen.com" className="text-white/40 hover:text-white transition-colors duration-200">Contact</a></li>
+              <li><a href="mailto:contact@compoxen.com" className="text-white/40 hover:text-white transition-colors duration-200">Contact</a></li>
             </ul>
           </div>
         </div>
