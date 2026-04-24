@@ -72,7 +72,7 @@ export default function InstallationPage() {
       <ContentSection>
         <Prose>
           <p className="text-xl text-enterprise-950 font-medium">
-            Compoxen is installed exclusively through certified dealers. The
+            Compoxen is installed exclusively by Compoxen-trained crews. The
             20-year warranty assumes professional installation, which is also why
             the same crew that bids the job is the one that walks the finished
             run with you at the end.
@@ -104,7 +104,7 @@ export default function InstallationPage() {
 
           <h2>Can I install Compoxen myself?</h2>
           <p>
-            No. Compoxen is sold and installed only through certified dealers.
+            No. Compoxen is sold and installed only by Compoxen-trained crews.
             The hidden fastener system, engineered post spacing, and warranty
             terms all assume a professional install — that is what allows the
             20-year warranty to be honored.
@@ -112,9 +112,9 @@ export default function InstallationPage() {
 
           <h2>What about my old fence?</h2>
           <p>
-            Most certified dealers will quote removal and disposal of an existing
-            wood, vinyl, or chain-link fence as part of the project. Confirm
-            scope and pricing on the written quote.
+            We quote removal and disposal of an existing wood, vinyl, or
+            chain-link fence as part of the project. Confirm scope and pricing
+            on the written quote.
           </p>
 
           <h2>What does it cost?</h2>

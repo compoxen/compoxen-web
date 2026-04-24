@@ -27,7 +27,7 @@ export default function Footer() {
             <div className="text-center md:text-left">
               <h3 className="text-xl font-semibold text-white mb-2">Stay in the loop</h3>
               <p className="text-white/40 text-sm max-w-sm">
-                Product updates, expansion news, and dealer opportunities. No spam, ever.
+                Product updates, install tips, and Utah project highlights. No spam, ever.
               </p>
             </div>
             {subscribed ? (
@@ -68,8 +68,8 @@ export default function Footer() {
               className="h-7 mb-5 brightness-0 invert"
             />
             <p className="text-white/30 leading-relaxed text-sm max-w-xs mb-5">
-              Premium composite fencing engineered in the USA. 
-              20-year warranty. Zero maintenance. Five architect-led colors.
+              Composite fence supply + professional installation across Utah.
+              20-year warranty. Zero maintenance. Free quotes statewide.
             </p>
             <div className="inline-flex items-center gap-2 badge-dark text-xs">
               🇺🇸 Designed in the USA
@@ -100,25 +100,28 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Service Areas */}
+          {/* Top Cities */}
           <div>
-            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Service Areas</h4>
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Top Cities</h4>
             <ul className="space-y-2.5 text-[13px]">
-              <li><Link href="/states/california" className="text-white/40 hover:text-white transition-colors duration-200">California</Link></li>
-              <li><Link href="/states/colorado" className="text-white/40 hover:text-white transition-colors duration-200">Colorado</Link></li>
-              <li><Link href="/states/idaho" className="text-white/40 hover:text-white transition-colors duration-200">Idaho</Link></li>
-              <li><Link href="/states/utah" className="text-white/40 hover:text-white transition-colors duration-200">Utah</Link></li>
-              <li><Link href="/states" className="text-amber-500/70 hover:text-amber-400 transition-colors duration-200">All Areas →</Link></li>
+              <li><Link href="/composite-fence-salt-lake-city" className="text-white/40 hover:text-white transition-colors duration-200">Salt Lake City</Link></li>
+              <li><Link href="/composite-fence-lehi" className="text-white/40 hover:text-white transition-colors duration-200">Lehi</Link></li>
+              <li><Link href="/composite-fence-provo" className="text-white/40 hover:text-white transition-colors duration-200">Provo</Link></li>
+              <li><Link href="/composite-fence-park-city" className="text-white/40 hover:text-white transition-colors duration-200">Park City</Link></li>
+              <li><Link href="/composite-fence-south-jordan" className="text-white/40 hover:text-white transition-colors duration-200">South Jordan</Link></li>
+              <li><Link href="/service-areas" className="text-amber-500/70 hover:text-amber-400 transition-colors duration-200">All Cities →</Link></li>
             </ul>
           </div>
 
-          {/* Partners */}
+          {/* Services */}
           <div>
-            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Partners</h4>
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Services</h4>
             <ul className="space-y-2.5 text-[13px]">
-              <li><Link href="/dealer-kit" className="text-white/40 hover:text-white transition-colors duration-200">Become a Dealer</Link></li>
-              <li><Link href="/get-quote" className="text-white/40 hover:text-white transition-colors duration-200">Get a Quote</Link></li>
-              <li><Link href="/dealer" className="text-white/40 hover:text-white transition-colors duration-200">Dealer Dashboard</Link></li>
+              <li><Link href="/services/composite-fence-installation" className="text-white/40 hover:text-white transition-colors duration-200">Fence Installation</Link></li>
+              <li><Link href="/services/composite-privacy-fence" className="text-white/40 hover:text-white transition-colors duration-200">Privacy Fence</Link></li>
+              <li><Link href="/services/composite-pool-fence" className="text-white/40 hover:text-white transition-colors duration-200">Pool Fence</Link></li>
+              <li><Link href="/services/composite-fence-supply" className="text-white/40 hover:text-white transition-colors duration-200">Material Supply</Link></li>
+              <li><Link href="/services" className="text-amber-500/70 hover:text-amber-400 transition-colors duration-200">All Services →</Link></li>
             </ul>
           </div>
 
@@ -145,7 +148,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Compoxen, Inc. All rights reserved.
             </p>
             <p className="text-white/15 text-xs">
-              Designed in the USA · Serving the Western US
+              Designed in the USA · Statewide Utah service
             </p>
           </div>
         </div>

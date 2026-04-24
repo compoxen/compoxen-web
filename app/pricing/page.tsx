@@ -87,18 +87,19 @@ export default function PricingPage() {
             <li><strong>Gates:</strong> single walk gates and double drive gates are quoted per unit.</li>
           </ul>
 
-          <h2>Dealer and wholesale pricing</h2>
+          <h2>Material-only and contractor pricing</h2>
           <p>
-            Certified dealers buy on a tiered structure that improves with
-            sustained sales volume. The current tiers and onboarding terms are
-            in the <a href="/dealer-kit">dealer kit</a>.
+            Material-only pricing is available out of our Lehi warehouse for Utah
+            contractors and out-of-state homeowners doing their own installs.
+            Contractor pricing improves with sustained volume.{' '}
+            <a href="/get-quote">Request a material quote</a> with your project
+            footage and color.
           </p>
 
           <h2>Financing</h2>
           <p>
-            Several Compoxen certified installer networks offer financing through
-            third-party providers. Ask your dealer for the current options when
-            you request a quote.
+            We offer financing on installed projects through third-party
+            providers. Ask about current options when you request a quote.
           </p>
 
           <h2>How does the cost compare to wood, vinyl, and metal?</h2>
@@ -114,7 +115,7 @@ export default function PricingPage() {
         </Prose>
       </ContentSection>
 
-      <ClosingCTA title="Want a real number for your project?" body="Send your zip code and project type. A certified dealer replies with a written, scoped quote." />
+      <ClosingCTA title="Want a real number for your project?" body="Send your Utah ZIP code and project type. We reply with a written, scoped quote." />
     </>
   )
 }

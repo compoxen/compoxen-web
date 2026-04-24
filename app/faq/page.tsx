@@ -88,8 +88,8 @@ export default function FAQPage() {
           <div className="mt-12 p-8 md:p-10 bg-enterprise-950 text-white rounded-2xl text-center">
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Still have a question?</h2>
             <p className="mt-3 text-white/60 max-w-xl mx-auto">
-              Get a region-specific answer in writing. A certified dealer will reply with pricing,
-              lead time, and availability for your zip code.
+              Get a project-specific answer in writing. We&apos;ll reply with pricing,
+              lead time, and an install window for your Utah ZIP code.
             </p>
             <Link
               href="/get-quote"

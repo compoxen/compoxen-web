@@ -82,7 +82,7 @@ export default function Home() {
             className="inline-flex items-center gap-3 badge-dark mb-10"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-white/80 text-[13px] font-medium">Now serving Utah, Colorado, Idaho & California</span>
+            <span className="text-white/80 text-[13px] font-medium">Composite fence supply + install — statewide Utah</span>
           </motion.div>
 
           {/* Main Headline — enterprise scale */}
@@ -122,10 +122,10 @@ export default function Home() {
               <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
             </Link>
             <Link
-              href="/dealer-kit"
+              href="/service-areas"
               className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium text-base px-8 py-4 rounded-xl hover:bg-white/15 hover:border-white/30 transition-all"
             >
-              Dealer Kit
+              Utah Service Areas
               <ChevronRight size={18} className="text-white/50" />
             </Link>
           </motion.div>
@@ -520,9 +520,9 @@ export default function Home() {
               {
                 icon: <Download size={20} />,
                 title: '2026 Contractor Guide',
-                desc: 'Specs, pricing tiers, installation diagrams — engineered for contractors who demand clarity.',
+                desc: 'Specs, pricing, installation diagrams — engineered for contractors who demand clarity.',
                 cta: 'Order Free Guide',
-                href: '/dealer-kit',
+                href: '/get-quote',
                 tag: '2026 Edition · PDF + Print'
               },
               {
@@ -692,7 +692,7 @@ export default function Home() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-5"
           >
             {[
-              { icon: Package, label: 'Order Samples', desc: 'See and feel the premium finish', href: '/dealer-kit' },
+              { icon: Package, label: 'Order Samples', desc: 'See and feel the premium finish', href: '/get-quote' },
               { icon: Lightbulb, label: 'Get Inspired', desc: 'Browse real installations', href: '/#installations' },
               { icon: Calculator, label: 'Request a Quote', desc: 'Get pricing for your project', href: '/get-quote' }
             ].map((item, i) => (

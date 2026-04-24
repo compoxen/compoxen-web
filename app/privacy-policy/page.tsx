@@ -71,11 +71,9 @@ export default function PrivacyPolicy() {
               We may collect personally identifiable information that you voluntarily provide to us when you:
             </p>
             <ul className="list-disc pl-6 text-neutral-600 space-y-2 mb-6">
-              <li>Fill out a dealer kit request form</li>
               <li>Request a quote for our products</li>
               <li>Subscribe to our newsletter</li>
               <li>Contact us through our website</li>
-              <li>Create an account on our dealer portal</li>
             </ul>
             <p className="text-neutral-600 leading-relaxed mb-4">
               This information may include:

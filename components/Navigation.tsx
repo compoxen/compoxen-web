@@ -31,12 +31,12 @@ export default function Navigation() {
   }, [isOpen])
 
   const navLinks = [
+    { label: 'Services', href: '/services' },
     { label: 'Composite Fencing', href: '/composite-fencing' },
     { label: 'Pricing', href: '/pricing' },
+    { label: 'Service Areas', href: '/service-areas' },
     { label: 'Gallery', href: '/#installations' },
-    { label: 'Service Areas', href: '/states' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Dealers', href: '/dealer-kit' },
   ]
 
   return (
@@ -44,10 +44,10 @@ export default function Navigation() {
       {/* Announcement Bar */}
       <div className="announcement-bar text-center py-2 px-4">
         <p className="text-[13px] text-white/60 font-medium">
-          <span className="text-amber-400/80">New:</span>{' '}
-          Now serving California — 
-          <Link href="/states/california" className="text-white/80 hover:text-white underline underline-offset-2 ml-1 transition-colors">
-            check availability
+          <span className="text-amber-400/80">Utah:</span>{' '}
+          Composite fence supply + install statewide —
+          <Link href="/service-areas" className="text-white/80 hover:text-white underline underline-offset-2 ml-1 transition-colors">
+            see your city
           </Link>
         </p>
       </div>

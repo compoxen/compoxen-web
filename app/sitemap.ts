@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next'
-import { SERVICE_STATES, EXPANSION_STATES, BRAND } from '@/lib/constants'
+import { BRAND } from '@/lib/constants'
+import { getAllCities, getActiveCounties, COUNTY_META, getCityHref } from '@/lib/cities'
+import { services } from '@/lib/services'
 import { BLOG_POSTS } from '@/lib/blog'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl,                                  lastModified: now, changeFrequency: 'weekly',  priority: 1.0  },
     { url: `${baseUrl}/composite-fencing`,           lastModified: now, changeFrequency: 'monthly', priority: 0.95 },
+    { url: `${baseUrl}/service-areas`,               lastModified: now, changeFrequency: 'weekly',  priority: 0.95 },
+    { url: `${baseUrl}/services`,                    lastModified: now, changeFrequency: 'monthly', priority: 0.9  },
     { url: `${baseUrl}/why-compoxen`,                lastModified: now, changeFrequency: 'monthly', priority: 0.8  },
     { url: `${baseUrl}/specifications`,              lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${baseUrl}/installation`,                lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
@@ -20,25 +24,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/glossary`,                    lastModified: now, changeFrequency: 'monthly', priority: 0.7  },
     { url: `${baseUrl}/about`,                       lastModified: now, changeFrequency: 'monthly', priority: 0.6  },
     { url: `${baseUrl}/blog`,                        lastModified: now, changeFrequency: 'weekly',  priority: 0.9  },
-    { url: `${baseUrl}/get-quote`,                   lastModified: now, changeFrequency: 'monthly', priority: 0.9  },
-    { url: `${baseUrl}/dealer-kit`,                  lastModified: now, changeFrequency: 'monthly', priority: 0.9  },
-    { url: `${baseUrl}/dealer`,                      lastModified: now, changeFrequency: 'monthly', priority: 0.7  },
-    { url: `${baseUrl}/states`,                      lastModified: now, changeFrequency: 'weekly',  priority: 0.9  },
+    { url: `${baseUrl}/get-quote`,                   lastModified: now, changeFrequency: 'monthly', priority: 0.95 },
     { url: `${baseUrl}/privacy-policy`,              lastModified: now, changeFrequency: 'yearly',  priority: 0.3  },
   ]
 
-  const activeStatePages: MetadataRoute.Sitemap = Object.values(SERVICE_STATES).map(state => ({
-    url: `${baseUrl}/states/${state.slug}`,
+  const cityPages: MetadataRoute.Sitemap = getAllCities().map(city => ({
+    url: `${baseUrl}${getCityHref(city)}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
-    priority: 0.85,
+    priority: city.tier === 'tier1' ? 0.9 : city.tier === 'tier2' ? 0.8 : 0.7,
   }))
 
-  const comingSoonPages: MetadataRoute.Sitemap = Object.values(EXPANSION_STATES).map(state => ({
-    url: `${baseUrl}/states/${state.slug}`,
+  const countyPages: MetadataRoute.Sitemap = getActiveCounties().map(county => ({
+    url: `${baseUrl}/counties/${COUNTY_META[county].slug}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
-    priority: 0.6,
+    priority: 0.75,
+  }))
+
+  const servicePages: MetadataRoute.Sitemap = services.map(s => ({
+    url: `${baseUrl}/services/${s.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
   }))
 
   const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map(post => ({
@@ -48,5 +56,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }))
 
-  return [...staticPages, ...activeStatePages, ...comingSoonPages, ...blogPages]
+  return [...staticPages, ...cityPages, ...countyPages, ...servicePages, ...blogPages]
 }

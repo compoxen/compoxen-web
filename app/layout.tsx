@@ -18,20 +18,20 @@ export const metadata: Metadata = {
     default: 'COMPOXEN | Premium Composite Fencing — Designed in USA',
     template: '%s | COMPOXEN'
   },
-  description: 'Premium composite fencing designed in the USA. 20-year warranty, zero maintenance. Serving the Western US — California, Colorado, Idaho, Utah, and expanding.',
+  description: 'Premium composite fence supply + professional installation across Utah. 20-year warranty, zero maintenance, five architect-led colors. Free statewide quotes.',
   keywords: [
-    'composite fencing', 'premium fence materials', 'contractor supply', 'modern fencing',
-    'zero maintenance fence', 'designed in USA', 'composite fence panels',
-    'composite fence vs wood', 'composite fence vs vinyl', 'composite fence cost',
-    'commercial fencing', 'residential fencing', 'architect fencing',
-    'California fencing', 'Colorado fencing', 'Idaho fencing', 'Utah fencing',
+    'composite fencing', 'composite fence Utah', 'Utah fence installation',
+    'composite fence supply Utah', 'Salt Lake City fence', 'Lehi fence', 'Provo fence',
+    'Park City fence', 'composite fence vs wood', 'composite fence vs vinyl',
+    'composite fence cost Utah', 'HOA approved fence Utah', 'pool fence Utah',
+    'commercial fencing Utah', 'residential fence Utah', 'designed in USA',
   ],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     siteName: 'COMPOXEN',
-    title: 'COMPOXEN | Premium Composite Fencing — Designed in USA',
-    description: 'Premium composite fencing designed in the USA. 20-year warranty, zero maintenance.',
+    title: 'COMPOXEN | Utah Composite Fence Supply + Install',
+    description: 'Composite fence supply + install across Utah. 20-year warranty, zero maintenance.',
     images: [{ url: '/images/hero-fence-bg.jpg', width: 1200, height: 630, alt: 'COMPOXEN Premium Composite Fencing' }],
   },
   twitter: {

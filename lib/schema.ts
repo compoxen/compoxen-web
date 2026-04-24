@@ -3,7 +3,9 @@
  * Provides structured data for SEO across the Compoxen platform
  */
 
-import { BRAND, PRODUCT_SPECS, PRODUCT_COLORS, type StateInfo } from './constants'
+import { BRAND, PRODUCT_SPECS, PRODUCT_COLORS } from './constants'
+import type { CityData } from './cities'
+import type { ServiceData } from './services'
 import { FAQS, type FAQItem } from './faqs'
 
 // Organization schema - used site-wide
@@ -31,9 +33,6 @@ export function getOrganizationSchema() {
     },
     areaServed: [
       { '@type': 'State', name: 'Utah' },
-      { '@type': 'State', name: 'Colorado' },
-      { '@type': 'State', name: 'Idaho' },
-      { '@type': 'State', name: 'California' },
     ],
   }
 }
@@ -75,9 +74,6 @@ export function getProductSchema() {
       availability: 'https://schema.org/InStock',
       areaServed: [
         { '@type': 'State', name: 'Utah' },
-        { '@type': 'State', name: 'Colorado' },
-        { '@type': 'State', name: 'Idaho' },
-        { '@type': 'State', name: 'California' },
       ],
       priceCurrency: 'USD',
     },
@@ -91,40 +87,36 @@ export function getProductSchema() {
   }
 }
 
-// Service area schema for state pages
-export function getServiceAreaSchema(state: StateInfo) {
-  const isActive = state.status === 'active'
+// City-level Service schema (one per city landing page)
+export function getCityServiceSchema(city: CityData, service?: ServiceData) {
+  const serviceName = service
+    ? `${service.title} in ${city.name}, UT`
+    : `Composite Fence Supply & Installation in ${city.name}, UT`
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: `Compoxen Composite Fencing in ${state.name}`,
-    description: state.description,
+    name: serviceName,
+    serviceType: service?.title ?? 'Composite Fence Installation',
+    description: service?.heroDescription ?? `Compoxen composite fence supply and installation in ${city.name}, Utah.`,
     provider: {
-      '@type': 'Organization',
+      '@type': 'LocalBusiness',
       name: BRAND.name,
+      telephone: BRAND.phone,
       url: BRAND.url,
     },
     areaServed: {
-      '@type': 'State',
-      name: state.name,
+      '@type': 'City',
+      name: city.name,
       containedInPlace: {
-        '@type': 'Country',
-        name: 'United States',
+        '@type': 'AdministrativeArea',
+        name: `${city.county} County, Utah`,
       },
     },
-    availableChannel: isActive ? {
-      '@type': 'ServiceChannel',
-      serviceUrl: `${BRAND.url}/states/${state.slug}`,
-      serviceSmsNumber: BRAND.phone,
-    } : undefined,
-    offers: isActive ? {
+    offers: {
       '@type': 'Offer',
       availability: 'https://schema.org/InStock',
-    } : {
-      '@type': 'Offer',
-      availability: 'https://schema.org/PreOrder',
-      availabilityStarts: state.launchDate,
+      priceCurrency: 'USD',
     },
   }
 }
@@ -304,25 +296,38 @@ export function getDefinedTermSetSchema(name: string, terms: DefinedTerm[]) {
   }
 }
 
-// State-specific LocalBusiness (per-state install network)
-export function getStateLocalBusinessSchema(state: StateInfo) {
+// City-level LocalBusiness schema (per-city install + supply branch)
+export function getCityLocalBusinessSchema(city: CityData) {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: `${BRAND.name} — ${state.name}`,
-    description: `Certified Compoxen composite fencing installer network serving ${state.name}.`,
+    '@id': `${BRAND.url}/composite-fence-${city.slug}#localbusiness`,
+    name: `${BRAND.name} — ${city.name}`,
+    description: `Composite fence supply and certified installation in ${city.name}, Utah. ${PRODUCT_SPECS.warranty} warranty.`,
     telephone: BRAND.phone,
     email: BRAND.email,
-    url: `${BRAND.url}/states/${state.slug}`,
+    url: `${BRAND.url}/composite-fence-${city.slug}`,
     address: {
       '@type': 'PostalAddress',
-      addressRegion: state.abbreviation,
+      addressLocality: BRAND.addressLocality,
+      addressRegion: BRAND.addressRegion,
+      postalCode: BRAND.addressPostalCode,
       addressCountry: 'US',
+      streetAddress: '1500 N Technology Way',
     },
     areaServed: {
-      '@type': 'State',
-      name: state.name,
+      '@type': 'City',
+      name: city.name,
+      containedInPlace: {
+        '@type': 'AdministrativeArea',
+        name: `${city.county} County, Utah`,
+      },
     },
     priceRange: '$$$',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: BRAND.googleRating,
+      reviewCount: 87,
+    },
   }
 }

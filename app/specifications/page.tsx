@@ -109,8 +109,10 @@ export default function SpecificationsPage() {
 
           <h2>Where to buy</h2>
           <p>
-            See current <a href="/states">service areas</a> or use the availability
-            checker on the home page to route your zip code to a certified dealer.
+            We sell and install Compoxen across all of Utah. See our{' '}
+            <a href="/service-areas">service areas</a> or use the availability
+            checker on the home page to confirm your ZIP. Material can ship
+            anywhere in the continental U.S.
           </p>
         </Prose>
       </ContentSection>

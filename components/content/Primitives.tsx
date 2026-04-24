@@ -66,7 +66,7 @@ function formatDate(iso: string) {
 
 export function ClosingCTA({
   title = 'Ready for a real number?',
-  body = 'A certified dealer will reply with pricing, lead time, and availability for your zip code.',
+  body = "We'll reply with pricing, lead time, and availability for your Utah project.",
   primary = { label: 'Get a Quote', href: '/get-quote' },
 }: {
   title?: string

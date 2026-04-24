@@ -56,17 +56,14 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // Consolidate duplicate quote page
-      {
-        source: '/request-quote',
-        destination: '/get-quote',
-        permanent: true,
-      },
-      // Fix broken resource hub link
-      {
-        source: '/get-dealer-kit',
-        destination: '/dealer-kit',
-        permanent: true,
-      },
+      { source: '/request-quote',  destination: '/get-quote',     permanent: true },
+      // Retired dealer funnel
+      { source: '/get-dealer-kit', destination: '/get-quote',     permanent: true },
+      { source: '/dealer-kit',     destination: '/get-quote',     permanent: true },
+      { source: '/dealer',         destination: '/',              permanent: true },
+      // Retired multi-state pages
+      { source: '/states',         destination: '/service-areas', permanent: true },
+      { source: '/states/:slug*',  destination: '/service-areas', permanent: true },
     ];
   },
 };

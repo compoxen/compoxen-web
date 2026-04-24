@@ -270,10 +270,10 @@ export default function WhyCompoxen() {
             className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3"
           >
             {[
-              { state: 'Utah', status: 'HQ & Testing' },
-              { state: 'Colorado', status: 'Active' },
-              { state: 'Idaho', status: 'Active' },
-              { state: 'California', status: 'Active' },
+              { state: 'Salt Lake County', status: 'Active' },
+              { state: 'Utah County',      status: 'Active' },
+              { state: 'Davis & Weber',    status: 'Active' },
+              { state: 'Wasatch & Summit', status: 'Active' },
             ].map((item) => (
               <motion.div key={item.state} variants={fadeUp} className="card-enterprise p-4 text-center">
                 <div className="font-semibold text-enterprise-950">{item.state}</div>
@@ -288,8 +288,8 @@ export default function WhyCompoxen() {
             viewport={{ once: true }}
             className="mt-6 text-center"
           >
-            <Link href="/states" className="text-amber-700 font-medium text-sm hover:underline">
-              View all service areas & expansion timeline →
+            <Link href="/service-areas" className="text-amber-700 font-medium text-sm hover:underline">
+              View all Utah service areas →
             </Link>
           </motion.div>
         </div>

@@ -98,7 +98,7 @@ export const FAQS: FAQItem[] = [
   {
     section: 'Cost & purchase',
     q: 'How much does composite fencing cost per linear foot?',
-    a: 'Installed Compoxen composite fencing typically ranges from $45 to $85 per linear foot depending on color, height, site complexity, and region. Material-only pricing is available to certified dealers. Request a region-specific quote for an exact number.',
+    a: 'Installed Compoxen composite fencing in Utah typically ranges from $45 to $85 per linear foot depending on color, height, site complexity, and location. Material-only pricing is available out of our Lehi warehouse. Request a quote for an exact number on your project.',
   },
   {
     section: 'Cost & purchase',
@@ -113,7 +113,7 @@ export const FAQS: FAQItem[] = [
   {
     section: 'Cost & purchase',
     q: 'Is there a minimum order?',
-    a: 'There is no homeowner minimum order for installed projects sold through certified dealers. Wholesale dealer accounts have separate volume terms outlined in the dealer kit.',
+    a: 'There is no minimum order for installed projects in Utah. Material-only orders out of our Lehi warehouse have a small minimum to cover handling — request a material quote for current terms.',
   },
   {
     section: 'Cost & purchase',
@@ -152,37 +152,27 @@ export const FAQS: FAQItem[] = [
   {
     section: 'Availability & service area',
     q: 'Where is Compoxen composite fencing available?',
-    a: 'Compoxen is currently available in California, Colorado, Idaho, and Utah with certified installer networks in each state. We are launching in Nevada (September 2026), Arizona (October 2026), and Wyoming (January 2027), and are taking waitlist signups for additional states.',
+    a: 'Compoxen is a Utah company. We supply composite fence material and install it across the entire state of Utah — Salt Lake, Utah, Davis, Weber, Tooele, Wasatch, Summit, and Cache counties. Material kits also ship to most US states for DIY installs.',
   },
   {
     section: 'Availability & service area',
-    q: 'When is Compoxen launching in Nevada?',
-    a: 'Compoxen is scheduled to launch in Nevada in September 2026, with installer partners in the Las Vegas and Reno metros. Join the waitlist on the Nevada page to lock in priority for the first project slots.',
+    q: 'Do you install in my Utah city?',
+    a: 'Yes. If your address has a Utah ZIP (840–847), Compoxen installs there. Use the availability checker on the home page or visit /service-areas to find your city directly.',
   },
   {
     section: 'Availability & service area',
-    q: 'When is Compoxen launching in Arizona?',
-    a: 'Compoxen is scheduled to launch in Arizona in October 2026, beginning with the Phoenix metro and expanding to Tucson. Join the Arizona waitlist for early access.',
-  },
-  {
-    section: 'Availability & service area',
-    q: 'When is Compoxen launching in Wyoming?',
-    a: 'Compoxen is scheduled to launch in Wyoming in January 2027, focused initially on Cheyenne and Jackson. Join the Wyoming waitlist to be contacted as soon as installer onboarding completes.',
+    q: 'How fast can you start a project in Utah?',
+    a: 'Most Utah projects book within a week of quote acceptance and finish in 2–4 days for a typical residential lot. Larger or commercial projects are scheduled per scope.',
   },
   {
     section: 'Availability & service area',
     q: 'Is Compoxen designed in the USA?',
-    a: 'Yes. Compoxen is designed in the United States and tested across the climate extremes of the Mountain West and West Coast before any product reaches market.',
+    a: 'Yes. Compoxen is designed in the United States and tested in Utah’s extreme climate — high-altitude UV, freeze-thaw, and dry desert wind — before any product reaches market.',
   },
   {
     section: 'Availability & service area',
-    q: 'How do I find a certified Compoxen installer near me?',
-    a: 'The fastest path is to enter your zip code in the availability checker on the Compoxen home page or any state page. The system returns whether your address is in an active service area, the launch date if it is in an expansion state, or the waitlist signup if it is outside both.',
-  },
-  {
-    section: 'Availability & service area',
-    q: 'How do I become a Compoxen certified dealer or installer?',
-    a: 'Compoxen certified dealers receive product training, marketing materials, and access to dealer pricing tiers that grow with sales volume. Apply through the dealer kit page on the Compoxen website.',
+    q: 'How do I find Compoxen near me in Utah?',
+    a: 'Enter your Utah ZIP in the availability checker on the home page, or browse /service-areas to find your city directly. Every Utah city listed receives the same product, warranty, and installer training.',
   },
 ]
 

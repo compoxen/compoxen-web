@@ -130,17 +130,16 @@ export default function CompositeFencingPage() {
 
           <h2>Where can I buy Compoxen composite fencing?</h2>
           <p>
-            Compoxen is sold and installed exclusively through a certified installer
-            network. It is currently available in California, Colorado, Idaho, and
-            Utah, and is launching in Nevada (September 2026), Arizona (October 2026),
-            and Wyoming (January 2027). See the full <a href="/states">service area
-            list</a> or use the availability checker on the home page.
+            Compoxen is a Utah composite fence supply store and professional installer.
+            We supply panels, posts, and hidden-fastener hardware statewide and install
+            in every Utah city we serve. See the full <a href="/service-areas">Utah
+            service area list</a> or use the availability checker on the home page.
           </p>
 
           <h2>How do I get a quote?</h2>
           <p>
-            Use the <a href="/get-quote">quote form</a>. Include your zip code so the
-            system can route the request to a certified dealer in your service area.
+            Use the <a href="/get-quote">quote form</a>. Include your Utah ZIP and we
+            will route a free written quote within 48 hours.
           </p>
         </Prose>
       </ContentSection>

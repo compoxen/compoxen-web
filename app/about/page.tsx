@@ -12,7 +12,7 @@ const UPDATED = '2026-04-20'
 export const metadata: Metadata = {
   title: 'About Compoxen — Premium Composite Fencing, Designed in USA',
   description:
-    'Compoxen is a U.S.-designed premium composite fencing brand. Founded in 2024, sold and installed through a certified dealer network across the western United States.',
+    'Compoxen is a Utah composite fencing supply store and professional installer. Premium composite fencing, designed in the USA, installed across all of Utah.',
   alternates: { canonical: 'https://compoxen.com' + URL },
   openGraph: {
     title: 'About Compoxen',
@@ -40,7 +40,7 @@ export default function AboutPage() {
         title={<>The fence brand <span className="text-gradient-light">designed in America</span></>}
         subtitle="Compoxen makes premium composite fencing for homeowners, contractors, and architects who are tired of replacing fences."
         primaryCta={{ label: 'Get a Quote', href: '/get-quote' }}
-        secondaryCta={{ label: 'Become a Dealer', href: '/dealer-kit' }}
+        secondaryCta={{ label: 'Service Areas', href: '/service-areas' }}
       />
 
       <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'About', href: URL }]} />
@@ -80,25 +80,26 @@ export default function AboutPage() {
 
           <h2>How we sell</h2>
           <p>
-            We do not sell direct. Every Compoxen project is bid, installed, and
-            warranted by a certified dealer in your service area. That keeps the
-            warranty enforceable: the same crew that walks your run on day one is
-            on the hook if something goes wrong on day 7,300.
+            We are a Utah composite fence supply store and professional installer.
+            We sell Compoxen material directly and we install it ourselves with
+            our own crews across the Wasatch Front and statewide Utah. The same
+            company that walks your run on day one is on the hook if something
+            goes wrong on day 7,300.
           </p>
 
           <h2>Where we are</h2>
           <p>
-            Compoxen is currently active in California, Colorado, Idaho, and
-            Utah. We are launching in Nevada in September 2026, Arizona in
-            October 2026, and Wyoming in January 2027. See the full{' '}
-            <a href="/states">service area list</a> or join the waitlist for an
-            unlisted state.
+            Headquartered in Lehi, we install composite fencing across all of
+            Utah — Salt Lake, Utah, Davis, Weber, Tooele, Wasatch, Summit, and
+            Cache counties. See the full{' '}
+            <a href="/service-areas">Utah service area list</a> for cities and
+            neighborhoods. Material can ship anywhere in the continental U.S.
           </p>
 
           <h2>How to reach us</h2>
           <ul>
-            <li><strong>Sales / quotes:</strong> <a href="/get-quote">/get-quote</a></li>
-            <li><strong>Dealer applications:</strong> <a href="/dealer-kit">/dealer-kit</a></li>
+            <li><strong>Quotes:</strong> <a href="/get-quote">/get-quote</a></li>
+            <li><strong>Service areas:</strong> <a href="/service-areas">/service-areas</a></li>
             <li><strong>General:</strong> <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a></li>
             <li><strong>Phone:</strong> {BRAND.phone}</li>
           </ul>

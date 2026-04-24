@@ -1,17 +1,18 @@
 'use client'
 
 import { FormEvent, useState, useEffect } from 'react'
-import { ArrowRight, CheckCircle, Clock, MapPin } from 'lucide-react'
+import { ArrowRight, CheckCircle, MapPin } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import LeadFormLayout from '@/components/layouts/LeadFormLayout'
-import { getStateByZip, getServiceStatus, getStateInfo, ALL_US_STATES } from '@/lib/constants'
+import { isUtahZip } from '@/lib/constants'
+
+type ZipStatus = 'utah' | 'outside-utah' | null
 
 export default function GetQuotePage() {
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
-  const [zipStatus, setZipStatus] = useState<'active' | 'coming-soon' | 'waiting-list' | null>(null)
-  const [zipStateName, setZipStateName] = useState('')
+  const [zipStatus, setZipStatus] = useState<ZipStatus>(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,23 +21,12 @@ export default function GetQuotePage() {
     projectType: 'residential'
   })
 
-  // Real-time zip code availability check
+  // Real-time zip code Utah check
   useEffect(() => {
     if (formData.zip.length >= 3) {
-      const stateAbbrev = getStateByZip(formData.zip)
-      if (stateAbbrev) {
-        const status = getServiceStatus(stateAbbrev)
-        const info = getStateInfo(stateAbbrev)
-        const meta = ALL_US_STATES.find(s => s.abbreviation === stateAbbrev)
-        setZipStatus(status)
-        setZipStateName(info?.name || meta?.name || stateAbbrev)
-      } else {
-        setZipStatus('waiting-list')
-        setZipStateName('your area')
-      }
+      setZipStatus(isUtahZip(formData.zip) ? 'utah' : 'outside-utah')
     } else {
       setZipStatus(null)
-      setZipStateName('')
     }
   }, [formData.zip])
 
@@ -45,7 +35,7 @@ export default function GetQuotePage() {
     setLoading(true)
     
     // TODO: Replace with actual API call
-    console.log('Quote Request:', { ...formData, serviceStatus: zipStatus, stateName: zipStateName })
+    console.log('Quote Request:', { ...formData, zipStatus })
     
     await new Promise(resolve => setTimeout(resolve, 1000))
     setLoading(false)
@@ -61,9 +51,9 @@ export default function GetQuotePage() {
       <LeadFormLayout
         title="Quote Requested!"
         description={
-          zipStatus === 'active'
-            ? `Great news — we serve ${zipStateName}! A certified dealer will contact you within 24 hours.`
-            : `We've received your request. We'll notify you when Compoxen is available in ${zipStateName}.`
+          zipStatus === 'utah'
+            ? "We'll reply within 24 hours with pricing, lead time, and an install window for your Utah project."
+            : "We've received your request. We install in Utah only, but we can ship Compoxen material anywhere in the continental U.S. We'll be in touch shortly."
         }
       >
         <div className="text-center py-8">
@@ -79,7 +69,7 @@ export default function GetQuotePage() {
   return (
     <LeadFormLayout
       title="Get a Quote"
-      description="Tell us about your project and we'll connect you with a certified dealer. Designed in USA."
+      description="Tell us about your project. Compoxen installs across all of Utah and ships material nationwide."
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <Input 
@@ -122,15 +112,12 @@ export default function GetQuotePage() {
         {/* Real-time availability indicator */}
         {zipStatus && (
           <div className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-xs font-medium ${
-            zipStatus === 'active'
+            zipStatus === 'utah'
               ? 'bg-green-500/10 text-green-300 border border-green-500/15'
-              : zipStatus === 'coming-soon'
-              ? 'bg-amber-500/10 text-amber-300 border border-amber-500/15'
               : 'bg-white/4 text-white/50 border border-white/6'
           }`}>
-            {zipStatus === 'active' && <><CheckCircle size={14} /> We serve {zipStateName}! A dealer will be assigned.</>}
-            {zipStatus === 'coming-soon' && <><Clock size={14} /> {zipStateName} is coming soon. We&apos;ll add you to the priority list.</>}
-            {zipStatus === 'waiting-list' && <><MapPin size={14} /> Not in service area yet. Your request helps us prioritize expansion.</>}
+            {zipStatus === 'utah' && <><CheckCircle size={14} /> Utah ZIP confirmed — we install here. Expect a quote within 24 hours.</>}
+            {zipStatus === 'outside-utah' && <><MapPin size={14} /> Outside Utah. We can&apos;t install, but we can ship Compoxen material to you.</>}
           </div>
         )}
 
@@ -141,9 +128,10 @@ export default function GetQuotePage() {
           value={formData.projectType}
           onChange={handleChange}
         >
-          <option value="residential" className="bg-enterprise-950">Residential</option>
-          <option value="commercial" className="bg-enterprise-950">Commercial</option>
+          <option value="residential" className="bg-enterprise-950">Residential install</option>
+          <option value="commercial" className="bg-enterprise-950">Commercial install</option>
           <option value="hoa" className="bg-enterprise-950">HOA / Multi-Family</option>
+          <option value="material-only" className="bg-enterprise-950">Material only (ships nationwide)</option>
         </Input>
 
         <Button 
@@ -158,7 +146,7 @@ export default function GetQuotePage() {
         </Button>
 
         <p className="text-white/20 text-xs text-center mt-3">
-          🇺🇸 Designed in USA · Currently Serving UT, CO, ID, CA
+          Compoxen · Lehi, Utah · Statewide install · Nationwide material
         </p>
       </form>
     </LeadFormLayout>

@@ -292,7 +292,7 @@ Ask your dealer for the ASTM E84 documentation when you sign the quote. Provide 
 
 ## See more
 
-[California service area](/states/california) and [composite-fencing specifications](/specifications).`,
+[Utah service area](/service-areas) and [composite-fencing specifications](/specifications).`,
   },
 
   {
@@ -328,7 +328,7 @@ If the answer to the first question is "the standard," ask again.
 
 ## See more
 
-[Colorado service area](/states/colorado), [Idaho service area](/states/idaho), and [composite-fencing specifications](/specifications).`,
+[Utah service area](/service-areas) and [composite-fencing specifications](/specifications).`,
   },
 
   {
@@ -360,7 +360,7 @@ Desert wind moves dust. A composite privacy panel doubles as a windbreak for an 
 
 ## Service area
 
-Compoxen is launching in Nevada in September 2026 and Arizona in October 2026. Join the waitlist on the [Nevada](/states/nevada) and [Arizona](/states/arizona) pages.`,
+Compoxen installs composite fencing across all of Utah — from St. George to Logan. See [our service areas](/service-areas) for the full list of cities and counties. Material ships anywhere in the continental U.S.`,
   },
 
   {
@@ -403,7 +403,7 @@ Most fence brands hide pricing behind a form because they want to anchor on the 
 
 ## Get a real number
 
-[Request a quote](/get-quote) and a certified dealer will return a written, scoped number for your zip code.`,
+[Request a quote](/get-quote) and we'll return a written, scoped number for your Utah project.`,
   },
 
   {
@@ -443,11 +443,11 @@ Over a 20-year ownership window, a Compoxen fence does not require any work that
     imageAlt: 'Composite fence installation crew on site',
     publishedDate: '2026-04-09',
     readMinutes: 5,
-    body: `A typical Compoxen residential install of 100–200 linear feet completes in one to three working days. The process below is what you should expect from any certified dealer.
+    body: `A typical Compoxen residential install of 100–200 linear feet completes in one to three working days. Here is what to expect from a Compoxen install in Utah.
 
 ## Step 1: Quote and site survey
 
-A certified dealer measures the run, identifies grade and obstacle conditions, confirms property lines, and pulls local code for post depth and wind load. The quote is binding except where buried surprises change the scope.
+One of our crew leads measures the run, identifies grade and obstacle conditions, confirms property lines, and pulls local code for post depth and wind load. The quote is binding except where buried surprises change the scope.
 
 ## Step 2: Permits, code, color
 
@@ -463,11 +463,11 @@ Panels drop into the engineered post system using the hidden fastener mechanism,
 
 ## What you should not do
 
-Do not buy Compoxen panels and try to install them yourself. The 20-year warranty is contingent on installation by a certified dealer following the manufacturer specification. DIY installs void the warranty.
+Do not buy Compoxen panels and try to install them yourself. The 20-year warranty is contingent on installation by a Compoxen-trained crew following the manufacturer specification. DIY installs void the warranty.
 
 ## What about my old fence?
 
-Most certified dealers offer removal and disposal of an existing wood, vinyl, or chain-link fence as part of the project. Confirm scope and pricing on the written quote.
+We offer removal and disposal of an existing wood, vinyl, or chain-link fence as part of the project. Confirm scope and pricing on the written quote.
 
 ## See more
 
@@ -509,7 +509,7 @@ Deep chocolate with architectural presence. The premium "wood-but-not-wood" colo
 
 - Lighter colors run cooler in direct sun.
 - All five carry the same fade-resistant shell and the same 20-year warranty.
-- Sample swatches are available through any certified dealer at the time of quote.
+- Sample swatches are available at our Lehi showroom or by mail at the time of quote.
 
 See the full color palette and order sample swatches at [/why-compoxen#colors](/why-compoxen#colors).`,
   },
@@ -540,7 +540,7 @@ Compoxen privacy panels can be installed at code-compliant heights. The hidden f
 
 ## What to confirm with your installer
 
-Pool code is local and changes. Ask the certified dealer to cite the specific code section being followed (most California jurisdictions reference CBC Chapter 31; most Mountain West jurisdictions adopt some flavor of IRC Appendix G).
+Pool code is local and changes. We cite the specific code section being followed in your jurisdiction (most Utah jurisdictions adopt some flavor of IRC Appendix G with local amendments).
 
 ## Why composite for pool fencing specifically
 
@@ -583,7 +583,7 @@ Composite is also the right answer for trash enclosures, transformer screens, an
 
 ## Get a multi-unit quote
 
-[Request a commercial quote](/get-quote) and select the HOA / commercial project type. Compoxen has dealers experienced with RFP-driven specifications.`,
+[Request a commercial quote](/get-quote) and select the HOA / commercial project type. Compoxen has crews experienced with RFP-driven specifications across Utah.`,
   },
 
   {
@@ -685,40 +685,6 @@ Anywhere you would have spent the premium for shadowbox or board-on-board specif
   },
 
   {
-    slug: 'becoming-a-compoxen-certified-dealer',
-    title: 'Becoming a Compoxen Certified Dealer',
-    description: 'How the Compoxen certified dealer program works, what the tiered pricing structure looks like, and how to apply.',
-    category: 'Installation',
-    image: '/images/gallery-6.jpg',
-    imageAlt: 'Compoxen installer crew',
-    publishedDate: '2026-05-28',
-    readMinutes: 4,
-    body: `Compoxen sells through a certified dealer network. If you are a contractor or fencing company in or adjacent to our service area, here is how the program works.
-
-## What you get
-
-- **Product training.** Two-day technical training covering material handling, post setting, and the hidden fastener system.
-- **Marketing kit.** Brochures, sample swatches, photography, and lead-routing through the Compoxen availability checker.
-- **Tiered pricing.** Wholesale pricing improves with sustained sales volume. Tiers are reviewed quarterly.
-- **Lead flow.** Homeowners who request a quote in your service area route to you.
-
-## What we expect
-
-- Trained crews on every Compoxen install.
-- Adherence to the manufacturer specification (post depth, post spacing, fastener seating).
-- Honoring the 20-year warranty in your service area.
-- Quarterly check-ins on quality and customer satisfaction.
-
-## Where we are recruiting
-
-Active growth in California, Colorado, Idaho, and Utah. Pre-launch recruitment open in Nevada (Sep 2026), Arizona (Oct 2026), and Wyoming (Jan 2027). Other geographies considered case-by-case.
-
-## How to apply
-
-[Request the dealer kit](/dealer-kit). Include your business name, service area, current annual fence install volume, and the crews you would dedicate to Compoxen work.`,
-  },
-
-  {
     slug: 'composite-fencing-roi-for-resale',
     title: 'Composite Fencing ROI: Does It Pay Back at Resale?',
     description: 'How composite affects appraisal, list price, and time on market — and the homeowner profile where the upgrade pays back fastest.',
@@ -790,7 +756,7 @@ Wasatch Front housing leans into stone, stucco, and warm earth tones. Mesa Taupe
 
 ## More like this
 
-See [Utah service area](/states/utah) and [other case-study examples](/blog).`,
+See [Utah service areas](/service-areas) and [other case-study examples](/blog).`,
   },
 ]
 
