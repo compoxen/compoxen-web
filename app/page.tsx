@@ -43,9 +43,10 @@ const stagger = {
 
 export default function Home() {
   // Counters for social proof
-  const contractors = useCounter(500, 2000)
+  const citiesServed = useCounter(75, 2000)
   const linearFeet = useCounter(2, 1800)
   const satisfaction = useCounter(99, 2200)
+  const installDays = useCounter(3, 1600)
 
   return (
     <div className="w-full overflow-x-hidden">
@@ -156,10 +157,10 @@ export default function Home() {
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12">
             {[
-              { ref: contractors.ref, value: `${contractors.count}+`, label: 'Certified Contractors' },
+              { ref: citiesServed.ref, value: `${citiesServed.count}+`, label: 'Utah Cities Served' },
               { ref: linearFeet.ref, value: `${linearFeet.count}M+`, label: 'Linear Feet Installed' },
-              { ref: satisfaction.ref, value: `${satisfaction.count}%`, label: 'Satisfaction Rate' },
-              { ref: null, value: 'A+', label: 'BBB Rating' },
+              { ref: installDays.ref, value: `${installDays.count}–${installDays.count + 1}`, label: 'Day Avg Install' },
+              { ref: satisfaction.ref, value: `${satisfaction.count}%`, label: 'Customer Satisfaction' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -270,7 +271,7 @@ export default function Home() {
               How Compoxen Compares
             </motion.h2>
             <motion.p variants={fadeUp} className="text-gray-500 text-lg max-w-2xl mx-auto">
-              See why contractors and architects are switching to engineered composite.
+              See why Utah homeowners and builders are switching to engineered composite.
             </motion.p>
           </motion.div>
 

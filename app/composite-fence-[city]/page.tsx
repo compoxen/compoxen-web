@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {
-  CheckCircle, Shield, Hammer, MapPin, ArrowRight, Phone, Star, Truck, Home,
+  CheckCircle, Shield, Hammer, MapPin, ArrowRight, Phone, Star, Truck, Home, Sparkles,
 } from 'lucide-react'
 
 import {
@@ -76,6 +76,9 @@ export default async function CityPage({ params }: CityPageProps) {
     city.intro ??
     `${city.name} homeowners pick ${BRAND.name} because composite outlasts wood, looks better than vinyl, and never asks for a stain can. We supply the panels and our certified crews install them — one company, one warranty.`
 
+  // Reuse the shared premium material highlights baked into every service entry
+  const materialHighlights = services[0].materialHighlights
+
   return (
     <>
       <SchemaScript
@@ -103,8 +106,11 @@ export default async function CityPage({ params }: CityPageProps) {
               <MapPin size={12} className="text-amber-400" /> {city.name}, UT
             </span>
             <span className="badge-dark text-xs">{city.county} County</span>
+            <span className="text-xs inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-300 font-semibold uppercase tracking-wider">
+              <Star size={11} className="fill-amber-300" /> Primary service area
+            </span>
             <span className="badge-green text-xs inline-flex items-center gap-1.5">
-              <CheckCircle size={12} /> Active service area
+              <CheckCircle size={12} /> Top priority install
             </span>
           </div>
 
@@ -291,6 +297,60 @@ export default async function CityPage({ params }: CityPageProps) {
                 <div className="text-xs text-enterprise-950/40 mt-1">{c.description}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PREMIUM MATERIAL SPOTLIGHT */}
+      <section className="py-20 md:py-24 bg-enterprise-50 border-y border-enterprise-950/5">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="text-center mb-12 max-w-2xl mx-auto">
+            <span className="badge-light text-xs inline-flex items-center gap-1.5">
+              <Sparkles size={12} className="text-amber-600" /> Premium fence material
+            </span>
+            <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-enterprise-950 tracking-tight">
+              Engineered composite, not commodity WPC
+            </h2>
+            <p className="mt-3 text-enterprise-950/60">
+              {city.name} gets the same premium {BRAND.name} composite we install across every Utah city &mdash;
+              mineral-reinforced cores, UV-stable cap-stock, and a hidden fastener system you won&apos;t find on big-box composite.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {materialHighlights.map(m => (
+              <div key={m.title} className="bg-white rounded-2xl p-5 border border-enterprise-950/5 hover:border-amber-400/30 hover:shadow-md transition-all">
+                <div className="font-semibold text-enterprise-950 text-sm">{m.title}</div>
+                <p className="text-enterprise-950/60 text-sm mt-2 leading-relaxed">{m.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MID-PAGE CTA BANNER */}
+      <section className="py-12 bg-amber-50/40 border-b border-amber-100">
+        <div className="container mx-auto px-6 max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 className="text-xl md:text-2xl font-semibold text-enterprise-950">
+              Ready for a {city.name} composite fence quote?
+            </h3>
+            <p className="text-enterprise-950/60 text-sm mt-1">
+              Free written estimate in 48 hours. No deposit. No high-pressure sales.
+            </p>
+          </div>
+          <div className="flex gap-3">
+            <Link
+              href="/get-quote"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-brand-amber text-black font-semibold text-sm rounded-xl hover:bg-amber-500 transition-all"
+            >
+              Get a Quote <ArrowRight size={16} />
+            </Link>
+            <a
+              href={BRAND.phoneHref}
+              className="inline-flex items-center gap-2 px-6 py-3 border border-enterprise-950/15 text-enterprise-950 font-medium text-sm rounded-xl hover:bg-white transition-all"
+            >
+              <Phone size={14} /> Call
+            </a>
           </div>
         </div>
       </section>

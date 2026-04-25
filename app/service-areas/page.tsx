@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, MapPin, CheckCircle } from 'lucide-react'
+import { ArrowRight, MapPin, CheckCircle, Star } from 'lucide-react'
 import {
   getAllCities, groupCitiesByCounty, COUNTY_META, getActiveCounties, getCityHref,
 } from '@/lib/cities'
@@ -166,12 +166,12 @@ function Stat({ value, label }: { value: string; label: string }) {
   )
 }
 
-function TierBadge({ tier }: { tier: 'tier1' | 'tier2' | 'tier3' | 'micro' }) {
-  const cfg = {
-    tier1: { label: 'Primary', cls: 'bg-amber-100 text-amber-800' },
-    tier2: { label: 'Full service', cls: 'bg-emerald-100 text-emerald-800' },
-    tier3: { label: 'Service area', cls: 'bg-sky-100 text-sky-800' },
-    micro: { label: 'Available', cls: 'bg-stone-100 text-stone-700' },
-  }[tier]
-  return <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${cfg.cls}`}>{cfg.label}</span>
+function TierBadge({ tier: _tier }: { tier: 'tier1' | 'tier2' | 'tier3' | 'micro' }) {
+  // Every Utah city is a primary, top-priority service area for Compoxen.
+  // Tier is retained in data for sort/SEO purposes only.
+  return (
+    <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-100 text-amber-800 inline-flex items-center gap-1">
+      <Star size={9} className="fill-amber-700" /> Primary
+    </span>
+  )
 }
