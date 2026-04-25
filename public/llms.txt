@@ -48,8 +48,7 @@
 
 ### Top cities (Tier 1, population 50,000+)
 - [Salt Lake City](https://compoxen.com/composite-fence/salt-lake-city)
-- [West Valley City](https://compoxen.com/composite-fence/west-valley-city)
-- [West Jordan](https://compoxen.com/composite-fence/west-jordan)
+y
 - [Provo](https://compoxen.com/composite-fence/provo)
 - [Orem](https://compoxen.com/composite-fence/orem)
 - [Sandy](https://compoxen.com/composite-fence/sandy)

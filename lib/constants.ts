@@ -26,6 +26,18 @@ export const BRAND = {
   hours: 'Mon–Sat 9 AM – 6 PM',
   googleRating: 5.0,
   googleReviewCount: 11,
+  /**
+   * Public social / external profiles. Used in JSON-LD `sameAs` for
+   * entity disambiguation. Leave empty strings for any profile that does
+   * not exist yet — they are filtered out before serialization.
+   */
+  social: [
+    'https://www.google.com/maps?cid=0', // TODO: replace with real Google Business Profile CID URL
+    '', // TODO: 'https://www.facebook.com/compoxen'
+    '', // TODO: 'https://www.instagram.com/compoxen'
+    '', // TODO: 'https://www.linkedin.com/company/compoxen'
+    '', // TODO: 'https://www.youtube.com/@compoxen'
+  ],
 } as const
 
 // ─── Utah Zip Code Coverage ───────────────────────────────────────

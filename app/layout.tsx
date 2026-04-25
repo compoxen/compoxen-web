@@ -4,7 +4,12 @@ import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import SchemaScript from '@/components/SchemaScript'
-import { getOrganizationSchema, getProductSchema, getFAQSchema, getWebSiteSchema } from '@/lib/schema'
+import {
+  getOrganizationSchema,
+  getProductSchema,
+  getWebSiteSchema,
+  getLocalBusinessSchema,
+} from '@/lib/schema'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -59,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth scroll-pt-24`}>
       <head>
-        <SchemaScript data={[getOrganizationSchema(), getProductSchema(), getWebSiteSchema(), getFAQSchema()]} />
+        <SchemaScript data={[getOrganizationSchema(), getLocalBusinessSchema(), getProductSchema(), getWebSiteSchema()]} />
       </head>
       <body className="font-sans antialiased bg-white text-black min-h-screen flex flex-col">
           <Navigation />

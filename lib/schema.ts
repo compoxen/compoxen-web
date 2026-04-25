@@ -13,19 +13,31 @@ export function getOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${BRAND.url}#organization`,
     name: BRAND.name,
     url: BRAND.url,
     logo: `${BRAND.url}/images/compoxen-logo.png`,
+    image: `${BRAND.url}/images/hero-fence-bg.jpg`,
     description: `${BRAND.tagline}. ${BRAND.designOrigin}.`,
     telephone: BRAND.phone,
     email: BRAND.email,
+    foundingDate: String(BRAND.founded),
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Lehi',
-      addressRegion: 'UT',
+      streetAddress: BRAND.streetAddress,
+      addressLocality: BRAND.addressLocality,
+      addressRegion: BRAND.addressRegion,
+      postalCode: BRAND.addressPostalCode,
       addressCountry: 'US',
     },
-    sameAs: [],
+    sameAs: BRAND.social.filter(Boolean),
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: BRAND.googleRating,
+      reviewCount: BRAND.googleReviewCount,
+      bestRating: 5,
+      worstRating: 1,
+    },
     brand: {
       '@type': 'Brand',
       name: BRAND.name,
@@ -125,11 +137,14 @@ export function getCityServiceSchema(city: CityData, service?: ServiceData) {
 export function getLocalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
+    '@id': `${BRAND.url}#localbusiness`,
     name: `${BRAND.name} Design Center`,
     description: `Premium composite fencing design center. ${BRAND.designOrigin}.`,
     telephone: BRAND.phone,
     email: BRAND.email,
+    image: `${BRAND.url}/images/hero-fence-bg.jpg`,
+    logo: `${BRAND.url}/images/compoxen-logo.png`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: BRAND.streetAddress,
@@ -138,8 +153,22 @@ export function getLocalBusinessSchema() {
       postalCode: BRAND.addressPostalCode,
       addressCountry: 'US',
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 40.5247,
+      longitude: -111.8638,
+    },
     url: BRAND.url,
     priceRange: '$$$',
+    sameAs: BRAND.social.filter(Boolean),
+    areaServed: [{ '@type': 'State', name: 'Utah' }],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: BRAND.googleRating,
+      reviewCount: BRAND.googleReviewCount,
+      bestRating: 5,
+      worstRating: 1,
+    },
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -181,25 +210,17 @@ export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
   }
 }
 
-// WebSite schema with SearchAction (helps AI engines surface in-site search)
+// WebSite schema (no SearchAction \u2014 the site does not yet expose an in-site
+// search route, and pointing SearchAction at a 404 hurts more than it helps)
 export function getWebSiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': `${BRAND.url}#website`,
     name: BRAND.name,
     url: BRAND.url,
-    publisher: {
-      '@type': 'Organization',
-      name: BRAND.name,
-    },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${BRAND.url}/search?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
+    inLanguage: 'en-US',
+    publisher: { '@id': `${BRAND.url}#organization` },
   }
 }
 
@@ -302,13 +323,14 @@ export function getDefinedTermSetSchema(name: string, terms: DefinedTerm[]) {
 export function getCityLocalBusinessSchema(city: CityData) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': `${BRAND.url}/composite-fence-${city.slug}#localbusiness`,
+    '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
+    '@id': `${BRAND.url}/composite-fence/${city.slug}#localbusiness`,
     name: `${BRAND.name} — ${city.name}`,
     description: `Composite fence supply and certified installation in ${city.name}, Utah. ${PRODUCT_SPECS.warranty} warranty.`,
     telephone: BRAND.phone,
     email: BRAND.email,
-    url: `${BRAND.url}/composite-fence-${city.slug}`,
+    url: `${BRAND.url}/composite-fence/${city.slug}`,
+    image: `${BRAND.url}/images/hero-fence-bg.jpg`,
     address: {
       '@type': 'PostalAddress',
       addressLocality: BRAND.addressLocality,
@@ -326,10 +348,47 @@ export function getCityLocalBusinessSchema(city: CityData) {
       },
     },
     priceRange: '$$$',
+    sameAs: BRAND.social.filter(Boolean),
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: BRAND.googleRating,
       reviewCount: BRAND.googleReviewCount,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  }
+}
+
+// Statewide Service schema (for /services/[slug] pages — not tied to a specific city)
+export function getServiceSchema(service: ServiceData) {
+  const url = `${BRAND.url}/services/${service.slug}`
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: service.title,
+    serviceType: service.title,
+    description: service.heroDescription,
+    url,
+    provider: { '@id': `${BRAND.url}#localbusiness` },
+    brand: { '@type': 'Brand', name: BRAND.name },
+    areaServed: { '@type': 'State', name: 'Utah' },
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      priceCurrency: 'USD',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        priceCurrency: 'USD',
+        description: service.priceRange,
+      },
+      url: `${BRAND.url}/get-quote`,
     },
   }
 }

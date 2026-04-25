@@ -7,7 +7,7 @@ import { services, getServiceBySlug, getRelatedServices } from '@/lib/services'
 import { BRAND, PRODUCT_SPECS } from '@/lib/constants'
 import { getAllCities, getCityHref } from '@/lib/cities'
 import {
-  getBreadcrumbSchema, getCityServiceSchema, getOrganizationSchema, getFAQSchema,
+  getBreadcrumbSchema, getServiceSchema, getOrganizationSchema, getFAQSchema,
 } from '@/lib/schema'
 import SchemaScript from '@/components/SchemaScript'
 import Breadcrumbs from '@/components/Breadcrumbs'
@@ -46,24 +46,12 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   const related = getRelatedServices(service.slug)
 
-  // Build a synthetic city for the schema (covers entire UT service area)
-  const utahArea = {
-    name: 'Utah',
-    slug: 'utah',
-    county: 'Salt Lake' as const,
-    tier: 'tier1' as const,
-    population: 3380800,
-    neighborhoods: [],
-    metaTitle: '',
-    metaDescription: '',
-  }
-
   return (
     <>
       <SchemaScript
         data={[
           getOrganizationSchema(),
-          getCityServiceSchema(utahArea, service),
+          getServiceSchema(service),
           getBreadcrumbSchema([
             { name: 'Home', url: '/' },
             { name: 'Services', url: '/services' },
