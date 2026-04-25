@@ -6,7 +6,7 @@
 import { BRAND, PRODUCT_SPECS, PRODUCT_COLORS } from './constants'
 import type { CityData } from './cities'
 import type { ServiceData } from './services'
-import { FAQS, type FAQItem } from './faqs'
+import { FAQS } from './faqs'
 
 // Organization schema - used site-wide
 export function getOrganizationSchema() {
@@ -152,7 +152,7 @@ export function getLocalBusinessSchema() {
 // FAQ schema for common questions.
 // Pass an explicit subset of FAQs (e.g. for a state-specific page) or omit
 // to render the full canonical list from lib/faqs.ts.
-export function getFAQSchema(items: FAQItem[] = FAQS) {
+export function getFAQSchema(items: { q: string; a: string }[] = FAQS) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
