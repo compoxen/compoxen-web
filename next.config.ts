@@ -64,6 +64,10 @@ const nextConfig: NextConfig = {
       // Retired multi-state pages
       { source: '/states',         destination: '/service-areas', permanent: true },
       { source: '/states/:slug*',  destination: '/service-areas', permanent: true },
+      // Old city URL pattern (App Router does not support partial-segment dynamic
+      // params like `/composite-fence-[city]`) -> redirect to the supported
+      // `/composite-fence/[city]` shape.
+      { source: '/composite-fence-:city', destination: '/composite-fence/:city', permanent: true },
     ];
   },
 };

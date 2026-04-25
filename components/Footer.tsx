@@ -104,11 +104,11 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Top Cities</h4>
             <ul className="space-y-2.5 text-[13px]">
-              <li><Link href="/composite-fence-salt-lake-city" className="text-white/40 hover:text-white transition-colors duration-200">Salt Lake City</Link></li>
-              <li><Link href="/composite-fence-lehi" className="text-white/40 hover:text-white transition-colors duration-200">Lehi</Link></li>
-              <li><Link href="/composite-fence-provo" className="text-white/40 hover:text-white transition-colors duration-200">Provo</Link></li>
-              <li><Link href="/composite-fence-park-city" className="text-white/40 hover:text-white transition-colors duration-200">Park City</Link></li>
-              <li><Link href="/composite-fence-south-jordan" className="text-white/40 hover:text-white transition-colors duration-200">South Jordan</Link></li>
+              <li><Link href="/composite-fence/salt-lake-city" className="text-white/40 hover:text-white transition-colors duration-200">Salt Lake City</Link></li>
+              <li><Link href="/composite-fence/lehi" className="text-white/40 hover:text-white transition-colors duration-200">Lehi</Link></li>
+              <li><Link href="/composite-fence/provo" className="text-white/40 hover:text-white transition-colors duration-200">Provo</Link></li>
+              <li><Link href="/composite-fence/park-city" className="text-white/40 hover:text-white transition-colors duration-200">Park City</Link></li>
+              <li><Link href="/composite-fence/south-jordan" className="text-white/40 hover:text-white transition-colors duration-200">South Jordan</Link></li>
               <li><Link href="/service-areas" className="text-amber-500/70 hover:text-amber-400 transition-colors duration-200">All Cities →</Link></li>
             </ul>
           </div>

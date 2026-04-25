@@ -269,13 +269,13 @@ export function getAllCitySlugs(): string[] {
   return cityDatabase.map(c => c.slug)
 }
 
-/** URL slug used for the dynamic city landing pages: /composite-fence-{slug} */
+/** URL slug used for the dynamic city landing pages: /composite-fence/{slug} */
 export function getCityRouteSlug(city: CityData | string): string {
   const slug = typeof city === 'string' ? city : city.slug
-  return `composite-fence-${slug}`
+  return `composite-fence/${slug}`
 }
 
-/** /composite-fence-{slug} */
+/** /composite-fence/{slug} */
 export function getCityHref(city: CityData | string): string {
   return `/${getCityRouteSlug(city)}`
 }
