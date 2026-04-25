@@ -34,7 +34,7 @@ const offerSchema = {
 export const metadata: Metadata = {
   title: 'Compoxen Pricing — $45 to $85 per Linear Foot, Installed',
   description:
-    'Public price ranges for Compoxen composite fencing: $45–$85 per linear foot installed, plus the factors that move the number on a specific job. Dealer pricing terms also covered.',
+    'Public price ranges for Compoxen composite fencing: $45\u2013$85 per linear foot installed, plus the factors that move the number on a specific job. Dealer pricing terms also covered.',
   alternates: { canonical: 'https://compoxen.com' + URL },
   openGraph: {
     title: 'Pricing — Compoxen',

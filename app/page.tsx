@@ -104,7 +104,7 @@ export default function Home() {
             transition={{ delay: 0.25, duration: 0.6 }}
             className="text-white/70 text-lg sm:text-xl leading-relaxed mb-12 max-w-2xl mx-auto"
           >
-            Engineered composite fencing designed in the USA. 20-year warranty, zero maintenance, 
+            Premium composite fencing designed in the USA. 20-year warranty, zero maintenance, 
             five architect-led colors. Built for the projects that matter.
           </motion.p>
 
@@ -515,13 +515,13 @@ export default function Home() {
 
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-            className="grid grid-cols-1 md:grid-cols-3 gap-5"
+            className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto"
           >
             {[
               {
                 icon: <Download size={20} />,
-                title: '2026 Contractor Guide',
-                desc: 'Specs, pricing, installation diagrams — engineered for contractors who demand clarity.',
+                title: '2026 Buyer Guide',
+                desc: 'Specs, pricing, installation diagrams — written for Utah homeowners and builders who want clarity before they sign.',
                 cta: 'Order Free Guide',
                 href: '/get-quote',
                 tag: '2026 Edition · PDF + Print'
@@ -533,14 +533,6 @@ export default function Home() {
                 cta: 'Learn More',
                 href: '/why-compoxen',
                 tag: 'Fade-Resistant · Zero Maintenance'
-              },
-              {
-                icon: <BarChart3 size={20} />,
-                title: 'Dealer Dashboard',
-                desc: 'Track orders, manage samples, unlock pricing tiers with real-time business insights.',
-                cta: 'View Dashboard',
-                href: '/dealer',
-                tag: 'Orders · Samples · Pricing'
               }
             ].map((item, i) => (
               <motion.div
