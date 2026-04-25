@@ -91,7 +91,7 @@ export const services: ServiceData[] = [
       "Full-service composite fence installation across Utah. We supply the panels, posts, and hidden-fastener hardware — and our certified crews put it in. One company, one warranty, one finish line.",
     metaTitle: 'Composite Fence Installation in Utah | Compoxen Supply + Install',
     metaDescription:
-      "Utah composite fence installation. Compoxen supplies the material and installs it — 20-yr warranty, zero maintenance, finished in days. Free quotes. (385) 483-3700",
+      "Utah composite fence installation. Compoxen supplies the material and installs it — 20-yr warranty, zero maintenance, finished in days. Free quotes. (385) 530-0588",
     icon: Hammer,
     features: [
       { title: 'Concrete-set posts', description: 'Engineered for Utah wind ratings up to 130 mph.' },
@@ -144,7 +144,7 @@ export const services: ServiceData[] = [
       "Solid 6 ft privacy panels engineered for backyard quiet. Compoxen privacy fence blocks line of sight, dampens noise, and never needs a stain can.",
     metaTitle: 'Composite Privacy Fence | Utah Supply + Install | Compoxen',
     metaDescription:
-      "Utah composite privacy fence. 6 ft solid panels, zero gaps, 20-year warranty. Engineered for Utah climate. Free quotes. (385) 483-3700",
+      "Utah composite privacy fence. 6 ft solid panels, zero gaps, 20-year warranty. Engineered for Utah climate. Free quotes. (385) 530-0588",
     icon: Shield,
     features: [
       { title: '6 ft solid panel', description: 'Tongue-and-groove fit means no light gaps over time.' },
@@ -196,7 +196,7 @@ export const services: ServiceData[] = [
       "Compoxen pool fence is engineered to meet Utah pool barrier codes — 4 ft minimum height, self-closing self-latching gates, and a non-climbable surface — without looking like a pool fence.",
     metaTitle: 'Composite Pool Fence | Utah Code-Compliant | Compoxen',
     metaDescription:
-      "Utah composite pool fence supply and install. Code-compliant heights, self-closing gates, zero maintenance. Free quotes. (385) 483-3700",
+      "Utah composite pool fence supply and install. Code-compliant heights, self-closing gates, zero maintenance. Free quotes. (385) 530-0588",
     icon: Waves,
     features: [
       { title: 'Code-compliant heights', description: '48–60 in panels meet Utah residential pool barrier requirements.' },
@@ -244,10 +244,10 @@ export const services: ServiceData[] = [
     shortTitle: 'Material Supply',
     tagline: "DIY-ready Compoxen panels. We ship Utah, you build.",
     heroDescription:
-      "Buy Compoxen composite fence material direct. Panels, posts, post caps, gate kits, and hidden-fastener hardware — palletized for delivery anywhere in Utah, or pickup at our Lehi yard.",
+      "Buy Compoxen composite fence material direct. Panels, posts, post caps, gate kits, and hidden-fastener hardware — palletized for delivery anywhere in Utah, or pickup at our Draper yard.",
     metaTitle: 'Composite Fence Material Supply | Utah | Compoxen',
     metaDescription:
-      "Buy Compoxen composite fence panels and hardware direct in Utah. DIY-ready kits, contractor pricing, palletized delivery. (385) 483-3700",
+      "Buy Compoxen composite fence panels and hardware direct in Utah. DIY-ready kits, contractor pricing, palletized delivery. (385) 530-0588",
     icon: Sparkles,
     features: [
       { title: 'Direct-from-supplier pricing', description: 'No middleman markup on panels, posts, or hardware.' },
@@ -265,14 +265,14 @@ export const services: ServiceData[] = [
     leadTime: 'Most stock orders ship within 3–7 business days',
     longDescription: [
       'Some homeowners want to install their own fence. Some contractors want a premium composite they can mark up without the licensing strings of a national franchise. Compoxen Supply sells Compoxen panels, posts, gate kits, and hidden-fastener hardware direct — no installer required.',
-      'We palletize and label by run so a 200-foot order shows up sorted: posts in one pallet, panels in another, hardware kitted by section. Pickup at our Lehi yard, or forklift-offload statewide.',
+      'We palletize and label by run so a 200-foot order shows up sorted: posts in one pallet, panels in another, hardware kitted by section. Pickup at our Draper yard, or forklift-offload statewide.',
       'Contractor accounts get tiered pricing, will-call holds, and access to our installer training program. Every panel still ships with the same 20-year material warranty.',
     ],
     materialHighlights: PREMIUM_MATERIAL,
     processSteps: [
       { step: 1, title: 'Confirm linear footage', description: 'Send us your line plan or rough footage. We size the kit and quote material.' },
       { step: 2, title: 'Pick color + components', description: 'Choose from 5 colors, pick gate kits, post caps, and any optional kick rail.' },
-      { step: 3, title: 'Pickup or delivery', description: 'Lehi yard pickup or forklift-offload delivery anywhere in Utah.' },
+      { step: 3, title: 'Pickup or delivery', description: 'Draper yard pickup or forklift-offload delivery anywhere in Utah.' },
       { step: 4, title: 'Install support', description: 'Free phone support during DIY install. Need help? We can crew up too.' },
     ],
     whyChooseUs: [
@@ -284,7 +284,7 @@ export const services: ServiceData[] = [
     serviceFaqs: [
       { q: 'Can I install Compoxen myself?', a: 'Yes. The hidden-fastener clip system is designed to be DIY-friendly with basic tools (impact driver, post-hole digger, level). We include written install instructions and offer free phone support.' },
       { q: 'Does the warranty cover DIY installs?', a: 'The 20-year material warranty stays valid on DIY installs as long as posts are concrete-set and panels are installed per spec. The 5-year labor warranty only applies when our crews install.' },
-      { q: 'Do you deliver to all of Utah?', a: 'Yes. We forklift-deliver to any Utah jobsite. Pickup is also available at our Lehi yard during business hours.' },
+      { q: 'Do you deliver to all of Utah?', a: 'Yes. We forklift-deliver to any Utah jobsite. Pickup is also available at our Draper yard during business hours.' },
       { q: 'Do you offer contractor pricing?', a: 'Yes. Set up a contractor account and you get tiered linear-foot pricing, net-30 terms (with credit approval), and will-call holds.' },
     ],
     relatedServiceSlugs: ['composite-fence-installation', 'composite-fence-repair', 'commercial-composite-fence'],
@@ -298,7 +298,7 @@ export const services: ServiceData[] = [
       "Most Utah HOA submittal rejections are about color, height, or material. Compoxen's neutral palette, clean panel lines, and documented material specs make architectural review boards say yes on the first submission.",
     metaTitle: 'HOA-Approved Composite Fence | Utah | Compoxen',
     metaDescription:
-      "HOA-friendly composite fence for Utah subdivisions. Neutral architect-led colors, documented spec sheets, fast architectural review approval. (385) 483-3700",
+      "HOA-friendly composite fence for Utah subdivisions. Neutral architect-led colors, documented spec sheets, fast architectural review approval. (385) 530-0588",
     icon: Home,
     features: [
       { title: 'Architectural review packet', description: 'PDF spec sheet, color chips, and elevation drawings on request.' },
@@ -349,7 +349,7 @@ export const services: ServiceData[] = [
       "Compoxen scales from single-family to multifamily. Apartment perimeters, pool decks, dog parks, and amenity enclosures get the same 20-year warranty material with project-managed install.",
     metaTitle: 'Commercial Composite Fencing | Utah Multifamily | Compoxen',
     metaDescription:
-      "Utah commercial and multifamily composite fence install. Apartment perimeters, pool decks, amenity enclosures. Project-managed. (385) 483-3700",
+      "Utah commercial and multifamily composite fence install. Apartment perimeters, pool decks, amenity enclosures. Project-managed. (385) 530-0588",
     icon: Building2,
     features: [
       { title: 'Project management', description: 'Single point of contact from spec to walkthrough.' },
@@ -400,7 +400,7 @@ export const services: ServiceData[] = [
       "Compoxen panels are durable, not indestructible. Wind events, vehicle impact, and homeowner mods happen. Our repair crews carry color-matched panels, posts, and hardware in the truck.",
     metaTitle: 'Composite Fence Repair | Utah | Compoxen',
     metaDescription:
-      "Utah composite fence repair. Storm damage, panel swap, post resets. Color-matched material, in-truck inventory. (385) 483-3700",
+      "Utah composite fence repair. Storm damage, panel swap, post resets. Color-matched material, in-truck inventory. (385) 530-0588",
     icon: Trees,
     features: [
       { title: 'In-truck inventory', description: 'Most repairs done same visit on common colors.' },

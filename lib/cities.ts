@@ -56,7 +56,7 @@ const meta = (name: string, opts?: { tier?: CityTier; suffix?: string }) => {
     metaTitle: `${name} Composite Fence Installation | Compoxen Utah`,
     metaDescription: `${name}, UT composite fence supply and professional install. ${
       adj.charAt(0).toUpperCase() + adj.slice(1)
-    } UV-stable composite, 20-year warranty, zero maintenance. Free quotes. (385) 483-3700`,
+    } UV-stable composite, 20-year warranty, zero maintenance. Free quotes. (385) 530-0588`,
   }
 }
 
@@ -79,7 +79,7 @@ const cityDatabase: CityData[] = [
     ...meta('Salt Lake City', { tier: 'tier1' }),
     metaTitle: 'Salt Lake City Composite Fence Installation | Compoxen',
     metaDescription:
-      "Salt Lake City composite fence supply and certified install. Engineered for SLC's freeze-thaw and high-altitude UV. 20-year warranty. Free quotes. (385) 483-3700",
+      "Salt Lake City composite fence supply and certified install. Engineered for SLC's freeze-thaw and high-altitude UV. 20-year warranty. Free quotes. (385) 530-0588",
   },
   {
     name: 'West Valley City',

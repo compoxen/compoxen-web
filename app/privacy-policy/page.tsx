@@ -218,10 +218,10 @@ export default function PrivacyPolicy() {
                 Email: <a href="mailto:privacy@compoxen.com" className="text-amber-700 hover:text-amber-800 transition">privacy@compoxen.com</a>
               </p>
               <p className="text-neutral-600 mb-1">
-                Phone: 385‑483‑3700
+                Phone: 385‑530‑0588
               </p>
               <p className="text-neutral-600">
-                Address: Lehi, Utah
+                Address: 12218 S Lone Peak Pkwy #101, Draper, UT 84020
               </p>
             </div>
           </motion.div>

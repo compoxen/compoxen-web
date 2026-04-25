@@ -146,7 +146,7 @@ export default function GetQuotePage() {
         </Button>
 
         <p className="text-white/20 text-xs text-center mt-3">
-          Compoxen · Lehi, Utah · Statewide install · Nationwide material
+          Compoxen · Draper, Utah · Statewide install · Nationwide material
         </p>
       </form>
     </LeadFormLayout>

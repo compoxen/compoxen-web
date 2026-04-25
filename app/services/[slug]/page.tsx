@@ -100,7 +100,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             {[
               { icon: Shield, label: PRODUCT_SPECS.warranty, sub: 'Material warranty' },
-              { icon: MapPin, label: 'Utah-based', sub: 'Lehi yard + statewide install' },
+              { icon: MapPin, label: 'Utah-based', sub: 'Draper yard + statewide install' },
               { icon: Clock, label: service.leadTime.split(';')[0], sub: 'Typical lead time' },
               { icon: Award, label: 'Free quotes', sub: '48-hour written estimate' },
             ].map(({ icon: Icon, label, sub }) => (

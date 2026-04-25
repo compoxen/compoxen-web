@@ -132,17 +132,19 @@ export function getLocalBusinessSchema() {
     email: BRAND.email,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Salt Lake City',
-      addressRegion: 'UT',
+      streetAddress: BRAND.streetAddress,
+      addressLocality: BRAND.addressLocality,
+      addressRegion: BRAND.addressRegion,
+      postalCode: BRAND.addressPostalCode,
       addressCountry: 'US',
     },
     url: BRAND.url,
     priceRange: '$$$',
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:00',
-      closes: '17:00',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '09:00',
+      closes: '18:00',
     },
   }
 }
@@ -313,7 +315,7 @@ export function getCityLocalBusinessSchema(city: CityData) {
       addressRegion: BRAND.addressRegion,
       postalCode: BRAND.addressPostalCode,
       addressCountry: 'US',
-      streetAddress: '1500 N Technology Way',
+      streetAddress: BRAND.streetAddress,
     },
     areaServed: {
       '@type': 'City',
@@ -327,7 +329,7 @@ export function getCityLocalBusinessSchema(city: CityData) {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: BRAND.googleRating,
-      reviewCount: 87,
+      reviewCount: BRAND.googleReviewCount,
     },
   }
 }

@@ -40,7 +40,7 @@ export default function ServicesIndexPage() {
             Compoxen does both: <span className="text-gradient-light">supply and install</span>
           </>
         }
-        subtitle="Pick a service for full scope, pricing, and timeline. Every service ships from our Lehi yard and is installed by Compoxen-trained crews across Utah."
+        subtitle="Pick a service for full scope, pricing, and timeline. Every service ships from our Draper yard and is installed by Compoxen-trained crews across Utah."
         primaryCta={{ label: 'Get a Free Quote', href: '/get-quote' }}
         secondaryCta={{ label: 'Service Areas', href: '/service-areas' }}
       />

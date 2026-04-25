@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: CountyPageProps): Promise<Met
   const url = `${BRAND.url}/counties/${county.slug}`
   return {
     title: `${county.name} Composite Fence Installation | Compoxen Utah`,
-    description: `Composite fence supply and certified install across ${county.name}, Utah. ${PRODUCT_SPECS.warranty} warranty, free quotes. (385) 483-3700`,
+    description: `Composite fence supply and certified install across ${county.name}, Utah. ${PRODUCT_SPECS.warranty} warranty, free quotes. (385) 530-0588`,
     alternates: { canonical: url },
     openGraph: {
       title: `${county.name} Composite Fence | Compoxen`,
