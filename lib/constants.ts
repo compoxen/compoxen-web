@@ -6,13 +6,13 @@
 // ─── Brand ────────────────────────────────────────────────────────
 export const BRAND = {
   name: 'Compoxen',
-  tagline: 'Composite Fence Supply + Install — Statewide Utah',
+  tagline: 'Trade-only composite fence systems — Utah · Idaho · Oregon · Colorado',
   designOrigin: 'Designed in USA',
   designCenter: 'Draper, UT',
   phone: '(385) 530-0588',
   localPhone: '385-530-0588',
   phoneHref: 'tel:+13855300588',
-  email: 'contact@compoxen.com',
+  email: 'trade@compoxen.com',
   privacyEmail: 'privacy@compoxen.com',
   address: '12218 S Lone Peak Pkwy #101, Draper, UT 84020',
   streetAddress: '12218 S Lone Peak Pkwy #101',
@@ -23,21 +23,24 @@ export const BRAND = {
   founded: 2024,
   serviceState: 'Utah',
   serviceStateAbbrev: 'UT',
-  hours: 'Mon–Sat 9 AM – 6 PM',
+  serviceRegion: ['UT', 'ID', 'OR', 'CO'] as const,
+  serviceRegionLabel: 'Utah · Idaho · Oregon · Colorado',
+  hours: 'Trade desk: Mon–Fri 7 AM – 5 PM MT',
   googleRating: 5.0,
   googleReviewCount: 11,
   /**
    * Public social / external profiles. Used in JSON-LD `sameAs` for
    * entity disambiguation. Leave empty strings for any profile that does
    * not exist yet — they are filtered out before serialization.
+   * Add real URLs as profiles go live.
    */
   social: [
-    'https://www.google.com/maps?cid=0', // TODO: replace with real Google Business Profile CID URL
-    '', // TODO: 'https://www.facebook.com/compoxen'
-    '', // TODO: 'https://www.instagram.com/compoxen'
-    '', // TODO: 'https://www.linkedin.com/company/compoxen'
-    '', // TODO: 'https://www.youtube.com/@compoxen'
-  ],
+    // 'https://www.google.com/maps?cid=XXXXXXXXXXXX',
+    // 'https://www.facebook.com/compoxen',
+    // 'https://www.instagram.com/compoxen',
+    // 'https://www.linkedin.com/company/compoxen',
+    // 'https://www.youtube.com/@compoxen',
+  ] as string[],
 } as const
 
 // ─── Utah Zip Code Coverage ───────────────────────────────────────

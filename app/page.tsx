@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useTransform, useInView } from 'framer-motion'
 import { ArrowRight, Download, Percent, BarChart3, Package, Lightbulb, Calculator, MapPin, Shield, Zap, Clock, Check, X as XIcon, ChevronRight, Star, Layers, ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import AvailabilityChecker from '@/components/AvailabilityChecker'
 import { useRef, useEffect, useState } from 'react'
 
@@ -83,7 +84,7 @@ export default function Home() {
             className="inline-flex items-center gap-3 badge-dark mb-10"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-white/80 text-[13px] font-medium">Composite fence supply + install — statewide Utah</span>
+            <span className="text-white/80 text-[13px] font-medium">Trade-only · Utah · Idaho · Oregon · Colorado</span>
           </motion.div>
 
           {/* Main Headline — enterprise scale */}
@@ -93,8 +94,8 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-white font-bold leading-[1.05] text-[clamp(2.5rem,6vw,5rem)] mb-8 tracking-tight max-w-4xl mx-auto"
           >
-            The Future of Fencing Is{' '}
-            <span className="text-gradient-light">Composite</span>
+            Carry the line that{' '}
+            <span className="text-gradient-light">sells itself.</span>
           </motion.h1>
 
           {/* Subtext — clean and concise */}
@@ -104,8 +105,8 @@ export default function Home() {
             transition={{ delay: 0.25, duration: 0.6 }}
             className="text-white/70 text-lg sm:text-xl leading-relaxed mb-12 max-w-2xl mx-auto"
           >
-            Premium composite fencing designed in the USA. 20-year warranty, zero maintenance, 
-            five architect-led colors. Built for the projects that matter.
+            A composite fence system built for fence dealers, lumberyards, and pro contractors across the Mountain West.
+            Pallet-ready in days. 20-year warranty. Zero callbacks for fade.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -119,14 +120,14 @@ export default function Home() {
               href="/get-quote"
               className="group inline-flex items-center gap-2.5 bg-brand-amber text-black font-semibold text-base px-8 py-4 rounded-xl cta-glow hover:bg-amber-500 transition-all"
             >
-              Get a Quote
+              Open a Trade Account
               <ArrowRight size={18} className="group-hover:translate-x-0.5 transition-transform" />
             </Link>
             <Link
-              href="/service-areas"
+              href="/specifications"
               className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium text-base px-8 py-4 rounded-xl hover:bg-white/15 hover:border-white/30 transition-all"
             >
-              Utah Service Areas
+              Download the Line Card
               <ChevronRight size={18} className="text-white/50" />
             </Link>
           </motion.div>
@@ -139,9 +140,9 @@ export default function Home() {
             className="mt-16 flex flex-wrap justify-center gap-x-8 gap-y-3 text-white/40 text-sm"
           >
             <span className="flex items-center gap-2"><Shield size={14} className="text-amber-500/60" /> 20-Year Warranty</span>
-            <span className="flex items-center gap-2"><Zap size={14} className="text-amber-500/60" /> Zero Maintenance</span>
-            <span className="flex items-center gap-2"><Star size={14} className="text-amber-500/60" /> 99% Satisfaction</span>
-            <span className="flex items-center gap-2"><Layers size={14} className="text-amber-500/60" /> 5 Architect Colors</span>
+            <span className="flex items-center gap-2"><Zap size={14} className="text-amber-500/60" /> Pallet-Ready in 5 Days</span>
+            <span className="flex items-center gap-2"><Star size={14} className="text-amber-500/60" /> Net-30 on Approval</span>
+            <span className="flex items-center gap-2"><Layers size={14} className="text-amber-500/60" /> Protected Territories</span>
           </motion.div>
         </div>
 
@@ -157,10 +158,10 @@ export default function Home() {
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12">
             {[
-              { ref: citiesServed.ref, value: `${citiesServed.count}+`, label: 'Utah Cities Served' },
-              { ref: linearFeet.ref, value: `${linearFeet.count}M+`, label: 'Linear Feet Installed' },
-              { ref: installDays.ref, value: `${installDays.count}–${installDays.count + 1}`, label: 'Day Avg Install' },
-              { ref: satisfaction.ref, value: `${satisfaction.count}%`, label: 'Customer Satisfaction' },
+              { ref: citiesServed.ref, value: `${citiesServed.count}+`, label: 'Cities With Active Dealers' },
+              { ref: linearFeet.ref, value: `${linearFeet.count}M+`, label: 'Linear Feet in the Field' },
+              { ref: installDays.ref, value: `${installDays.count + 1}`, label: 'States Served (UT · ID · OR · CO)' },
+              { ref: satisfaction.ref, value: `${satisfaction.count}%`, label: 'Dealer Reorder Rate' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -200,11 +201,11 @@ export default function Home() {
               variants={fadeUp}
               className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-gray-900 mb-5"
             >
-              Engineered for the Long Run
+              A line your yard can stand behind.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-gray-500 text-lg max-w-2xl mx-auto">
-              Advanced materials science meets modern architecture. Every panel is built to outlast 
-              and outperform traditional fencing — without the maintenance.
+              Engineered to outperform wood, vinyl, and metal — and to keep your phone quiet after the install.
+              Fewer warranty calls, higher ticket, repeatable margin.
             </motion.p>
           </motion.div>
 
@@ -268,10 +269,10 @@ export default function Home() {
               <BarChart3 size={14} /> Material Comparison
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-gray-900 mb-5">
-              How Compoxen Compares
+              The talk track your reps already wanted.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-gray-500 text-lg max-w-2xl mx-auto">
-              See why Utah homeowners and builders are switching to engineered composite.
+              A side-by-side your counter team can hand to any contractor or homeowner walking in the door.
             </motion.p>
           </motion.div>
 
@@ -377,8 +378,14 @@ export default function Home() {
                 custom={i}
                 className="group cursor-pointer"
               >
-                <div className="w-full aspect-3/4 rounded-2xl overflow-hidden mb-4 card-enterprise border-0 shadow-sm hover:shadow-lg transition-all duration-500">
-                  <img src={color.file} alt={color.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="w-full aspect-3/4 rounded-2xl overflow-hidden mb-4 card-enterprise border-0 shadow-sm hover:shadow-lg transition-all duration-500 relative">
+                  <Image
+                    src={color.file}
+                    alt={color.name}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 240px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
                 <div className="text-gray-900 font-semibold text-sm mb-0.5">{color.name}</div>
                 <div className="text-gray-400 text-xs">{color.note}</div>
@@ -402,10 +409,10 @@ export default function Home() {
               <Clock size={14} /> Process
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-gray-900 mb-5">
-              From Quote to Installation
+              From application to first pallet.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-gray-500 text-lg max-w-2xl mx-auto">
-              A streamlined process designed for contractors, dealers, and homeowners.
+              A clean, four-step path to carrying Compoxen. Most accounts ship within two weeks.
             </motion.p>
           </motion.div>
 
@@ -414,10 +421,10 @@ export default function Home() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {[
-              { step: '01', title: 'Request a Quote', desc: 'Tell us about your project scope and location. We check availability instantly.' },
-              { step: '02', title: 'Get Matched', desc: 'We connect you with a certified installer in your area with real-time pricing.' },
-              { step: '03', title: 'Review & Approve', desc: 'Review materials, colors, and specs. Approve your customized project plan.' },
-              { step: '04', title: 'Professional Install', desc: 'Your certified contractor handles everything. Most projects complete in 1–3 days.' },
+              { step: '01', title: 'Apply', desc: 'Tell us about your business, region, and current fence mix. Resale cert and EIN.' },
+              { step: '02', title: 'Qualify', desc: 'We review territory fit and credit. You get tier pricing, MAP policy, and the line card.' },
+              { step: '03', title: 'Onboard', desc: 'Sample boards ship. Counter staff and installers get certified on the system.' },
+              { step: '04', title: 'Stock & Sell', desc: 'First pallet or truckload lands. Co-op marketing and dealer locator go live.' },
             ].map((item, i) => (
               <motion.div
                 key={item.step}
@@ -451,10 +458,10 @@ export default function Home() {
               <Star size={14} /> Gallery
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-white text-3xl sm:text-4xl md:text-[2.75rem] font-bold mb-5">
-              Installations That Inspire
+              On the ground, across the Mountain West.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-white/50 text-lg max-w-2xl mx-auto">
-              Real projects. Real results. See how Compoxen transforms residential and commercial spaces.
+              Real installs from Compoxen dealer crews — proof for the next contractor walking your counter.
             </motion.p>
           </motion.div>
 
@@ -476,11 +483,15 @@ export default function Home() {
                 custom={i}
                 className="cursor-pointer group relative overflow-hidden rounded-2xl"
               >
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-64 sm:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                <div className="relative w-full h-64 sm:h-72">
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                   <span className="text-amber-400 text-xs font-medium uppercase tracking-wider">{item.tag}</span>
@@ -506,10 +517,10 @@ export default function Home() {
               <Download size={14} /> Resources
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-gray-900 mb-5">
-              Everything You Need to Succeed
+              The dealer toolkit.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-gray-500 text-lg max-w-2xl mx-auto">
-              Tools, guides, and dashboards built for professionals who demand excellence.
+              Spec sheets, line cards, sample boards, and counter-sales material — everything your team needs to move the line.
             </motion.p>
           </motion.div>
 
@@ -520,19 +531,19 @@ export default function Home() {
             {[
               {
                 icon: <Download size={20} />,
-                title: '2026 Buyer Guide',
-                desc: 'Specs, pricing, installation diagrams — written for Utah homeowners and builders who want clarity before they sign.',
-                cta: 'Order Free Guide',
+                title: '2026 Dealer Line Card',
+                desc: 'Profiles, pack quantities, freight class, MAP policy, and tier pricing windows. Built for buyers and counter staff.',
+                cta: 'Request the Line Card',
                 href: '/get-quote',
-                tag: '2026 Edition · PDF + Print'
+                tag: '2026 Edition · PDF'
               },
               {
                 icon: <Percent size={20} />,
-                title: 'Material Science',
-                desc: 'Composite density, UV-stable shell, acoustic dampening, and 25+ year performance data.',
-                cta: 'Learn More',
-                href: '/why-compoxen',
-                tag: 'Fade-Resistant · Zero Maintenance'
+                title: 'Spec & Test Data',
+                desc: 'ASTM results, UV-stable shell data, freeze-thaw, wind, and 25+ year performance — for spec writers and warranty teams.',
+                cta: 'Open the Spec Library',
+                href: '/specifications',
+                tag: 'ASTM · Class A · 130 mph'
               }
             ].map((item, i) => (
               <motion.div
@@ -582,18 +593,17 @@ export default function Home() {
               <MapPin size={14} /> Service Areas
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-white text-3xl sm:text-4xl md:text-[2.75rem] font-bold mb-5">
-              Check Availability
+              Is your territory open?
             </motion.h2>
             <motion.p variants={fadeUp} className="text-white/50 text-base sm:text-lg max-w-lg mx-auto mb-10">
-              Enter your zip code to see if Compoxen serves your area, 
-              or join the waiting list for expansion updates.
+              Drop a zip in Utah, Idaho, or Colorado. We&apos;ll tell you if a dealer slot is available — or who already carries the line nearby.
             </motion.p>
             <motion.div variants={fadeUp}>
               <AvailabilityChecker />
             </motion.div>
             <motion.div variants={fadeUp}>
               <Link
-                href="/states"
+                href="/service-areas"
                 className="inline-flex items-center gap-2 text-white/40 hover:text-white/70 text-sm mt-8 transition-colors"
               >
                 <MapPin size={14} /> View all service areas →
@@ -617,18 +627,17 @@ export default function Home() {
                 🇺🇸 Our Story
               </motion.div>
               <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-6">
-                Designed in USA.
+                Built where it has to perform.
                 <br />
-                Perfected in the Mountains.
+                Sold where it has to ship.
               </motion.h2>
               <motion.p variants={fadeUp} className="text-gray-500 leading-relaxed mb-8">
-                Every Compoxen product begins at our innovation center in Salt Lake City, Utah. 
-                We test against the Mountain West&apos;s most extreme conditions — scorching desert heat, 
-                sub-zero alpine winters, high-altitude UV, and relentless wind — so your fence performs 
-                beautifully anywhere in America.
+                Engineered in Draper, Utah and tested against Mountain West extremes — desert heat, alpine cold,
+                high-altitude UV, and snow load. We stock and ship from the Wasatch Front to dealers across
+                Utah, Idaho, Oregon, and Colorado, so the line lands when your jobs are booked.
               </motion.p>
               <motion.div variants={fadeUp} className="flex flex-wrap gap-2">
-                {['Salt Lake City HQ', '4-State Testing', 'Expanding Nationwide'].map((item) => (
+                {['Draper, UT HQ', 'Mountain West Tested', 'Trade-Only Distribution'].map((item) => (
                   <span key={item} className="badge badge-amber text-xs">
                     {item}
                   </span>
@@ -641,10 +650,10 @@ export default function Home() {
               className="grid grid-cols-2 gap-4"
             >
               {[
-                { value: '4', label: 'States Served', icon: <MapPin size={16} /> },
+                { value: '4', label: 'States Stocked (UT · ID · OR · CO)', icon: <MapPin size={16} /> },
                 { value: '162+', label: 'Certified Installers', icon: <Star size={16} /> },
-                { value: '20yr', label: 'Warranty', icon: <Shield size={16} /> },
-                { value: '0', label: 'Maintenance Required', icon: <Zap size={16} /> },
+                { value: '20yr', label: 'Limited Warranty', icon: <Shield size={16} /> },
+                { value: 'Net-30', label: 'On Approved Credit', icon: <Zap size={16} /> },
               ].map((stat, i) => (
                 <motion.div 
                   key={stat.label} 
@@ -672,11 +681,10 @@ export default function Home() {
         <div className="container mx-auto px-6 text-center max-w-5xl">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-gray-900 mb-5">
-              Ready to Get Started?
+              Three ways to start carrying the line.
             </motion.h2>
             <motion.p variants={fadeUp} className="text-gray-500 text-lg max-w-2xl mx-auto mb-14">
-              Whether you&apos;re designing a backyard, specifying materials, or exploring modern fencing — 
-              we have the right path for you.
+              Whether you&apos;re a fence contractor, a lumberyard, or a multi-location dealer — pick the path that fits and we&apos;ll move fast.
             </motion.p>
           </motion.div>
 
@@ -685,9 +693,9 @@ export default function Home() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-5"
           >
             {[
-              { icon: Package, label: 'Order Samples', desc: 'See and feel the premium finish', href: '/get-quote' },
-              { icon: Lightbulb, label: 'Get Inspired', desc: 'Browse real installations', href: '/#installations' },
-              { icon: Calculator, label: 'Request a Quote', desc: 'Get pricing for your project', href: '/get-quote' }
+              { icon: Package, label: 'Request a Sample Board', desc: 'See the colors and shell on your counter', href: '/get-quote' },
+              { icon: Lightbulb, label: 'Download the Line Card', desc: 'Profiles, pack qtys, freight class, MAP', href: '/specifications' },
+              { icon: Calculator, label: 'Open a Trade Account', desc: 'Apply for tier pricing and Net-30', href: '/get-quote' }
             ].map((item, i) => (
               <motion.div
                 key={item.label}

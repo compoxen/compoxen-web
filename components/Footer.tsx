@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { MapPin, ArrowRight, Mail } from 'lucide-react'
 
 export default function Footer() {
@@ -25,9 +25,9 @@ export default function Footer() {
         <div className="container mx-auto px-6 max-w-6xl py-14 md:py-16">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
-              <h3 className="text-xl font-semibold text-white mb-2">Stay in the loop</h3>
+              <h3 className="text-xl font-semibold text-white mb-2">The Trade Brief</h3>
               <p className="text-white/40 text-sm max-w-sm">
-                Product updates, install tips, and Utah project highlights. No spam, ever.
+                New colors, spec updates, and distributor programs across UT · ID · OR · CO. Built for the trade — no homeowner fluff.
               </p>
             </div>
             {subscribed ? (
@@ -36,9 +36,12 @@ export default function Footer() {
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="flex gap-2 w-full max-w-md">
+                <label htmlFor="footer-email" className="sr-only">Email address</label>
                 <input
+                  id="footer-email"
                   type="email"
                   placeholder="Enter your email"
+                  aria-label="Email address for newsletter"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="grow px-4 py-3 bg-white/6 border border-white/8 rounded-xl text-white text-sm placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent transition-all"
@@ -62,14 +65,16 @@ export default function Footer() {
 
           {/* Brand Column */}
           <div className="col-span-2 sm:col-span-3 lg:col-span-2">
-            <img
+            <Image
               src="/images/compoxen-logo.png"
               alt="Compoxen"
-              className="h-7 mb-5 brightness-0 invert"
+              width={140}
+              height={28}
+              className="h-7 w-auto mb-5 brightness-0 invert"
             />
             <p className="text-white/30 leading-relaxed text-sm max-w-xs mb-5">
-              Composite fence supply + professional installation across Utah.
-              20-year warranty. Zero maintenance. Free quotes statewide.
+              A composite fence line built for the trade.
+              Pallet, truckload &amp; container programs for dealers, lumberyards, and pro contractors across Utah, Idaho, Oregon, and Colorado.
             </p>
             <div className="inline-flex items-center gap-2 badge-dark text-xs">
               🇺🇸 Designed in the USA
@@ -100,28 +105,27 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Top Cities */}
+          {/* Territory */}
           <div>
-            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Top Cities</h4>
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Territory</h4>
             <ul className="space-y-2.5 text-[13px]">
-              <li><Link href="/composite-fence/salt-lake-city" className="text-white/40 hover:text-white transition-colors duration-200">Salt Lake City</Link></li>
-              <li><Link href="/composite-fence/lehi" className="text-white/40 hover:text-white transition-colors duration-200">Lehi</Link></li>
-              <li><Link href="/composite-fence/provo" className="text-white/40 hover:text-white transition-colors duration-200">Provo</Link></li>
-              <li><Link href="/composite-fence/park-city" className="text-white/40 hover:text-white transition-colors duration-200">Park City</Link></li>
-              <li><Link href="/composite-fence/south-jordan" className="text-white/40 hover:text-white transition-colors duration-200">South Jordan</Link></li>
-              <li><Link href="/service-areas" className="text-amber-500/70 hover:text-amber-400 transition-colors duration-200">All Cities →</Link></li>
+              <li><Link href="/service-areas" className="text-white/40 hover:text-white transition-colors duration-200">Utah <span className="text-white/20">· Limited</span></Link></li>
+              <li><Link href="/service-areas" className="text-white/40 hover:text-white transition-colors duration-200">Idaho <span className="text-white/20">· Open</span></Link></li>
+              <li><Link href="/service-areas" className="text-white/40 hover:text-white transition-colors duration-200">Oregon <span className="text-white/20">· Open</span></Link></li>
+              <li><Link href="/service-areas" className="text-white/40 hover:text-white transition-colors duration-200">Colorado <span className="text-white/20">· Limited</span></Link></li>
+              <li><Link href="/service-areas" className="text-amber-500/70 hover:text-amber-400 transition-colors duration-200">View Territory Map →</Link></li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* For the Trade */}
           <div>
-            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">Services</h4>
+            <h4 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">For the Trade</h4>
             <ul className="space-y-2.5 text-[13px]">
-              <li><Link href="/services/composite-fence-installation" className="text-white/40 hover:text-white transition-colors duration-200">Fence Installation</Link></li>
-              <li><Link href="/services/composite-privacy-fence" className="text-white/40 hover:text-white transition-colors duration-200">Privacy Fence</Link></li>
-              <li><Link href="/services/composite-pool-fence" className="text-white/40 hover:text-white transition-colors duration-200">Pool Fence</Link></li>
-              <li><Link href="/services/composite-fence-supply" className="text-white/40 hover:text-white transition-colors duration-200">Material Supply</Link></li>
-              <li><Link href="/services" className="text-amber-500/70 hover:text-amber-400 transition-colors duration-200">All Services →</Link></li>
+              <li><Link href="/get-quote" className="text-white/40 hover:text-white transition-colors duration-200">Open a Trade Account</Link></li>
+              <li><Link href="/pricing" className="text-white/40 hover:text-white transition-colors duration-200">Wholesale Programs</Link></li>
+              <li><Link href="/specifications" className="text-white/40 hover:text-white transition-colors duration-200">Spec Sheets &amp; Downloads</Link></li>
+              <li><Link href="/installation" className="text-white/40 hover:text-white transition-colors duration-200">Installer Training</Link></li>
+              <li><Link href="/services" className="text-amber-500/70 hover:text-amber-400 transition-colors duration-200">Programs Overview →</Link></li>
             </ul>
           </div>
 
@@ -148,7 +152,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Compoxen, Inc. All rights reserved.
             </p>
             <p className="text-white/15 text-xs">
-              Designed in the USA · Statewide Utah service
+              Designed in the USA · Trade-only · UT · ID · OR · CO
             </p>
           </div>
         </div>

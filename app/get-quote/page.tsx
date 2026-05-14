@@ -6,19 +6,42 @@ import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import LeadFormLayout from '@/components/layouts/LeadFormLayout'
 import { isUtahZip } from '@/lib/constants'
+import {
+  submitQuoteRequest,
+  type QuoteService,
+} from '@/lib/quote-request'
+import { trackQuoteSubmission } from '@/lib/analytics'
 
 type ZipStatus = 'utah' | 'outside-utah' | null
+
+// Map our user-facing project types onto the four service options
+// configured on the D Fence intake form.
+function mapProjectTypeToService(projectType: string): QuoteService {
+  switch (projectType) {
+    case 'residential':
+    case 'commercial':
+    case 'hoa':
+      return 'fence_install'
+    case 'material-only':
+      return 'other'
+    default:
+      return 'other'
+  }
+}
 
 export default function GetQuotePage() {
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [errorMsg, setErrorMsg] = useState<string | null>(null)
   const [zipStatus, setZipStatus] = useState<ZipStatus>(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     zip: '',
-    projectType: 'residential'
+    projectType: 'residential',
+    // honeypot — must stay empty
+    website: '',
   })
 
   // Real-time zip code Utah check
@@ -33,13 +56,50 @@ export default function GetQuotePage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    
-    // TODO: Replace with actual API call
-    console.log('Quote Request:', { ...formData, zipStatus })
-    
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    setLoading(false)
-    setSubmitted(true)
+    setErrorMsg(null)
+
+    const projectTypeLabels: Record<string, string> = {
+      residential: 'Residential install',
+      commercial: 'Commercial install',
+      hoa: 'HOA / Multi-Family',
+      'material-only': 'Material only (ships nationwide)',
+    }
+
+    try {
+      const result = await submitQuoteRequest({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        service: mapProjectTypeToService(formData.projectType),
+        address: formData.zip.trim() || undefined,
+        details: [
+          `Project type: ${
+            projectTypeLabels[formData.projectType] ?? formData.projectType
+          }`,
+          formData.zip ? `ZIP: ${formData.zip.trim()}` : null,
+          zipStatus
+            ? `Service area: ${
+                zipStatus === 'utah' ? 'inside Utah' : 'outside Utah'
+              }`
+            : null,
+        ]
+          .filter(Boolean)
+          .join('\n'),
+        website: formData.website,
+      })
+
+      trackQuoteSubmission({
+        transactionId: result.submission_id ?? undefined,
+      })
+
+      setLoading(false)
+      setSubmitted(true)
+    } catch (err) {
+      setLoading(false)
+      setErrorMsg(
+        err instanceof Error ? err.message : 'Something went wrong. Please try again.'
+      )
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -72,6 +132,18 @@ export default function GetQuotePage() {
       description="Tell us about your project. Compoxen installs across all of Utah and ships material nationwide."
     >
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Honeypot — hidden from real users, bots fill it and get rejected */}
+        <input
+          type="text"
+          id="website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+          aria-hidden="true"
+          value={formData.website}
+          onChange={handleChange}
+        />
         <Input 
           id="name"
           label="Full Name" 
@@ -144,6 +216,12 @@ export default function GetQuotePage() {
           {loading ? 'Processing...' : 'Get Quote'}
           {!loading && <ArrowRight size={18} />}
         </Button>
+
+        {errorMsg && (
+          <p className="text-red-300 text-xs text-center mt-2" role="alert">
+            {errorMsg}
+          </p>
+        )}
 
         <p className="text-white/20 text-xs text-center mt-3">
           Compoxen · Draper, Utah · Statewide install · Nationwide material

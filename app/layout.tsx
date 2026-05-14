@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -20,29 +21,28 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://compoxen.com'),
   title: {
-    default: 'COMPOXEN | Premium Composite Fencing — Designed in USA',
+    default: 'COMPOXEN | Trade-Only Composite Fence Systems — UT · ID · OR · CO',
     template: '%s | COMPOXEN'
   },
-  description: 'Premium composite fence supply + professional installation across Utah. 20-year warranty, zero maintenance, five architect-led colors. Free statewide quotes.',
+  description: 'A composite fence line built for the trade. Strategic distributor program for fence dealers, lumberyards, and pro contractors across Utah, Idaho, Oregon, and Colorado. Designed in USA.',
   keywords: [
-    'composite fencing', 'composite fence Utah', 'Utah fence installation',
-    'composite fence supply Utah', 'Salt Lake City fence', 'Lehi fence', 'Provo fence',
-    'Park City fence', 'composite fence vs wood', 'composite fence vs vinyl',
-    'composite fence cost Utah', 'HOA approved fence Utah', 'pool fence Utah',
-    'commercial fencing Utah', 'residential fence Utah', 'designed in USA',
+    'wholesale composite fencing', 'composite fence dealer program', 'composite fence distributor',
+    'fence supplier Utah Idaho Colorado', 'pro composite fence', 'composite fence pallet',
+    'composite fence systems', 'fence contractor materials', 'lumberyard composite fence',
+    'Mountain West fence supply', 'designed in USA',
   ],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     siteName: 'COMPOXEN',
-    title: 'COMPOXEN | Utah Composite Fence Supply + Install',
-    description: 'Composite fence supply + install across Utah. 20-year warranty, zero maintenance.',
-    images: [{ url: '/images/hero-fence-bg.jpg', width: 1200, height: 630, alt: 'COMPOXEN Premium Composite Fencing' }],
+    title: 'COMPOXEN | Trade-Only Composite Fence Systems',
+    description: 'A composite fence line built for the trade — UT · ID · OR · CO. Strategic distributor program for dealers, lumberyards, and pro contractors.',
+    images: [{ url: '/images/hero-fence-bg.jpg', width: 1200, height: 630, alt: 'COMPOXEN Composite Fence Systems' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'COMPOXEN | Premium Composite Fencing — Designed in USA',
-    description: 'Premium composite fencing. 20-year warranty. Zero maintenance. Designed in USA.',
+    title: 'COMPOXEN | Trade-Only Composite Fence Systems — UT · ID · OR · CO',
+    description: 'A composite fence line built for the trade. Strategic distributor program across Utah, Idaho, Oregon, and Colorado.',
   },
   robots: {
     index: true,
@@ -72,6 +72,20 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+
+          {/* Google tag (gtag.js) — Google Ads AW-18096759650 */}
+          <Script
+            src="https://www.googletagmanager.com/gtag/js?id=AW-18096759650"
+            strategy="afterInteractive"
+          />
+          <Script id="google-ads-init" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-18096759650');
+            `}
+          </Script>
       </body>
     </html>
   )

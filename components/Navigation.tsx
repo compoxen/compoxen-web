@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useCallback } from 'react'
 import { Menu, X, ChevronRight } from 'lucide-react'
@@ -31,12 +32,12 @@ export default function Navigation() {
   }, [isOpen])
 
   const navLinks = [
-    { label: 'Services', href: '/services' },
-    { label: 'Composite Fencing', href: '/composite-fencing' },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'Service Areas', href: '/service-areas' },
-    { label: 'Gallery', href: '/#installations' },
-    { label: 'Blog', href: '/blog' },
+    { label: 'The System', href: '/composite-fencing' },
+    { label: 'Specs', href: '/specifications' },
+    { label: 'Wholesale', href: '/pricing' },
+    { label: 'Territory', href: '/service-areas' },
+    { label: 'Lookbook', href: '/#installations' },
+    { label: 'Insights', href: '/blog' },
   ]
 
   return (
@@ -44,10 +45,10 @@ export default function Navigation() {
       {/* Announcement Bar */}
       <div className="announcement-bar text-center py-2 px-4">
         <p className="text-[13px] text-white/60 font-medium">
-          <span className="text-amber-400/80">Utah:</span>{' '}
-          Composite fence supply + install statewide —
-          <Link href="/service-areas" className="text-white/80 hover:text-white underline underline-offset-2 ml-1 transition-colors">
-            see your city
+          <span className="text-amber-400/80">Trade desk open:</span>{' '}
+          Now booking dealers across Utah, Idaho, Oregon &amp; Colorado —
+          <Link href="/get-quote" className="text-white/80 hover:text-white underline underline-offset-2 ml-1 transition-colors">
+            open a trade account
           </Link>
         </p>
       </div>
@@ -69,9 +70,12 @@ export default function Navigation() {
             href="/" 
             className="relative flex items-center group"
           >
-            <img
+            <Image
               src="/images/compoxen-logo.png"
               alt="Compoxen"
+              width={160}
+              height={32}
+              priority
               className="h-8 w-auto brightness-0 invert transition-opacity group-hover:opacity-80"
             />
           </Link>
@@ -104,7 +108,7 @@ export default function Navigation() {
                 'transition-all duration-200 hover:bg-amber-500 cta-glow'
               )}
             >
-              Get a Quote
+              Open a Trade Account
             </Link>
           </div>
 
@@ -178,7 +182,7 @@ export default function Navigation() {
                   opacity: isOpen ? 1 : 0
                 }}
               >
-                Get a Quote
+                Open a Trade Account
               </Link>
             </li>
           </ul>
